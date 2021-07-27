@@ -25,7 +25,7 @@ class Home extends React.Component {
             <div className="Home">
                 Home
 
-                <form onSubmit={this.ajoutTypePublication()} onchange={(e) => this.changement(e)}>
+                <form onChange={(e) => this.changement(e)} onSubmit={this.ajoutTypePublication()}>
                     <input type="text" name="nom_type_publication"></input>
                     <input type="submit"></input>
                 </form>
