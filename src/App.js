@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Home from './components/Home';
 import HeaderNonConnecte from './components/HeaderNonConnecte';
+import Connexion from './components/Connexion';
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
 
           <Route path="/home">
               <HeaderNonConnecte />
+          </Route>
+
+          <Route path="/connexion">
+              <HeaderNonConnecte />
+              <Connexion />
           </Route>
 
           <Route path="/test">

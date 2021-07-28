@@ -17,8 +17,8 @@ class HeaderNonConnecte extends React.Component {
                        
                     </div>
                     <div class="col">
-                        <span className="headerText" >Se connecter  |</span>  
-                        <span className="headerText" > S'inscrire</span>
+                        <a href="/connexion"><span className="headerText" >Se connecter  |</span></a>
+                        <a href="/inscription"><span className="headerText" > S'inscrire</span></a>
                     </div>
                 </div>
 
