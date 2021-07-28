@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './components/Home';
+import HeaderNonConnecte from './components/HeaderNonConnecte';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       <Router>
 
         <Switch>
+
+          <Route path="/">
+              <HeaderNonConnecte />
+          </Route>
 
           <Route path="/home">
               <Home />
