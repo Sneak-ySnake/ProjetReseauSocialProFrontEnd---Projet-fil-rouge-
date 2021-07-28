@@ -8,11 +8,18 @@ class HeaderNonConnecte extends React.Component {
     render() {
         return(
             <header className="HeaderNonConnecte">
-               
-                <div className="container-sm">
-                    <img src={logo} width="50" height="50" align="left"></img>
 
-                    <span className="headerText" align="right">S'inscrire</span>
+                <div class="row align-items-center, container-sm" align="right">
+                    <div class="col">
+                        <img src={logo} width="50" height="50"/>
+                    </div>
+                    <div class="col">
+                       
+                    </div>
+                    <div class="col">
+                        <span className="headerText" >Se connecter  |</span>  
+                        <span className="headerText" > S'inscrire</span>
+                    </div>
                 </div>
 
             </header>
