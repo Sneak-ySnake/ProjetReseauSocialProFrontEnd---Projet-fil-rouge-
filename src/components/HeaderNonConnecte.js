@@ -11,7 +11,7 @@ class HeaderNonConnecte extends React.Component {
 
                 <div class="row align-items-center, container-sm" align="right">
                     <div class="col">
-                        <img src={logo} width="50" height="50"/>
+                        <a href="/test"><img src={logo} width="50" height="50"/></a>
                     </div>
                     <div class="col">
                        

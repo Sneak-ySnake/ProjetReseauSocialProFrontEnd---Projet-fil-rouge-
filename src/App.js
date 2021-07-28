@@ -17,11 +17,12 @@ function App() {
 
         <Switch>
 
-          <Route path="/">
+          <Route path="/home">
               <HeaderNonConnecte />
           </Route>
 
-          <Route path="/home">
+          <Route path="/test">
+              <HeaderNonConnecte />
               <Home />
           </Route>
           
