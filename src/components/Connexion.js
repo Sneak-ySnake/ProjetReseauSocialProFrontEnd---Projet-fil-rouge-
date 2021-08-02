@@ -3,23 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Connexion extends React.Component {
-    /*constructor() {
-        super();
 
-        this.state = {
-            id: "",
-            mdp: ""
-        };
-    }*/
-    /*
-    infoConnexion = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
-    
-    connexion = () => {
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findUtilisateur", {params: {id:"1"}} );
-    }
-    */
     render() {
         return(
             <div className="Connexion">
@@ -35,7 +19,6 @@ class Connexion extends React.Component {
                     <br/>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
-
             </div>
         );
     }
