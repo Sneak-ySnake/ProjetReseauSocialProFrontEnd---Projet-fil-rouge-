@@ -3,23 +3,31 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Connexion extends React.Component {
-    constructor() {
+    /*constructor() {
         super();
 
         this.state = {
             id: "",
             mdp: ""
         };
+    }*/
+    /*
+    infoConnexion = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     }
-
+    
+    connexion = () => {
+        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findUtilisateur", {params: {id:"1"}} );
+    }
+    */
     render() {
         return(
             <div className="Connexion">
-                <form>
+                <form action="/PROJET_FIL_ROUGE_tender_du_poulet/login" method="post">
                     <br/>
                     Email :
                     <br/>
-                    <input type="text" name="id"></input>
+                    <input type="text" name="email"></input>
                     <br/>
                     Mot de passe :
                     <br/>
