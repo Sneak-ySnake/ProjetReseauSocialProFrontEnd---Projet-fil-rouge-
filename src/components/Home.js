@@ -11,17 +11,18 @@ class Home extends React.Component {
         };
     }
 
-    ajoutTypePublication = () => {
+    ajoutTypePublication = (e) => {
+        e.preventDefault();
         axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/ajoutTypePublication", {
             nom_type_publication: this.state.nom_type_publication
         });
     };
-
+/*
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({[e.target.name]: e.target[0].value})
     };
-
+*/
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     };
@@ -31,8 +32,8 @@ class Home extends React.Component {
             <div className="Home">
                 Home
 
-                <form onSubmit={this.ajoutTypePublication}>
-                    <input type="text" onChange={this.handleChange} name="nom_type_publication"></input>
+                <form onSubmit={(e) => this.ajoutTypePublication(e)}>
+                    <input type="text" onChange={(e) => this.handleChange(e)} name="nom_type_publication"></input>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
 
