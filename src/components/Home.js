@@ -17,7 +17,12 @@ class Home extends React.Component {
         });
     };
 
-    changement = (e) => {
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.setState({[e.target.name]: e.target[0].value})
+    };
+
+    handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     };
 
@@ -26,8 +31,8 @@ class Home extends React.Component {
             <div className="Home">
                 Home
 
-                <form onChange={(e) => this.changement(e)} onSubmit={this.ajoutTypePublication()}>
-                    <input type="text" name="nom_type_publication"></input>
+                <form onSubmit={this.ajoutTypePublication}>
+                    <input type="text" onChange={this.handleChange} name="nom_type_publication"></input>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
 
