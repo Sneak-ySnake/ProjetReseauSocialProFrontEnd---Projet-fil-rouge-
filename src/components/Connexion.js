@@ -29,11 +29,7 @@ class Connexion extends React.Component {
             }
         });
     }
-
-    handleSubmit = () => {
-        this.props.history.push("/home");
-    };
-
+    
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     };
