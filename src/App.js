@@ -1,26 +1,33 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+/************************************** HEADER NON-CONNECTE ************************************************/
 import Home from './components/Home';
 import HeaderNonConnecte from './components/HeaderNonConnecte';
 import Connexion from './components/Connexion';
-import { HeaderConnecte, Publier, Negociations, Profil, Marche, MesPublications,  MesDemandes, MesOffres, Deconnexion, 
-  MentionLegal, CDU, PolitiqueCookies, FAQ, NousContacter, Support, Footer } from "./components";
 import Inscription from './components/Inscription';
+
+/************************************** HEADER CONNECTE ************************************************/
+import { HeaderConnecte, Publier, Negociations, Profil, Marche, MesPublications,  MesDemandes, MesOffres, Deconnexion } from "./components"; 
+
+/************************************** FOOTER ************************************************/
+import Footer from './components/footer/Footer';
+import MentionLegal from './components/footer/MentionLegal'
+import CDU from './components/footer/CDU'
+import PolitiqueCookies from './components/footer/PolitiqueCookies'
+import FAQ from './components/footer/FAQ'
+import NousContacter from './components/footer/NousContacter'
+import Support from './components/footer/Support'
+
 
 function App() {
   return (
     <div className="App">
       <Router>
-
         <Switch>
-
+          {/************************************** HEADER NON-CONNECTE ************************************************/}
           <Route path="/home">
               <HeaderNonConnecte />
           </Route>
@@ -40,29 +47,83 @@ function App() {
               <Home />
           </Route>
 
+          {/************************************** HEADER CONNECTE ************************************************/}
+          <Route path="/Publier"> 
+            <HeaderConnecte /> 
+            <Publier /> 
+          </Route>
+
+          <Route path="/Negociations"> 
+            <HeaderConnecte />
+            <Negociations />
+          </Route>
+
+          <Route path="/Profil">
+            <HeaderConnecte /> 
+            <Profil />
+          </Route>
+
+          <Route path="/Marche">
+            <HeaderConnecte />
+            <Marche />
+          </Route>
+
+          <Route path="/MesPublications">
+            <HeaderConnecte />
+            <MesPublications />
+          </Route>
+
+          <Route path="/MesDemandes">
+            <HeaderConnecte />
+            <MesDemandes />
+          </Route>
+
+          <Route path="/MesOffres">
+            <HeaderConnecte />
+            <MesOffres />
+          </Route>
+
+          <Route path="/Deconnexion">
+            <HeaderConnecte />
+            <Deconnexion />
+          </Route>
           
-          <Route path="/Publier" exact component={() => <Publier />}> <HeaderConnecte /></Route>
-          <Route path="/Negociations" exact component={() => <Negociations />}> <HeaderConnecte /></Route>
-          <Route path="/Profil" exact component={() => <Profil />}> <HeaderConnecte /></Route>
-          <Route path="/Marche" exact component={() => <Marche />}> <HeaderConnecte /></Route>
-          <Route path="/MesPublications" exact component={() => <MesPublications />}> <HeaderConnecte /></Route>
-          <Route path="/MesDemandes" exact component={() => <MesDemandes />}> <HeaderConnecte /></Route>
-          <Route path="/MesOffres" exact component={() => <MesOffres />}> <HeaderConnecte /></Route>
-          <Route path="/Deconnexion" exact component={() => <Deconnexion />}> <HeaderConnecte /></Route>
-          
-          <Route path="/MentionLegal" exact component={() => <MentionLegal />}> <HeaderConnecte /></Route>
-          <Route path="/CDU" exact component={() => <CDU />}> <HeaderConnecte /></Route>
-          <Route path="/PolitiqueCookies" exact component={() => <PolitiqueCookies />}> <HeaderConnecte /></Route>
-          <Route path="/FAQ" exact component={() => <FAQ />}> <HeaderConnecte /></Route>
-          <Route path="/NousContacter" exact component={() => <NousContacter />}> <HeaderConnecte /></Route>
-          <Route path="/Support" exact component={() => <Support />}> <HeaderConnecte /></Route>
-          
+          {/************************************** FOOTER ************************************************/}
+          <Route path="/MentionLegal">
+            <HeaderConnecte />
+            <MentionLegal />
+          </Route>
+
+          <Route path="/CDU">
+            <HeaderConnecte />
+            <CDU />
+          </Route>
+
+          <Route path="/PolitiqueCookies">
+            <HeaderConnecte />
+            <PolitiqueCookies />
+          </Route>
+
+          <Route path="/FAQ">
+            <HeaderConnecte />
+            <FAQ />
+          </Route>
+
+          <Route path="/NousContacter">
+            <HeaderConnecte />
+            <NousContacter />
+          </Route>
+
+          <Route path="/Support">
+            <HeaderConnecte />
+            <Support />
+          </Route>
+
+          {/************************************** DEFAULT ************************************************/}
           <Route render={() => <h1>404: page not found</h1>} />
-          
         </Switch>
 
         <Footer />
-
       </Router>
     </div>
   )
