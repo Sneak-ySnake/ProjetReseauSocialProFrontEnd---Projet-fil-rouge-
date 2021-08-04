@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Home extends React.Component {
@@ -10,6 +11,8 @@ class Home extends React.Component {
             nom_type_publication: ""
         };
     }
+
+    
 
     ajoutTypePublication = (e) => {
         e.preventDefault();
@@ -27,6 +30,10 @@ class Home extends React.Component {
     };
 
     render() {
+        {var u = JSON.parse(localStorage.getItem("utilisateur"));}
+        if (u == null) {
+            return <Redirect to="/" />;
+        }
         return(
             <div className="Home">
                 Home
@@ -35,12 +42,13 @@ class Home extends React.Component {
                     <input type="text" onChange={this.handleChange} name="nom_type_publication" value={this.state.nom_type_publication}></input>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
-                {localStorage.getItem("utilisateur")}
+                
+                {u.email_utilisateur} <br/>
+                {u.mot_de_passe_utilisateur}
             </div>
         );
     }
 
 }
-
 
 export default Home;
