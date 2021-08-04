@@ -35,7 +35,7 @@ class Home extends React.Component {
                     <input type="text" onChange={this.handleChange} name="nom_type_publication" value={this.state.nom_type_publication}></input>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
-
+                {localStorage.getItem("utilisateur")}
             </div>
         );
     }
