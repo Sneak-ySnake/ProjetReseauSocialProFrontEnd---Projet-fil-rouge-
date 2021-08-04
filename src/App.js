@@ -12,6 +12,7 @@ import HeaderNonConnecte from './components/HeaderNonConnecte';
 import Connexion from './components/Connexion';
 import { HeaderConnecte, Publier, Negociations, Profil, Marche, MesPublications,  MesDemandes, MesOffres, Deconnexion, 
   MentionLegal, CDU, PolitiqueCookies, FAQ, NousContacter, Support, Footer } from "./components";
+import Inscription from './components/Inscription';
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
           <Route path="/connexion">
               <HeaderNonConnecte />
               <Connexion />
+          </Route>
+
+          <Route path="/inscription">
+              <HeaderNonConnecte />
+              <Inscription />
           </Route>
 
           <Route path="/test">
