@@ -8,10 +8,10 @@ export { default as MesDemandes } from "./MesDemandes";
 export { default as MesOffres } from "./MesOffres";
 export { default as Deconnexion } from "./Deconnexion";
 
-export { default as Footer } from "./Footer";
-export { default as MentionLegal } from "./MentionLegal";
-export { default as CDU } from "./CDU";
-export { default as PolitiqueCookies } from "./PolitiqueCookies";
-export { default as FAQ } from "./FAQ";
-export { default as NousContacter } from "./NousContacter";
-export { default as Support } from "./Support";
+export { default as Footer } from "./footer/Footer";
+export { default as MentionLegal } from "./footer/MentionLegal";
+export { default as CDU } from "./footer/CDU";
+export { default as PolitiqueCookies } from "./footer/PolitiqueCookies";
+export { default as FAQ } from "./footer/FAQ";
+export { default as NousContacter } from "./footer/NousContacter";
+export { default as Support } from "./footer/Support";
