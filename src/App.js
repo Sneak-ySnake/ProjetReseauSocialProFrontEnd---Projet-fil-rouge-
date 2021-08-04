@@ -10,7 +10,8 @@ import {
 import Home from './components/Home';
 import HeaderNonConnecte from './components/HeaderNonConnecte';
 import Connexion from './components/Connexion';
-import { HeaderConnecte, Footer, Publier, Negociations, Profil, Marche, MesPublications, MesDemandes, MesOffres, Deconnexion } from "./components";
+import { HeaderConnecte, Publier, Negociations, Profil, Marche, MesPublications,  MesDemandes, MesOffres, Deconnexion, 
+  MentionLegal, CDU, PolitiqueCookies, FAQ, NousContacter, Support, Footer } from "./components";
 
 function App() {
   return (
@@ -43,7 +44,18 @@ function App() {
           <Route path="/MesOffres" exact component={() => <MesOffres />}> <HeaderConnecte /></Route>
           <Route path="/Deconnexion" exact component={() => <Deconnexion />}> <HeaderConnecte /></Route>
           
+          <Route path="/MentionLegal" exact component={() => <MentionLegal />}> <HeaderConnecte /></Route>
+          <Route path="/CDU" exact component={() => <CDU />}> <HeaderConnecte /></Route>
+          <Route path="/PolitiqueCookies" exact component={() => <PolitiqueCookies />}> <HeaderConnecte /></Route>
+          <Route path="/FAQ" exact component={() => <FAQ />}> <HeaderConnecte /></Route>
+          <Route path="/NousContacter" exact component={() => <NousContacter />}> <HeaderConnecte /></Route>
+          <Route path="/Support" exact component={() => <Support />}> <HeaderConnecte /></Route>
+          
+          <Route render={() => <h1>404: page not found</h1>} />
+          
         </Switch>
+
+        <Footer />
 
       </Router>
     </div>
