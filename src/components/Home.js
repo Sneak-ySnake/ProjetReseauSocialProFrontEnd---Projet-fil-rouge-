@@ -30,8 +30,13 @@ class Home extends React.Component {
     };
 
     render() {
-        {var u = JSON.parse(localStorage.getItem("utilisateur"));}
+        {var u = JSON.parse(localStorage.getItem("utilisateur"));
+        var tempsSession = localStorage.getItem("tempsSession");}
         if (u == null) {
+            return <Redirect to="/" />;
+        }
+        if (Date.now() > tempsSession) {
+            localStorage.clear();
             return <Redirect to="/" />;
         }
         return(
@@ -44,7 +49,8 @@ class Home extends React.Component {
                 </form>
                 
                 {u.email_utilisateur} <br/>
-                {u.mot_de_passe_utilisateur}
+                {u.mot_de_passe_utilisateur}<br/>
+                {tempsSession}
             </div>
         );
     }

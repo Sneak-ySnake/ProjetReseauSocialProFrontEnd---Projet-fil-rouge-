@@ -23,6 +23,7 @@ class Connexion extends React.Component {
         }).then((result) => {
             if(result.data==true) {
                 this.creerSession();
+                this.tempsSession();
                 this.setState({redirection: true});
             }    
             else {
@@ -43,6 +44,11 @@ class Connexion extends React.Component {
 
         localStorage.setItem("utilisateur", JSON.stringify(u));
     };
+
+    tempsSession = () => {
+        var temps = Date.now() + 10000;
+        localStorage.setItem("tempsSession", temps);
+    }
 
     render() {
         if(this.state.redirection==true) {
