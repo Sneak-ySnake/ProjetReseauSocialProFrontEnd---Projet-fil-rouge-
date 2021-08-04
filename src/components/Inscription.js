@@ -62,27 +62,27 @@ class Inscription extends React.Component {
 
                 <form onSubmit={this.ajoutUtilisateur}>
                     Nom: <br/>
-                    <input type="text" name="nom_utilisateur" value={this.state.nom_utilisateur}></input> <br/>
+                    <input type="text" name="nom_utilisateur" onChange={this.handleChange} value={this.state.nom_utilisateur}></input> <br/>
                     Prenom: <br/>
-                    <input type="text" name="prenom_utilisateur" value={this.state.prenom_utilisateur}></input> <br/>
+                    <input type="text" name="prenom_utilisateur" onChange={this.handleChange} value={this.state.prenom_utilisateur}></input> <br/>
                     Site web: <br/>
-                    <input type="text" name="site_web" value={this.state.site_web}></input> <br/>
+                    <input type="text" name="site_web" onChange={this.handleChange} value={this.state.site_web}></input> <br/>
                     Téléphone: <br/>
-                    <input type="text" name="telephone" value={this.state.telephone}></input> <br/>
+                    <input type="text" name="telephone" onChange={this.handleChange} value={this.state.telephone}></input> <br/>
                     Poste occupé: <br/>
-                    <input type="text" name="poste_occupe" value={this.state.poste_occupe}></input> <br/>
+                    <input type="text" name="poste_occupe" onChange={this.handleChange} value={this.state.poste_occupe}></input> <br/>
                     Email: <br/>
-                    <input type="text" name="email_utilisateur" value={this.state.email_utilisateur}></input> <br/>
+                    <input type="text" name="email_utilisateur" onChange={this.handleChange} value={this.state.email_utilisateur}></input> <br/>
                     Mot de passe: <br/>
-                    <input type="text" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur}></input> <br/>
+                    <input type="text" name="mot_de_passe_utilisateur" onChange={this.handleChange} value={this.state.mot_de_passe_utilisateur}></input> <br/>
                     Siret: <br/>
-                    <input type="text" name="siret" value={this.state.siret}></input> <br/>
+                    <input type="text" name="siret" onChange={this.handleChange} value={this.state.siret}></input> <br/>
                     Entreprise: <br/>
-                    <input type="text" name="nom_entreprise" value={this.state.nom_entreprise}></input> <br/>
+                    <input type="text" name="nom_entreprise" onChange={this.handleChange} value={this.state.nom_entreprise}></input> <br/>
                     Numéro de voie: <br/>
-                    <input type="number" name="num_voie" value={this.state.num_voie}></input> <br/>
+                    <input type="number" name="num_voie" onChange={this.handleChange} value={this.state.num_voie}></input> <br/>
                     Adresse: <br/>
-                    <input type="text" name="adresse" value={this.state.adresse}></input> <br/>
+                    <input type="text" name="adresse" onChange={this.handleChange} value={this.state.adresse}></input> <br/>
                     Domaine: <br/>
                     <select name="domaine" options={this.state.allDomaines.map}>{this.state.allDomaines.id_domaine}</select> <br/>
                     
