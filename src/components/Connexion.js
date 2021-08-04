@@ -36,7 +36,12 @@ class Connexion extends React.Component {
     };
 
     creerSession = () => {
-        localStorage.setItem("utilisateur", this.state.email);
+        var u = {
+            email_utilisateur: this.state.email,
+            mot_de_passe_utilisateur: this.state.mdp
+        }
+
+        localStorage.setItem("utilisateur", JSON.stringify(u));
     };
 
     render() {
@@ -57,8 +62,7 @@ class Connexion extends React.Component {
                     <br/>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
-            </div>
-            
+            </div>            
         );
     };
 
