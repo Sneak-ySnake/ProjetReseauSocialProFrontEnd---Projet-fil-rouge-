@@ -46,7 +46,7 @@ class Connexion extends React.Component {
     };
 
     tempsSession = () => {
-        var temps = Date.now() + 36000000;
+        var temps = Date.now() + 3600000;
         localStorage.setItem("tempsSession", temps);
     }
 
