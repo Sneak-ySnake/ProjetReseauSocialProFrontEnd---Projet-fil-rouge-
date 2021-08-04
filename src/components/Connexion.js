@@ -22,6 +22,7 @@ class Connexion extends React.Component {
             mot_de_passe_utilisateur: this.state.mdp
         }).then((result) => {
             if(result.data==true) {
+                this.creerSession();
                 this.setState({redirection: true});
             }    
             else {
@@ -34,9 +35,13 @@ class Connexion extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     };
 
+    creerSession = () => {
+        localStorage.setItem("utilisateur", this.state.email);
+    };
+
     render() {
         if(this.state.redirection==true) {
-           return <Redirect to="/Negociations"/>;
+           return <Redirect to="/test"/>;
         }
         return(
             <div className="Connexion">
