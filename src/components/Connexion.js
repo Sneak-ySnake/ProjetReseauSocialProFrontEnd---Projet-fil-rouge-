@@ -36,7 +36,7 @@ class Connexion extends React.Component {
 
     render() {
         if(this.state.redirection==true) {
-           return <Redirect to="/home"/>;
+           return <Redirect to="/Negociations"/>;
         }
         return(
             <div className="Connexion">
