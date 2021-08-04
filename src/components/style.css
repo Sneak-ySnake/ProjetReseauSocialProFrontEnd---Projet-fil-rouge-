@@ -1,0 +1,11 @@
+.HeaderNonConnecte {
+    background-color: #46A55D;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.headerText {
+    color: white;
+    font-weight: bold;
+    text-align: right;
+}
