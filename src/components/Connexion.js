@@ -40,6 +40,7 @@ class Connexion extends React.Component {
 
     creerSession = () => {
         var u = {
+            id_utilisateur: this.state.utilisateur.id_utilisateur,
             nom_utilisateur: this.state.utilisateur.nom_utilisateur,
             prenom_utilisateur: this.state.utilisateur.prenom_utilisateur,
             site_web: this.state.utilisateur.site_web,
