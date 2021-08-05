@@ -120,7 +120,7 @@ function App() {
           </Route>
 
           {/************************************** DEFAULT ************************************************/}
-          <Route render={() => <h1>404: page not found</h1>} />
+          <Route render={() => <div><HeaderNonConnecte /> <br/> <h1>404: page not found</h1></div>} />
         </Switch>
 
         <Footer />
