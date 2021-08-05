@@ -42,6 +42,11 @@ function App() {
               <Inscription />
           </Route>
 
+          <Route path="/Deconnexion">
+            <HeaderNonConnecte />
+            <Deconnexion />
+          </Route>
+
           <Route path="/test">
               <HeaderNonConnecte />
               <Home />
@@ -83,10 +88,6 @@ function App() {
             <MesOffres />
           </Route>
 
-          <Route path="/Deconnexion">
-            <HeaderConnecte />
-            <Deconnexion />
-          </Route>
           
           {/************************************** FOOTER ************************************************/}
           <Route path="/MentionLegal">
