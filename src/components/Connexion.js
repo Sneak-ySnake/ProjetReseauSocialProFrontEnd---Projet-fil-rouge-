@@ -11,6 +11,7 @@ class Connexion extends React.Component {
         this.state = {
             email: "",
             mdp: "",
+            utilisateur: {},
             redirection: false
         };
     }
@@ -21,7 +22,8 @@ class Connexion extends React.Component {
             email_utilisateur: this.state.email,
             mot_de_passe_utilisateur: this.state.mdp
         }).then((result) => {
-            if(result.data==true) {
+            if(result.data.email_utilisateur!=null) {
+                this.setState({utilisateur: result.data})
                 this.creerSession();
                 this.tempsSession();
                 this.setState({redirection: true});
@@ -38,8 +40,18 @@ class Connexion extends React.Component {
 
     creerSession = () => {
         var u = {
-            email_utilisateur: this.state.email,
-            mot_de_passe_utilisateur: this.state.mdp
+            nom_utilisateur: this.state.utilisateur.nom_utilisateur,
+            prenom_utilisateur: this.state.utilisateur.prenom_utilisateur,
+            site_web: this.state.utilisateur.site_web,
+            telephone: this.state.utilisateur.telephone,
+            poste_occupe: this.state.utilisateur.poste_occupe,
+            email_utilisateur: this.state.utilisateur.email_utilisateur,
+            siret: this.state.utilisateur.siret,
+            nom_entreprise: this.state.utilisateur.nom_entreprise,
+            num_voie: this.state.utilisateur.num_voie,
+            adresse: this.state.utilisateur.adresse,
+            domaine: this.state.utilisateur.domaine,
+            ville: this.state.utilisateur.ville
         }
 
         localStorage.setItem("utilisateur", JSON.stringify(u));
@@ -52,7 +64,7 @@ class Connexion extends React.Component {
 
     render() {
         if(this.state.redirection==true) {
-           return <Redirect to="/test"/>;
+           return <Redirect to="/profil"/>;
         }
         return(
             <div className="Connexion">

@@ -48,6 +48,7 @@ class Home extends React.Component {
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
                 
+                {u.nom_utilisateur} <br/>
                 {u.email_utilisateur} <br/>
                 {u.mot_de_passe_utilisateur}<br/>
                 {tempsSession}
