@@ -23,7 +23,7 @@ class Profil extends React.Component {
             return <Redirect to="/" />;
         }
         return(
-            <div className="Home">
+            <div className="Profil">
 
               Nom : <br/>
               {this.state.utilisateur.nom_utilisateur} <br/><br/>
