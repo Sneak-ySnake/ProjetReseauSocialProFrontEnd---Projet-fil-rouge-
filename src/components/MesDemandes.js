@@ -8,16 +8,22 @@ class MesDemandes extends React.Component {
     super();
 
     this.state = {
-      
+      utilisateur: {
+          id_utilisateur: ""
+      },
+      listeDemandes: []
     };
   }
 
   componentDidMount() {
-    
-  };
+    if (JSON.parse(localStorage.getItem("utilisateur"))!=null){
+        this.setState({utilisateur: JSON.parse(localStorage.getItem("utilisateur"))});
+    }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+    axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllDemandeUtilisateur", {
+        utilisateur: this.state.utilisateur 
+    }).then((result) => {this.setState({listeDemandes: result.data})});
+    
   };
 
   render() {
@@ -43,6 +49,21 @@ class MesDemandes extends React.Component {
     return (
       <div className="MesDemandes">
        
+       <table>
+            {this.state.listeDemandes.map((item) => (
+              <tbody>
+                <tr>
+                  <th>Id : {item.id_publication}</th>
+                  <th>Nom : {item.nom_publication}</th>
+                  <th>Prix : {item.prix}</th>
+                  <th>Produit : {item.type_produit}</th>
+                  <th>Date : {item.date_publication}</th>
+                  <th>Quantite : {item.quantite}</th>
+                </tr>
+              </tbody>
+            )
+            )}
+          </table>
         
         
       </div>
