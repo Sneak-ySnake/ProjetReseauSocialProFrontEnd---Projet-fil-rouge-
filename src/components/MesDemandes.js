@@ -8,20 +8,13 @@ class MesDemandes extends React.Component {
     super();
 
     this.state = {
-      utilisateur: {
-          id_utilisateur: ""
-      },
-      listeDemandes: []
+        listeDemandes: []
     };
   }
 
   componentDidMount() {
-    if (JSON.parse(localStorage.getItem("utilisateur"))!=null){
-        this.setState({utilisateur: JSON.parse(localStorage.getItem("utilisateur"))});
-    }
-
     axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllDemandeUtilisateur", {
-        utilisateur: this.state.utilisateur 
+        id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
     }).then((result) => {this.setState({listeDemandes: result.data})});
     
   };
@@ -59,6 +52,7 @@ class MesDemandes extends React.Component {
                   <th>Produit : {item.type_produit}</th>
                   <th>Date : {item.date_publication}</th>
                   <th>Quantite : {item.quantite}</th>
+                  <br/><br/>
                 </tr>
               </tbody>
             )
