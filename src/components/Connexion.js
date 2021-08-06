@@ -22,20 +22,20 @@ class Connexion extends React.Component {
             email_utilisateur: this.state.email,
             mot_de_passe_utilisateur: this.state.mdp
         }).then((result) => {
-            if(result.data.email_utilisateur!=null) {
-                this.setState({utilisateur: result.data})
+            if (result.data.email_utilisateur != null) {
+                this.setState({ utilisateur: result.data })
                 this.creerSession();
                 this.tempsSession();
-                this.setState({redirection: true});
-            }    
+                this.setState({ redirection: true });
+            }
             else {
                 alert("Erreur");
             }
         });
     }
-    
+
     handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({ [e.target.name]: e.target.value })
     };
 
     creerSession = () => {
@@ -59,29 +59,35 @@ class Connexion extends React.Component {
     };
 
     tempsSession = () => {
-        var temps = Date.now() + 3600*1000;
+        var temps = Date.now() + 1800 * 1000;
         localStorage.setItem("tempsSession", temps);
     }
 
     render() {
-        if(this.state.redirection==true) {
-           return <Redirect to="/profil"/>;
+        {
+            var u = JSON.parse(localStorage.getItem("utilisateur"));
         }
-        return(
+        if (u != null) {
+            return <Redirect to="/profil" />;
+        }
+        if (this.state.redirection == true) {
+            return <Redirect to="/profil" />;
+        }
+        return (
             <div className="Connexion">
                 <form onSubmit={this.connexion}>
-                    <br/>
+                    <br />
                     Email :
-                    <br/>
+                    <br />
                     <input type="text" name="email" onChange={this.handleChange}></input>
-                    <br/>
+                    <br />
                     Mot de passe :
-                    <br/>
+                    <br />
                     <input type="password" name="mdp" onChange={this.handleChange}></input>
-                    <br/>
+                    <br />
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
-            </div>            
+            </div>
         );
     };
 

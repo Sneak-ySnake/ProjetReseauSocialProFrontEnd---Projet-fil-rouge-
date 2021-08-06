@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { gestionSession } from "./SessionGestion";
 
 class Profil extends React.Component {
   constructor() {
@@ -20,26 +21,31 @@ class Profil extends React.Component {
       num_voie: "",
       adresse: "",
       domaine: {},
-      ville: {}
+      ville: {},
+      sessionTemps: true
     };
   }
 
   componentDidMount() {
-    this.setState({
-      id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur,
-      nom_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).nom_utilisateur,
-      prenom_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).prenom_utilisateur,
-      site_web: JSON.parse(localStorage.getItem("utilisateur")).site_web,
-      telephone: JSON.parse(localStorage.getItem("utilisateur")).telephone,
-      poste_occupe: JSON.parse(localStorage.getItem("utilisateur")).poste_occupe,
-      email_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).email_utilisateur,
-      siret: JSON.parse(localStorage.getItem("utilisateur")).siret,
-      nom_entreprise: JSON.parse(localStorage.getItem("utilisateur")).nom_entreprise,
-      num_voie: JSON.parse(localStorage.getItem("utilisateur")).num_voie,
-      adresse: JSON.parse(localStorage.getItem("utilisateur")).adresse,
-      domaine: JSON.parse(localStorage.getItem("utilisateur")).domaine,
-      ville: JSON.parse(localStorage.getItem("utilisateur")).ville
+    if(JSON.parse(localStorage.getItem("utilisateur"))!=null) {
+      this.setState({
+      
+        id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur,
+        nom_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).nom_utilisateur,
+        prenom_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).prenom_utilisateur,
+        site_web: JSON.parse(localStorage.getItem("utilisateur")).site_web,
+        telephone: JSON.parse(localStorage.getItem("utilisateur")).telephone,
+        poste_occupe: JSON.parse(localStorage.getItem("utilisateur")).poste_occupe,
+        email_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).email_utilisateur,
+        siret: JSON.parse(localStorage.getItem("utilisateur")).siret,
+        nom_entreprise: JSON.parse(localStorage.getItem("utilisateur")).nom_entreprise,
+        num_voie: JSON.parse(localStorage.getItem("utilisateur")).num_voie,
+        adresse: JSON.parse(localStorage.getItem("utilisateur")).adresse,
+        domaine: JSON.parse(localStorage.getItem("utilisateur")).domaine,
+        ville: JSON.parse(localStorage.getItem("utilisateur")).ville
+      
     });
+    }
   };
 
   handleChange = (e) => {
@@ -72,16 +78,20 @@ class Profil extends React.Component {
       var tempsSession = localStorage.getItem("tempsSession");
     }
     if (u == null) {
-      return <Redirect to="/" />;
+      alert("Pas de session en cours, veuillez vous connecter")
+      return <Redirect to="/home" />;
     }
     else if (Date.now() > tempsSession) {
+      this.setState({sessionTemps: false});
+      alert("session expirée");
       localStorage.clear();
-      return <Redirect to="/" />;
+      return <Redirect to="/home" />;
     }
-    else {
-      var temps = Date.now() + 3600 * 1000;
+    if (this.state.sessionTemps == true) {
+      var temps = Date.now() + 1800*1000;
       localStorage.setItem("tempsSession", temps);
     }
+
     return (
       <div className="Profil">
        
