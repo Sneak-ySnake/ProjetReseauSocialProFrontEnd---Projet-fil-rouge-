@@ -42,18 +42,20 @@ class MesDemandes extends React.Component {
     return (
       <div className="MesDemandes">
        
+        Mes demandes :
+
        <table>
             {this.state.listeDemandes.map((item) => (
               <tbody>
                 <tr>
-                  <th>Id : {item.id_publication}</th>
-                  <th>Nom : {item.nom_publication}</th>
-                  <th>Prix : {item.prix}</th>
-                  <th>Produit : {item.type_produit}</th>
-                  <th>Date : {item.date_publication}</th>
-                  <th>Quantite : {item.quantite}</th>
-                  <br/><br/>
+                  <th>Id : {item.id_publication} |</th>
+                  <th>Nom : {item.nom_publication} |</th>
+                  <th>Prix : {item.prix} |</th>
+                  <th>Produit : {item.type_produit} |</th>
+                  <th>Date : {item.date_publication} |</th>
+                  <th>Quantite : {item.quantite} |</th>
                 </tr>
+                <br/><br/>
               </tbody>
             )
             )}

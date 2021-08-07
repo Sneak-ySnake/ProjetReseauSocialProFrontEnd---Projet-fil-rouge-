@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Redirect, withRouter } from "react-router";
-import { Link, useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
 
 class Connexion extends React.Component {
     constructor() {
