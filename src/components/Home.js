@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import sha256 from 'js-sha256';
 
