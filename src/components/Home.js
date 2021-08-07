@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import sha256 from 'js-sha256';
+import { gestionSession } from "./SessionGestion";
 
 class Home extends React.Component {
     constructor() {
@@ -30,6 +31,7 @@ class Home extends React.Component {
     };
 
     render() {
+        gestionSession(localStorage.getItem("utilisateur"),localStorage.getItem("tempsSession"),true);
         {var testHash = "bonjour";
         var hash = sha256(testHash);}
         return(
