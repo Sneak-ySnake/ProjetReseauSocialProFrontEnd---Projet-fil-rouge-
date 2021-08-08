@@ -164,3 +164,13 @@ export default Inscription;
             <option value="3">truite</option>
         </select>
     </td>
+
+
+
+
+handleChangeSelectVille = (e) => {
+    this.setState({ville: this.props.listOption[e.target.value].ville})
+}
+handleChangeSelectDomaine = (e) => {
+    this.setState({domaine: this.props.listOption[e.target.value].domaine})
+}
