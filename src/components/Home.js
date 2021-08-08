@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import sha256 from 'js-sha256';
+import { gestionSession } from "./SessionGestion";
 
 class Home extends React.Component {
     constructor() {
@@ -30,15 +31,9 @@ class Home extends React.Component {
     };
 
     render() {
-        {var u = JSON.parse(localStorage.getItem("utilisateur"));
-        var tempsSession = localStorage.getItem("tempsSession");}
-        if (u == null) {
-            return <Redirect to="/" />;
-        }
-        if (Date.now() > tempsSession) {
-            localStorage.clear();
-            return <Redirect to="/" />;
-        }
+        gestionSession(localStorage.getItem("utilisateur"),localStorage.getItem("tempsSession"),true);
+        {var testHash = "bonjour";
+        var hash = sha256(testHash);}
         return(
             <div className="Home">
                 Home
@@ -48,10 +43,8 @@ class Home extends React.Component {
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
                 
-                {u.nom_utilisateur} <br/>
-                {u.email_utilisateur} <br/>
-                {u.mot_de_passe_utilisateur}<br/>
-                {tempsSession}
+                Normal : {testHash}<br/>
+                Hash : {hash}
             </div>
         );
     }

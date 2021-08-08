@@ -12,15 +12,11 @@ class Deconnexion extends React.Component {
   render() {
     {
       var u = JSON.parse(localStorage.getItem("utilisateur"));
-      var tempsSession = localStorage.getItem("tempsSession");
     }
     if (u == null) {
-      return <Redirect to="/" />;
+      return <Redirect to="/home" />;
     }
-    if (Date.now() > tempsSession) {
-      localStorage.clear();
-      return <Redirect to="/" />;
-    }
+
     {this.deconnexion();}
     return (
       <div className="Deconnexion">
