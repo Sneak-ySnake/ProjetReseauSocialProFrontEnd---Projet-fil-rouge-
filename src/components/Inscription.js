@@ -28,7 +28,7 @@ class Inscription extends React.Component {
 
     addUtilisateur = (e) => {
         e.preventDefault();
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/addUtilisateur", {
+        axios.post("/tender_du_poulet/addUtilisateur", {
             nom_utilisateur: this.state.nom_utilisateur,
             prenom_utilisateur: this.state.prenom_utilisateur,
             site_web: this.state.site_web,
@@ -58,10 +58,10 @@ class Inscription extends React.Component {
     }
 
     componentDidMount() {
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllDomaine").then((result) => {
+        axios.get("/tender_du_poulet/findAllDomaine").then((result) => {
             this.setState({ domaines: result.data });
         });
-        axios.get("/PROJET_FIL_ROUGE_tender_du_poulet/findAllVille").then((result) => {
+        axios.get("/tender_du_poulet/findAllVille").then((result) => {
             this.setState({ villes: result.data });
         });
     }
@@ -96,40 +96,40 @@ class Inscription extends React.Component {
                             <tbody>
                                 <tr>
                                     <th>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="nom_utilisateur" value={this.state.nom_utilisateur} onChange={this.handleChange}></input>
+                                        <input type="text" name="nom_utilisateur" value={this.state.nom_utilisateur} onChange={this.handleChange}></input>
                                     </th>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="prenom_utilisateur" value={this.state.prenom_utilisateur} onChange={this.handleChange}></input>
+                                        <input type="text" name="prenom_utilisateur" value={this.state.prenom_utilisateur} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="site_web" value={this.state.site_web} onChange={this.handleChange}></input>
+                                        <input type="text" name="site_web" value={this.state.site_web} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}></input>
+                                        <input type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="poste_occupe" value={this.state.poste_occupe} onChange={this.handleChange}></input>
+                                        <input type="text" name="poste_occupe" value={this.state.poste_occupe} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
+                                        <input type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur} onChange={this.handleChange}></input>
+                                        <input type="text" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="siret" value={this.state.siret} onChange={this.handleChange}></input>
+                                        <input type="text" name="siret" value={this.state.siret} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="nom_entreprise" value={this.state.nom_entreprise} onChange={this.handleChange}></input>
+                                        <input type="text" name="nom_entreprise" value={this.state.nom_entreprise} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="num_voie" value={this.state.num_voie} onChange={this.handleChange}></input>
+                                        <input type="text" name="num_voie" value={this.state.num_voie} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="adresse" value={this.state.adresse} onChange={this.handleChange}></input>
+                                        <input type="text" name="adresse" value={this.state.adresse} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input onChange={(e) => this.handleChange(e)} type="text" name="complement_adresse" value={this.state.complement_adresse} onChange={this.handleChange}></input>
+                                        <input type="text" name="complement_adresse" value={this.state.complement_adresse} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
                                         <select name="ville" onChange={this.handleChangeSelect}>
