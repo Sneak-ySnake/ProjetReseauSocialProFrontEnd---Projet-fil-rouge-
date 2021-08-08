@@ -7,95 +7,193 @@ class Inscription extends React.Component {
         super();
 
         this.state = {
-            nom_utilisateur: "",
-            prenom_utilisateur: "",
-            site_web: "",
-            telephone: "",
-            poste_occupe: "",
-            email_utilisateur: "",
-            mot_de_passe_utilisateur: "",
-            siret: "",
-            nom_entreprise: "",
-            num_voie: "",
-            adresse: "",
-            domaine: {
-                id_domaine: ""
+            nom_utilisateur : "",
+            prenom_utilisateur : "",
+            site_web : "",
+            telephone : "",
+            poste_occupe : "",
+            email_utilisateur : "",
+            mot_de_passe_utilisateur : "",
+            siret : "",
+            nom_entreprise : "",
+            num_voie : "",
+            adresse : "",
+            complement_adresse : "",
+            ville : {
+                id_ville : ""
             },
-            ville: {
-                id_ville: ""
+            villeFormulaire : {},
+            
+            domaine : {
+                id_domaine : ""
             },
-            allDomaines: [],
-            allVilles: []
-        };
+            domaineFormulaire : {},
+            domaines : [],
+            villes : [],
+            domaineRechercher : {},
+            villeRechercher : {}
+        }
+    }
+
+    addUtilisateur = (e) => {
+        e.preventDefault();
+
+        //alert("/tender_du_poulet/findDomaine" + this.state.id_domaineTest);
+        //const idD = this.state.domaineFormulaire;
+        /*axios.post("/tender_du_poulet/findDomaine", {
+            this.state.id_domaineTest
+        }
+        ).then((result) => {
+            this.setState({ domaine : result.data });
+        });*/
+        //alert(this.state.domaine);
+
+        //alert("/tender_du_poulet/findVille?id=" + this.state.id_villeTest);
+        //const idV = this.state.villeFormulaire;
+        /*axios.post("/tender_du_poulet/findVille?id=2"
+        ).then((result) => {
+            this.setState({ ville : result.data });
+        });*/
+        //alert(this.state.ville);
+
+        axios.post("/tender_du_poulet/addUtilisateur", {
+            nom_utilisateur : this.state.nom_utilisateur,
+            prenom_utilisateur : this.state.prenom_utilisateur,
+            site_web : this.state.site_web,
+            telephone : this.state.telephone,
+            poste_occupe : this.state.poste_occupe,
+            email_utilisateur : this.state.email_utilisateur,
+            mot_de_passe_utilisateur : this.state.mot_de_passe_utilisateur,
+            siret : this.state.siret,
+            nom_entreprise : this.state.nom_entreprise,
+            num_voie : this.state.num_voie,
+            adresse : this.state.adresse,
+            complement_adresse : this.state.complement_adresse,
+            domaine : this.state.domaine,
+            ville : this.state.ville
+        }).then(this.afterSubmit);
+    }
+    
+    afterSubmit = () => {
+        this.setState({prenom_utilisateur: ""})
+    };
+
+    handleChange = (e) => {
+        this.setState({ [e.target.name] : e.target.value})
+    }
+    handleChangeSelect = (e) => {
+        this.setState({ value : e.target.value})
     }
 
     componentDidMount() {
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllDomaine").then((result) => {
-            this.setState({allDomaines: result.data})
+        axios.get("/tender_du_poulet/findAllDomaine").then((result) => {
+            this.setState({ domaines: result.data});
         });
-        /*axios.get("/PROJET_FIL_ROUGE_tender_du_poulet/recupAllVille").then((result) => {
-            this.setState({allVilles: result.data})
-        });*/
+        axios.get("/tender_du_poulet/findAllVille").then((result) => {
+            this.setState({ villes: result.data});
+        });
     }
-
-    ajoutUtilisateur = (e) => {
-        e.preventDefault();
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/addUtilisateur", {
-            nom_type_publication: this.state.nom_type_publication
-        });
-    };
-
-/*
-    afterSubmit = () => {
-        this.setState({nom_type_publication: ""})
-    };
-*/
-    handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    };
-
-
-
+    
     render() {
-        return(
+        return (
             <div className="Inscription">
+                <ul>
+                    <h3>Inscription</h3>
+                    <form
+                        onSubmit={this.addUtilisateur}
+                        onChange={(e) => this.handleChange(e)}
+                    >
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Site Web</th>
+                                    <th>Téléphone</th>
+                                    <th>Poste Occupé</th>
+                                    <th>Adresse e-mail</th>
+                                    <th>Mot de Passe</th>
+                                    <th>Siret</th>
+                                    <th>Nom de l'entreprise</th>
+                                    <th>N° Voie</th>
+                                    <th>Adresse</th>
+                                    <th>Complement Adresse</th>
+                                    <th>Ville</th>
+                                    <th>Domaine</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <input type="text" name="nom_utilisateur" value={this.state.nom_utilisateur} onChange={this.handleChange}></input>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="prenom_utilisateur" value={this.state.prenom_utilisateur} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="site_web" value={this.state.site_web} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="poste_occupe" value={this.state.poste_occupe} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="siret" value={this.state.siret} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="nom_entreprise" value={this.state.nom_entreprise} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="num_voie" value={this.state.num_voie} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="adresse" value={this.state.adresse} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="complement_adresse" value={this.state.complement_adresse} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                            {/*{this.state.villes.map(item => 
+                                                <option value={item.id_ville}>{item.nom_ville}</option>
+                                            )}*/}
 
-                <form onSubmit={this.ajoutUtilisateur}>
-                    Nom: <br/>
-                    <input type="text" name="nom_utilisateur" onChange={this.handleChange} value={this.state.nom_utilisateur}></input> <br/>
-                    Prenom: <br/>
-                    <input type="text" name="prenom_utilisateur" onChange={this.handleChange} value={this.state.prenom_utilisateur}></input> <br/>
-                    Site web: <br/>
-                    <input type="text" name="site_web" onChange={this.handleChange} value={this.state.site_web}></input> <br/>
-                    Téléphone: <br/>
-                    <input type="text" name="telephone" onChange={this.handleChange} value={this.state.telephone}></input> <br/>
-                    Poste occupé: <br/>
-                    <input type="text" name="poste_occupe" onChange={this.handleChange} value={this.state.poste_occupe}></input> <br/>
-                    Email: <br/>
-                    <input type="text" name="email_utilisateur" onChange={this.handleChange} value={this.state.email_utilisateur}></input> <br/>
-                    Mot de passe: <br/>
-                    <input type="text" name="mot_de_passe_utilisateur" onChange={this.handleChange} value={this.state.mot_de_passe_utilisateur}></input> <br/>
-                    Siret: <br/>
-                    <input type="text" name="siret" onChange={this.handleChange} value={this.state.siret}></input> <br/>
-                    Entreprise: <br/>
-                    <input type="text" name="nom_entreprise" onChange={this.handleChange} value={this.state.nom_entreprise}></input> <br/>
-                    Numéro de voie: <br/>
-                    <input type="number" name="num_voie" onChange={this.handleChange} value={this.state.num_voie}></input> <br/>
-                    Adresse: <br/>
-                    <input type="text" name="adresse" onChange={this.handleChange} value={this.state.adresse}></input> <br/>
-                    Domaine: <br/>
-                    <select name="domaine" options={this.state.allDomaines.map}>{this.state.allDomaines.id_domaine}</select> <br/>
-                    
+                                            
+                                            {/*{this.state.domaines.map(item => 
+                                                <option value={item.id_domaine}>{item.nom_domaine}</option>
+                                            )}*/}
 
 
-                    <input class="btn btn-primary" type="submit"></input>
-                </form>
 
+                                        <select name="ville" value={this.state.value} onChange={this.handleChangeSelect}>
+                                            {this.state.villes.map(item => 
+                                                <option value={item.id_ville}>{item.nom_ville}</option>
+                                            )}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="domaine" value={this.state.value} onChange={this.handleChangeSelect}>
+                                            {this.state.domaines.map(item => 
+                                                <option value={item.id_domaine}>{item.nom_domaine}</option>
+                                            )}
+                                            </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit"></input>
+                    </form>
+                </ul>
             </div>
-        );
+        )
     }
-
 }
-
 
 export default Inscription;
