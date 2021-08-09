@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { sha256 } from "js-sha256";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Inscription extends React.Component {
@@ -35,7 +36,7 @@ class Inscription extends React.Component {
             telephone: this.state.telephone,
             poste_occupe: this.state.poste_occupe,
             email_utilisateur: this.state.email_utilisateur,
-            mot_de_passe_utilisateur: this.state.mot_de_passe_utilisateur,
+            mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
             siret: this.state.siret,
             nom_entreprise: this.state.nom_entreprise,
             num_voie: this.state.num_voie,

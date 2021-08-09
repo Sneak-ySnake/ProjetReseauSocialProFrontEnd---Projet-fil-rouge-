@@ -23,7 +23,7 @@ class Marche extends React.Component {
       var tempsSession = localStorage.getItem("tempsSession");
     }
     if (u == null) {
-      alert("Pas de session en cours, veuillez vous connecter")
+      alert("Pas de session en cours, veuillez vous connecter");
       return <Redirect to="/home" />;
     }
     else if (Date.now() > tempsSession) {

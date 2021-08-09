@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Redirect } from "react-router";
+import { sha256 } from "js-sha256";
 
 class Connexion extends React.Component {
     constructor() {
@@ -19,7 +20,7 @@ class Connexion extends React.Component {
         e.preventDefault();
         axios.post("/tender_du_poulet/login", {
             email_utilisateur: this.state.email,
-            mot_de_passe_utilisateur: this.state.mdp
+            mot_de_passe_utilisateur: sha256(this.state.mdp)
         }).then((result) => {
             if (result.data.email_utilisateur != null) {
                 this.setState({ utilisateur: result.data })
