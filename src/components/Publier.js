@@ -13,10 +13,12 @@ class Publier extends React.Component {
             type_produit: "",
             date_publication: "",
             quantite: "",
+            utilisateur: {},
             type_publication: {},
             statut_publication: {},
             type_publications: [],
             statut_publications: [],
+            sessionTemps: true
         }
     }
 
@@ -30,7 +32,7 @@ class Publier extends React.Component {
             date_publication: this.state.date_publication,
             quantite: this.state.quantite,
 
-            utilisateur: {id_utilisateur: 44},
+            utilisateur: this.state.utilisateur,
             type_publication: this.state.type_publication,
             statut_publication: this.state.statut_publication,
             etat_publication: {id_etat_publication : 13}
@@ -49,6 +51,11 @@ class Publier extends React.Component {
     }
 
     componentDidMount() {
+        if(JSON.parse(localStorage.getItem("utilisateur"))!=null) {
+            this.setState({
+                utilisateur: JSON.parse(localStorage.getItem("utilisateur"))
+            });
+        }
         axios.get("/tender_du_poulet/findAllTypePublication").then((result) => {
             this.setState({ type_publications: result.data });
         });
