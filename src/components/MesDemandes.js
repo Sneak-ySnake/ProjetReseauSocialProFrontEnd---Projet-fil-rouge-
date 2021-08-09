@@ -16,7 +16,7 @@ class MesDemandes extends React.Component {
   }
 
   componentDidMount() {
-    axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllDemandeUtilisateur", {
+    axios.post("/tender_du_poulet/findAllDemandeUtilisateur", {
       id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
     }).then((result) => { this.setState({ listeDemandes: result.data }) });
 
@@ -25,7 +25,7 @@ class MesDemandes extends React.Component {
 
   affichageNego = (id_publication) => {
     this.setState({ affichage: true });
-    axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/findAllNegocierPublication", {
+    axios.post("/tender_du_poulet/findAllNegocierPublication", {
       id_publication: id_publication
     }).then((result) => { this.setState({ listeNegociations: result.data }) });
   };
