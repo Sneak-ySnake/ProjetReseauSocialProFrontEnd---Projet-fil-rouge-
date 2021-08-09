@@ -54,7 +54,7 @@ class Profil extends React.Component {
 
   modifProfil = (e) => {
     e.preventDefault();
-    axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/updateUtilisateur", {
+    axios.post("/tender_du_poulet/updateUtilisateur", {
       id_utilisateur: this.state.id_utilisateur,
       nom_utilisateur: this.state.nom_utilisateur,
       prenom_utilisateur: this.state.prenom_utilisateur,

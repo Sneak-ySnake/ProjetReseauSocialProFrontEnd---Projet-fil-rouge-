@@ -17,7 +17,7 @@ class Connexion extends React.Component {
 
     connexion = (e) => {
         e.preventDefault();
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/login", {
+        axios.post("/tender_du_poulet/login", {
             email_utilisateur: this.state.email,
             mot_de_passe_utilisateur: this.state.mdp
         }).then((result) => {
