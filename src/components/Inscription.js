@@ -115,7 +115,7 @@ class Inscription extends React.Component {
                                         <input type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input type="text" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur} onChange={this.handleChange}></input>
+                                        <input type="password" name="mot_de_passe_utilisateur" value={this.state.mot_de_passe_utilisateur} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
                                         <input type="text" name="siret" value={this.state.siret} onChange={this.handleChange}></input>
