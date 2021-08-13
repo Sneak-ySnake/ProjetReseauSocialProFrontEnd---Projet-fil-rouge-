@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Publier extends React.Component {
@@ -24,24 +25,62 @@ class Publier extends React.Component {
 
     addPublication = (e) => {
         e.preventDefault();
-        axios.post("/tender_du_poulet/addPublication", {
+        var laDate = new Date();
+        var mois = laDate.getMonth() + 1;
+        if (mois < 10) {
+            mois = "0" + mois
+        }
+        axios.post("/tender_du_poulet/publierVerification", {
             nom_publication: this.state.nom_publication,
             description_publication: this.state.description_publication,
             prix: this.state.prix,
             type_produit: this.state.type_produit,
-            date_publication: this.state.date_publication,
+            date_publication: laDate.getFullYear() + "-" + mois + "-" + laDate.getDate(),
             quantite: this.state.quantite,
-
             utilisateur: this.state.utilisateur,
             type_publication: this.state.type_publication,
             statut_publication: this.state.statut_publication,
-            etat_publication: {id_etat_publication : 13}
+            etat_publication: {id_etat_publication : 1}
+        }).then(reponse => {
+            let res = reponse.data;
+            if(res){
+                axios.post("/tender_du_poulet/addPublication", {
+                    nom_publication: this.state.nom_publication,
+                    description_publication: this.state.description_publication,
+                    prix: this.state.prix,
+                    type_produit: this.state.type_produit,
+                    date_publication: laDate.getFullYear() + "-" + mois + "-" + laDate.getDate(),
+                    quantite: this.state.quantite,
+                    utilisateur: this.state.utilisateur,
+                    type_publication: this.state.type_publication,
+                    statut_publication: this.state.statut_publication,
+                    etat_publication: {id_etat_publication : 1}
+                });
+                this.setState({ nom_publication: "",
+                    description_publication: "",
+                    prix: "",
+                    type_produit: "",
+                    date_publication: "",
+                    quantite: "",
+                    type_publication: {},
+                    statut_publication: {},
+                });
+                document.getElementById("formulaire_publier").style.display = "none";
+                document.getElementsByClassName("creationValidation")[0].style.display = "block";
+            }
+            else {
+                alert("Veuillez saisir les champs correctement.")
+            }
         });
     }
 
     afterSubmit = () => {
-        this.setState({ nom_publication: "" })
+        this.setState({ nom_publication: "" });
     };
+    
+    cancelCourse = () => { 
+        document.getElementById("formulaire_publier").reset();
+    }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -65,11 +104,29 @@ class Publier extends React.Component {
     }
 
     render() {
+        {
+          var u = JSON.parse(localStorage.getItem("utilisateur"));
+          var tempsSession = localStorage.getItem("tempsSession");
+        }
+        if (u == null) {
+          alert("Pas de session en cours, veuillez vous connecter")
+          return <Redirect to="/home" />;
+        }
+        else if (Date.now() > tempsSession) {
+          this.setState({sessionTemps: false});
+          alert("session expirée");
+          localStorage.clear();
+          return <Redirect to="/home" />;
+        }
+        if (this.state.sessionTemps === true) {
+          var temps = Date.now() + 1800*1000;
+          localStorage.setItem("tempsSession", temps);
+        }
         return (
             <div className="Publier">
                 <ul>
                     <h3>Publication</h3>
-                    <form onSubmit={this.addPublication}>
+                    <form onSubmit={this.addPublication} id="formulaire_publier">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -77,10 +134,9 @@ class Publier extends React.Component {
                                     <th>Description publication</th>
                                     <th>Prix</th>
                                     <th>Type produit</th>
-                                    <th>Date publication</th>
                                     <th>Quantite</th>
                                     <th>Type publication</th>
-                                    <th>Statut publication</th>
+                                    <th>Statue publication</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,16 +148,13 @@ class Publier extends React.Component {
                                         <input type="text" name="description_publication" value={this.state.description_publication} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input type="text" name="prix" value={this.state.prix} onChange={this.handleChange}></input>
+                                        <input type="number" name="prix" value={this.state.prix} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
                                         <input type="text" name="type_produit" value={this.state.type_produit} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
-                                        <input type="date" name="date_publication" value={this.state.date_publication} onChange={this.handleChange}></input>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="quantite" value={this.state.quantite} onChange={this.handleChange}></input>
+                                        <input type="number" name="quantite" value={this.state.quantite} onChange={this.handleChange}></input>
                                     </td>
                                     <td>
                                         <select name="type_publication" onChange={this.handleChangeSelect}>
@@ -124,6 +177,7 @@ class Publier extends React.Component {
                         </table>
                         <input type="submit"></input>
                     </form>
+                    <p class="creationValidation">Votre Publication à bien été créé.</p>
                 </ul>
             </div>
         )
