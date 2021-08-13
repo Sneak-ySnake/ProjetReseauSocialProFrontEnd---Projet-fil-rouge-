@@ -26,7 +26,10 @@ class MesOffres extends React.Component {
   affichageNego = (id_publication) => {
     this.setState({ affichage: true });
     axios.post("/tender_du_poulet/findAllNegocierPublication", {
-      id_publication: id_publication
+      id_publication: id_publication,
+      utilisateur: {
+        id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
+      }
     }).then((result) => { this.setState({ listeNegociations: result.data }) });
   };
 
