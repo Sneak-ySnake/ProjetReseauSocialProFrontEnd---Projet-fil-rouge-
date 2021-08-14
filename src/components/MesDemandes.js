@@ -121,7 +121,7 @@ class MesDemandes extends React.Component {
           {this.state.listeNegociations.map((item) => (
             <tbody>
               <tr>
-                <input type="submit" onClick={this.affichageMessage(item)} value="Messages"></input>
+                <input type="submit" onClick={() => this.affichageMessage(item)} value="Messages"></input>
                 <th>Id utilisateur : {item.id_negocier.utilisateur.id_utilisateur} |</th>
                 <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} |</th>
               </tr>
