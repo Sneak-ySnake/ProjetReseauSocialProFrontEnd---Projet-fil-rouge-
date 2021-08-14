@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 import { sha256 } from "js-sha256";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,38 +25,153 @@ class Inscription extends React.Component {
             domaine: {},
             domaines: [],
             villes: [],
+            grossiste: "",
+            distributeur: "",
+            detaillant: "",
+
+            id_rechercher : "",
+            profil1: false,
+            profil2: false,
+            profil3: false
         }
     }
 
     addUtilisateur = (e) => {
         e.preventDefault();
-        axios.post("/tender_du_poulet/addUtilisateur", {
-            nom_utilisateur: this.state.nom_utilisateur,
-            prenom_utilisateur: this.state.prenom_utilisateur,
-            site_web: this.state.site_web,
-            telephone: this.state.telephone,
-            poste_occupe: this.state.poste_occupe,
-            email_utilisateur: this.state.email_utilisateur,
-            mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
-            siret: this.state.siret,
-            nom_entreprise: this.state.nom_entreprise,
-            num_voie: this.state.num_voie,
-            adresse: this.state.adresse,
-            complement_adresse: this.state.complement_adresse,
-            domaine: this.state.domaine,
-            ville: this.state.ville
-        });
+        ////// VERIFICATIONS des PROFILS /////////
+        if(this.state.profil1 || this.state.profil2 || this.state.profil3){
+            ////// VERIFICATIONS des INFO de l'UTILISATEUR /////////
+            axios.post("/tender_du_poulet/inscriptionVerification", {
+                nom_utilisateur: this.state.nom_utilisateur,
+                prenom_utilisateur: this.state.prenom_utilisateur,
+                site_web: this.state.site_web,
+                telephone: this.state.telephone,
+                poste_occupe: this.state.poste_occupe,
+                email_utilisateur: this.state.email_utilisateur,
+                mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
+                siret: this.state.siret,
+                nom_entreprise: this.state.nom_entreprise,
+                num_voie: this.state.num_voie,
+                adresse: this.state.adresse,
+                complement_adresse: this.state.complement_adresse,
+                domaine: this.state.domaine,
+                ville: this.state.ville
+            }).then(reponse => {
+                let res = reponse.data;
+                alert("2 1");
+                if(res){
+                    ////// VERIFICATIONS de l'EMAIL /////////
+                    alert("2 2");
+                    axios.post("/tender_du_poulet/findUtilisateurByEmail_utilisateur", {
+                        email_utilisateur: this.state.email_utilisateur,
+                        mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur)
+                    }).then((result) => {
+                        alert("3 0");
+                        if(result.data.email_utilisateur != null){
+                            alert("3 Adresse e-mail déja existant. Veuillez le changer.");
+                        } else {
+                            alert("3 2");
+                            ////// AJOUT de UTILISATEUR /////////
+                            axios.post("/tender_du_poulet/addUtilisateur", {
+                                nom_utilisateur: this.state.nom_utilisateur,
+                                prenom_utilisateur: this.state.prenom_utilisateur,
+                                site_web: this.state.site_web,
+                                telephone: this.state.telephone,
+                                poste_occupe: this.state.poste_occupe,
+                                email_utilisateur: this.state.email_utilisateur,
+                                mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
+                                siret: this.state.siret,
+                                nom_entreprise: this.state.nom_entreprise,
+                                num_voie: this.state.num_voie,
+                                adresse: this.state.adresse,
+                                complement_adresse: this.state.complement_adresse,
+                                domaine: this.state.domaine,
+                                ville: this.state.ville
+                            });
+                            ////// AJOUT de l'ETAT COMPTE de l'UTILISATEUR /////////
+                            var laDate = new Date();
+                            var mois = laDate.getMonth() + 1;
+                            if (mois < 10) {
+                                mois = "0" + mois
+                            }
+                            alert({email_utilisateur: this.state.email_utilisateur});
+                            axios.post("/tender_du_poulet/findUtilisateurByEmail_utilisateur" , {
+                                email_utilisateur: this.state.email_utilisateur
+                            }).then(reponse2 => {
+                                this.setState({id_rechercher: reponse2.data.id_utilisateur})
+                                axios.post("/tender_du_poulet/addUtilisateur_EtatCompte", {
+                                    utilisateur_EtatCompteId: {
+                                        utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                        etat_compte : { id_etat_compte : 1},
+                                        date_debut: laDate.getFullYear() + "-" + mois + "-" + laDate.getDate()
+                                    }
+                                });
+        
+                                ////// AJOUT des PROFILS de l'UTILISATEUR /////////
+                                if(this.state.profil1){
+                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                        utilisateur_ProfilId: {
+                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                            profil : { id_profil : 1}
+                                        }
+                                    });
+                                }
+                                if(this.state.profil2){
+                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                        utilisateur_ProfilId: {
+                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                            profil : { id_profil : 2}
+                                        }
+                                    });
+                                }
+                                if(this.state.profil3){
+                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                        utilisateur_ProfilId: {
+                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                            profil : { id_profil : 3}
+                                        }
+                                    });
+                                }
+                                return <Redirect to="/connexion" />;
+                            });
+                        }
+                    });
+                } 
+                else {
+                    alert("Veuillez saisir les champs correctement.");
+                }
+            });
+        } else {
+            alert("Veuillez choisir au moins un profil");
+        }
+        
     }
-
-    afterSubmit = () => {
-        this.setState({ prenom_utilisateur: "" })
-    };
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
     handleChangeSelect = (e) => {
         this.setState({ [e.target.name]: JSON.parse(e.target.value) });
+    }
+    handleClickProfil1 = (e) => {
+        this.setState({
+            profil1: !this.state.profil1
+        });
+        /*alert(this.state.profil1)
+        alert(this.state.profil3)*/
+    }
+    handleClickProfil2 = (e) => {
+        this.setState({
+            profil2: !this.state.profil2
+        });
+        //alert(this.state.profil2)
+    }
+    handleClickProfil3 = (e) => {
+        this.setState({
+            profil3: !this.state.profil3
+        });
+        /*alert(this.state.profil1)
+        alert(this.state.profil3)*/
     }
 
     componentDidMount() {
@@ -92,6 +208,7 @@ class Inscription extends React.Component {
                                     <th>Complement Adresse</th>
                                     <th>Ville</th>
                                     <th>Domaine</th>
+                                    <th>Profil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -147,6 +264,22 @@ class Inscription extends React.Component {
                                                 <option value={JSON.stringify(item)}>{item.nom_domaine}</option>
                                             )}
                                         </select>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox" name="profil1" onChange={this.handleClickProfil1}></input>
+                                                <label for="profil1">Grossite</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="profil2" onChange={this.handleClickProfil2}></input>
+                                                <label for="profil2">Distributeur</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="profil3" onChange={this.handleClickProfil3}></input>
+                                                <label for="profil3">Détaillant</label>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
