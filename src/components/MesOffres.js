@@ -9,9 +9,13 @@ class MesOffres extends React.Component {
 
     this.state = {
       affichage: false,
+      affichage2: false,
       listeOffres: [],
       listeNegociations: [],
-      publicationConsultee: {}
+      listeMessage: [],
+      publicationConsultee: {},
+      negociationConsultee: {},
+      message: ""
     };
   }
 
@@ -23,14 +27,47 @@ class MesOffres extends React.Component {
   };
 
 
-  affichageNego = (id_publication) => {
-    this.setState({ affichage: true });
+  affichageNego = (publication) => {
+    this.setState({affichage: true, publicationConsultee: publication });
     axios.post("/tender_du_poulet/findAllNegocierPublication", {
-      id_publication: id_publication,
+      id_publication: publication.id_publication,
       utilisateur: {
         id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
       }
     }).then((result) => { this.setState({ listeNegociations: result.data }) });
+  };
+
+  affichageMessage = (negocier) => {
+    this.setState({ affichage: false, affichage2: true, negociationConsultee: negocier });
+
+    axios.post("/tender_du_poulet/findAllMessagePublication", {
+      id_negocier: {
+        publication: this.state.publicationConsultee,
+        id_negociation: negocier.id_negocier.id_negociation
+       }
+    }).then((result) => { this.setState({ listeMessage: result.data }) });
+
+
+  };
+
+  envoyerMessage = (e) => {
+    e.preventDefault();
+    
+    axios.post("/tender_du_poulet/addNegocier", {
+      id_negocier: {
+        utilisateur: JSON.parse(localStorage.getItem("utilisateur")),
+        publication: this.state.publicationConsultee,
+        date: Date.now(),
+        id_negociation: this.state.negociationConsultee.id_negocier.id_negociation
+      },
+      message: this.state.message
+    }).then(this.setState({affichage: false}));
+
+    this.setState({ affichage: false, affichage2: false });
+  };
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   };
 
   render() {
@@ -53,23 +90,46 @@ class MesOffres extends React.Component {
       var temps = Date.now() + 1800 * 1000;
       localStorage.setItem("tempsSession", temps);
     }
-    /*Affichage négociation*/
-    if (this.state.affichage == true) {
+    /*Affichage message*/
+    if (this.state.affichage2 == true) {
       return (
-      
-      <table>
-        <div>Vos interlocuteurs sur cette offre {this.state.publicationConsultee.nom_publication}</div>
-        {this.state.listeNegociations.map((item) => (
+        
+        <table>
+        <div>Messages : </div>
+        {this.state.listeMessage.map((item) => (
+         
           <tbody>
             <tr>
-              <th>Id utilisateur : {item.id_negocier.utilisateur.id_utilisateur} |</th>
-              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} |</th>
+              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {item.id_negocier.date}</th>
+              <br/>{item.message}
             </tr>
             <br /><br />
           </tbody>
         )
         )}
+        <input type="text" value={this.state.message} name="message" onChange={this.handleChange}></input>
+        <input type="submit" onClick={this.envoyerMessage}></input>
       </table>)
+    }
+
+    /*Affichage négociation*/
+    if (this.state.affichage == true) {
+      return (
+
+        <table>
+          <div>Vos interlocuteurs sur cette offre </div>
+          {this.state.listeNegociations.map((item) => (
+            <tbody>
+              <tr>
+                <input type="submit" onClick={this.affichageMessage(item)} value="Messages"></input>
+                <th>Id utilisateur : {item.id_negocier.utilisateur.id_utilisateur} |</th>
+                <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} |</th>
+              </tr>
+              <br /><br />
+            </tbody>
+          )
+          )}
+        </table>)
     }
 
     /*Premier affichage*/
@@ -82,7 +142,7 @@ class MesOffres extends React.Component {
           {this.state.listeOffres.map((item) => (
             <tbody>
               <tr>
-              <input type="submit" onClick={() => this.affichageNego(item.id_publication)} value="Interlocuteurs"></input>
+                <th><input type="submit" onClick={() => this.affichageNego(item)} value="Interlocuteurs"></input></th>
                 <th>Id : {item.id_publication} |</th>
                 <th>Nom : {item.nom_publication} |</th>
                 <th>Prix : {item.prix} |</th>
