@@ -1,7 +1,5 @@
 import React from "react"; 
 
-
-
 class FormFiltrer extends React.Component {
 
     constructor() {
@@ -18,11 +16,8 @@ class FormFiltrer extends React.Component {
   
     return (
     
-    <div>
-     
-      
-              <button class="btn btn-primary  navbar-toggler">Filtrer</button>
-                
+    <div class="formFiltrer"> 
+                 <h3>Filtrer</h3>
               <form>
 
               <div class="form-check">
@@ -41,7 +36,7 @@ class FormFiltrer extends React.Component {
         <div class="form-group">
           <label for="motcles">Mots clés</label>
           <input type="text" class="form-control" id="motcles" aria-describedby="motsclesHelp" placeholder="recherche de mots clés"/>
-          <small id="motsclesHelp" class="form-text text-muted">We'll never share your mot clé with anyone else.</small>
+         
         </div>
       <h3>Tags</h3>
 
@@ -80,7 +75,7 @@ class FormFiltrer extends React.Component {
         </fieldset>
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
       </form>
             
           
