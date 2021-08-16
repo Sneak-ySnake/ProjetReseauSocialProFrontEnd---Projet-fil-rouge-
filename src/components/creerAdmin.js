@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 
-class Admin extends React.Component {
+class creerAdmin extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -27,7 +28,7 @@ class Admin extends React.Component {
             complement_adresse_admin: this.state.complement_adresse_admin,
             id_ville: this.state.id_ville
         }).then((result)=> {
-            if (result.data == true) {
+            if (result.data === true) {
                 this.creerSession();
                 this.setState({redirection: true});
             }
@@ -52,7 +53,7 @@ class Admin extends React.Component {
 
 
     render() {
-        if (this.state.redirection ==true) {
+        if (this.state.redirection ===true) {
             return<Redirect to = "/test"/>;
         }
         return (
