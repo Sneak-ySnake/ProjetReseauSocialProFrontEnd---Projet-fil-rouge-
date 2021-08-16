@@ -108,8 +108,9 @@ class Negociations extends React.Component {
             <tbody>
               <tr>
                 <th><input type="submit" onClick={() => this.affichageMessage(item)} value="Messages"></input></th>
-                <th>Publication : {item.id_negocier.publication.id_publication} |</th>
-                <th>Publication : {item.id_negocier.publication.nom_publication} </th>
+                <th>Publication numéro : {item.id_negocier.publication.id_publication} |</th>
+                <th>Publication : {item.id_negocier.publication.nom_publication} |</th>
+                <th>Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()} </th>
               </tr>
               <br /><br />
             </tbody>

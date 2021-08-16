@@ -22,7 +22,7 @@ class MesDemandes extends React.Component {
   componentDidMount() {
     axios.post("/tender_du_poulet/findAllDemandeUtilisateur", {
       id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
-    }).then((result) => { this.setState({ listeOffres: result.data }) });
+    }).then((result) => { this.setState({ listeDemandes: result.data }) });
 
   };
 
@@ -117,7 +117,7 @@ class MesDemandes extends React.Component {
       return (
 
         <table>
-          <div>Vos interlocuteurs sur cette offre </div>
+          <div>Vos interlocuteurs sur cette demande </div>
           {this.state.listeNegociations.map((item) => (
             <tbody>
               <tr>
@@ -134,7 +134,7 @@ class MesDemandes extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="MesOffres">
+      <div className="MesDemandes">
 
         Mes demandes :
 
@@ -147,7 +147,7 @@ class MesDemandes extends React.Component {
                 <th>Nom : {item.nom_publication} |</th>
                 <th>Prix : {item.prix} |</th>
                 <th>Produit : {item.type_produit} |</th>
-                <th>Date : {new Date(item.date_publication).toDateString()} |</th>
+                <th>Date : {new Date(item.date_publication).toLocaleDateString()} |</th>
                 <th>Quantite : {item.quantite} |</th>
               </tr>
               <br /><br />
