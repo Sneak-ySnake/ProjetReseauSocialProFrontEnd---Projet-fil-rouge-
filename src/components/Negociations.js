@@ -16,6 +16,7 @@ class Negociations extends React.Component {
     };
   }
 
+
   componentDidMount() {
     axios.post("/tender_du_poulet/findAllNegociationUtilisateur", {
       id_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).id_utilisateur
@@ -84,7 +85,7 @@ class Negociations extends React.Component {
          
           <tbody>
             <tr>
-              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {item.id_negocier.date}</th>
+              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {new Date(item.id_negocier.date).toString()}</th>
               <br/>{item.message}
             </tr>
             <br /><br />
