@@ -20,6 +20,7 @@ class Profil extends React.Component {
       nom_entreprise: "",
       num_voie: "",
       adresse: "",
+      complement_adresse: "",
       domaine: {},
       ville: {},
       sessionTemps: true
@@ -41,6 +42,7 @@ class Profil extends React.Component {
         nom_entreprise: JSON.parse(localStorage.getItem("utilisateur")).nom_entreprise,
         num_voie: JSON.parse(localStorage.getItem("utilisateur")).num_voie,
         adresse: JSON.parse(localStorage.getItem("utilisateur")).adresse,
+        complement_adresse: JSON.parse(localStorage.getItem("utilisateur")).complement_adresse,
         domaine: JSON.parse(localStorage.getItem("utilisateur")).domaine,
         ville: JSON.parse(localStorage.getItem("utilisateur")).ville
       
@@ -66,6 +68,7 @@ class Profil extends React.Component {
       nom_entreprise: this.state.nom_entreprise,
       num_voie: this.state.num_voie,
       adresse: this.state.adresse,
+      complement_adresse: this.state.complement_adresse,
       domaine: this.state.domaine,
       ville: this.state.ville,
       mot_de_passe_utilisateur: "test"
@@ -116,8 +119,12 @@ class Profil extends React.Component {
           <input type="text" value={this.state.siret} name="siret" onChange={this.handleChange}></input> <br /><br />
           Entreprise : <br />
           <input type="text" value={this.state.nom_entreprise} name="nom_entreprise" onChange={this.handleChange}></input> <br /><br />
+          N° de voie : <br />
+          <input type="text" value={this.state.num_voie} name="num_voie" onChange={this.handleChange}></input> <br /><br />
           Adresse : <br />
           <input type="text" value={this.state.adresse} name="adresse" onChange={this.handleChange}></input> <br /><br />
+          Complément Adresse : <br />
+          <input type="text" value={this.state.complement_adresse} name="complement_adresse" onChange={this.handleChange}></input> <br /><br />
           Ville : <br />
           {this.state.ville.nom_ville} <br /><br />
           Domaine : <br />
