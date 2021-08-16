@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 function Footer(props) {
     return (
         <div className="footer">
-            <footer class="py-5 bg-dark fixed-bottom">
+            <footer class="py-5 bg-dark">
                 <nav class="navbar navbar-expand navbar-dark bg-dark">
                     <div class="container">
                         <div>

@@ -81,6 +81,7 @@ class Marche extends React.Component {
       return (
         <div>
           <form>
+            Votre message pour débuter la négociation : <br/><br/>
             <input type="textarea" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
             <input type="submit" onClick={this.creerNego} value="Envoyer"></input>
           </form>
