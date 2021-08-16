@@ -51,6 +51,7 @@ class Connexion extends React.Component {
             nom_entreprise: this.state.utilisateur.nom_entreprise,
             num_voie: this.state.utilisateur.num_voie,
             adresse: this.state.utilisateur.adresse,
+            complement_adresse: this.state.utilisateur.complement_adresse,
             domaine: this.state.utilisateur.domaine,
             ville: this.state.utilisateur.ville
         }
