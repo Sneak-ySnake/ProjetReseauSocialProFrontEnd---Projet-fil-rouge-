@@ -100,7 +100,7 @@ class MesDemandes extends React.Component {
          
           <tbody>
             <tr>
-              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {item.id_negocier.date}</th>
+              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</th>
               <br/>{item.message}
             </tr>
             <br /><br />
