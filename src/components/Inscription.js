@@ -65,7 +65,7 @@ class Inscription extends React.Component {
                         mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
                     }).then((result) => {
                         if(result.data.email_utilisateur != null){
-                            alert("3 Adresse e-mail déja existant. Veuillez le changer.");
+                            alert("Adresse e-mail déja existant. Veuillez le changer.");
                         } else {
                             ////// AJOUT de UTILISATEUR /////////
                             axios.post("/tender_du_poulet/addUtilisateur", {

@@ -47,6 +47,7 @@ class Connexion extends React.Component {
             telephone: this.state.utilisateur.telephone,
             poste_occupe: this.state.utilisateur.poste_occupe,
             email_utilisateur: this.state.utilisateur.email_utilisateur,
+            mot_de_passe_utilisateur: this.state.utilisateur.mot_de_passe_utilisateur,
             siret: this.state.utilisateur.siret,
             nom_entreprise: this.state.utilisateur.nom_entreprise,
             num_voie: this.state.utilisateur.num_voie,

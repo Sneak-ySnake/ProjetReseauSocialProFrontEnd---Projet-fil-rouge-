@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
+import { sha256 } from "js-sha256";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { gestionSession } from "./SessionGestion";
 
@@ -9,6 +10,7 @@ class Profil extends React.Component {
     super();
 
     this.state = {
+      utilisateur: {},
       id_utilisateur: "",
       nom_utilisateur: "",
       prenom_utilisateur: "",
@@ -38,6 +40,7 @@ class Profil extends React.Component {
         telephone: JSON.parse(localStorage.getItem("utilisateur")).telephone,
         poste_occupe: JSON.parse(localStorage.getItem("utilisateur")).poste_occupe,
         email_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).email_utilisateur,
+        mot_de_passe_utilisateur: JSON.parse(localStorage.getItem("utilisateur")).mot_de_passe_utilisateur,
         siret: JSON.parse(localStorage.getItem("utilisateur")).siret,
         nom_entreprise: JSON.parse(localStorage.getItem("utilisateur")).nom_entreprise,
         num_voie: JSON.parse(localStorage.getItem("utilisateur")).num_voie,
@@ -56,22 +59,62 @@ class Profil extends React.Component {
 
   modifProfil = (e) => {
     e.preventDefault();
-    axios.post("/tender_du_poulet/updateUtilisateur", {
-      id_utilisateur: this.state.id_utilisateur,
+    ////// VERIFICATIONS des INFO de l'UTILISATEUR /////////
+    axios.post("/tender_du_poulet/inscriptionVerification", {
       nom_utilisateur: this.state.nom_utilisateur,
       prenom_utilisateur: this.state.prenom_utilisateur,
       site_web: this.state.site_web,
       telephone: this.state.telephone,
       poste_occupe: this.state.poste_occupe,
       email_utilisateur: this.state.email_utilisateur,
+      mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
       siret: this.state.siret,
       nom_entreprise: this.state.nom_entreprise,
       num_voie: this.state.num_voie,
       adresse: this.state.adresse,
       complement_adresse: this.state.complement_adresse,
       domaine: this.state.domaine,
-      ville: this.state.ville,
-      mot_de_passe_utilisateur: "test"
+      ville: this.state.ville
+    }).then(reponse => {
+      let res = reponse.data;
+      if(res){
+        axios.post("/tender_du_poulet/updateUtilisateur", {
+          id_utilisateur: this.state.id_utilisateur,
+          nom_utilisateur: this.state.nom_utilisateur,
+          prenom_utilisateur: this.state.prenom_utilisateur,
+          site_web: this.state.site_web,
+          telephone: this.state.telephone,
+          poste_occupe: this.state.poste_occupe,
+          email_utilisateur: this.state.email_utilisateur,
+          mot_de_passe_utilisateur: this.state.mot_de_passe_utilisateur,
+          siret: this.state.siret,
+          nom_entreprise: this.state.nom_entreprise,
+          num_voie: this.state.num_voie,
+          adresse: this.state.adresse,
+          complement_adresse: this.state.complement_adresse,
+          domaine: this.state.domaine,
+          ville: this.state.ville
+        }).then(() => {
+          var u = {
+            id_utilisateur: this.state.id_utilisateur,
+            nom_utilisateur: this.state.nom_utilisateur,
+            prenom_utilisateur: this.state.prenom_utilisateur,
+            site_web: this.state.site_web,
+            telephone: this.state.telephone,
+            poste_occupe: this.state.poste_occupe,
+            email_utilisateur: this.state.email_utilisateur,
+            mot_de_passe_utilisateur: this.state.mot_de_passe_utilisateur,
+            siret: this.state.siret,
+            nom_entreprise: this.state.nom_entreprise,
+            num_voie: this.state.num_voie,
+            adresse: this.state.adresse,
+            complement_adresse: this.state.complement_adresse,
+            domaine: this.state.domaine,
+            ville: this.state.ville
+          }
+          localStorage.setItem("utilisateur", JSON.stringify(u));
+        });
+      }
     });
   };
 
