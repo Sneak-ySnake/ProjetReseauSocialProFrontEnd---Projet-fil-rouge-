@@ -33,7 +33,7 @@ class Marche extends React.Component {
     +JSON.parse(localStorage.getItem("utilisateur")).prenom_utilisateur+JSON.parse(localStorage.getItem("utilisateur")).nom_utilisateur
     +""+nombre;
     
-    axios.post("/tender_du_poulet/addNegocier", {
+    axios.post("/tender_du_poulet/negocierVerification", {
       id_negocier: {
         utilisateur: JSON.parse(localStorage.getItem("utilisateur")),
         publication: this.state.publicationSelectionee,
@@ -41,7 +41,22 @@ class Marche extends React.Component {
         id_negociation: id
       },
       message: this.state.message
-    }).then(this.setState({affichage: false}));
+    }).then(reponse => {
+      if (reponse.data){
+        axios.post("/tender_du_poulet/addNegocier", {
+          id_negocier: {
+            utilisateur: JSON.parse(localStorage.getItem("utilisateur")),
+            publication: this.state.publicationSelectionee,
+            date: Date.now(),
+            id_negociation: id
+          },
+          message: this.state.message
+        }).then(this.setState({affichage: false}));
+        alert("votre message.");
+      } else {
+        alert("Veuillez saisir votre message.");
+      }
+    })
   };
 
   /*convertirDate = (e) => {
