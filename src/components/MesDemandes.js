@@ -147,7 +147,7 @@ class MesDemandes extends React.Component {
                 <th>Nom : {item.nom_publication} |</th>
                 <th>Prix : {item.prix} |</th>
                 <th>Produit : {item.type_produit} |</th>
-                <th>Date : {item.date_publication} |</th>
+                <th>Date : {new Date(item.date_publication).toDateString()} |</th>
                 <th>Quantite : {item.quantite} |</th>
               </tr>
               <br /><br />
