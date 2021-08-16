@@ -21,6 +21,11 @@ import FAQ from './components/footer/FAQ'
 import NousContacter from './components/footer/NousContacter'
 import Support from './components/footer/Support'
 
+/**************************************** ADMIN ******************************************************/
+import ConnexionAdmin from './components/ConnexionAdmin';
+import Admin from './components/creerAdmin';
+import AdministrerUtilisateur from './components/AdministrerUtilisateur';
+import HeaderAdminConnecte from './components/HeaderAdminConnecte';
 
 function App() {
   return (
@@ -88,7 +93,16 @@ function App() {
             <MesOffres />
           </Route>
 
+          {/*************************************** ADMINISTRATEUR **************************************/}
+          <Route path="/connexionAdmin">
+              <HeaderAdminConnecte/> 
+              <ConnexionAdmin/>
+          </Route>
           
+          <Route path = "/creerAdmin">
+              <creerAdmin/>
+          </Route>
+
           {/************************************** FOOTER ************************************************/}
           <Route path="/MentionLegal">
             <HeaderConnecte />
