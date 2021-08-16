@@ -1,0 +1,26 @@
+.HeaderNonConnecte {
+    background-color: #46A55D;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.headerText {
+    color: white;
+    font-weight: bold;
+    text-align: right;
+}
+.card{border:none; margin:1em 0}
+.card-body{
+    border-radius: 5px;
+    border:none;
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);
+}
+.btn-primary {background-color: #46A55D; border:#46A55D}
+.btn-primary:hover {background-color: rgb(47, 129, 68); border:rgb(47, 129, 68)}
+
+fieldset{ border-radius: 5px;
+    border:none;padding: 1rem 1rem;
+    margin:1rem 0;
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);}
