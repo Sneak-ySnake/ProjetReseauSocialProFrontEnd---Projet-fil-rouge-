@@ -11,7 +11,8 @@ class Marche extends React.Component {
       publications: [],
       publicationSelectionee: {},
       message: "",
-      affichage: false
+      affichage: false,
+      date_transformer : ""
     };
   }
 
@@ -42,6 +43,15 @@ class Marche extends React.Component {
       message: this.state.message
     }).then(this.setState({affichage: false}));
   };
+
+  /*convertirDate = (e) => {
+    e.preventDefault();
+    axios.post("/tender_du_poulet/dateFormater", {
+
+    }).then(result => {
+      this.setState({date_transformer: result.data})
+    });
+  }*/
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -87,6 +97,7 @@ class Marche extends React.Component {
         <table>
 
           {this.state.publications.map((item) => (
+
             <tbody>
               <tr>
               <th><input type="submit" onClick={() => this.affichage(item)} value="Négocier"></input></th>
