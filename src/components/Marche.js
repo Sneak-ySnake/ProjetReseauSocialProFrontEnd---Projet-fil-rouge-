@@ -52,7 +52,6 @@ class Marche extends React.Component {
           },
           message: this.state.message
         }).then(this.setState({affichage: false}));
-        alert("votre message.");
       } else {
         alert("Veuillez saisir votre message.");
       }

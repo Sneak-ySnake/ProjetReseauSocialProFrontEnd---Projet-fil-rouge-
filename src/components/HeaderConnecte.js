@@ -58,16 +58,6 @@ function HeaderConnecte(props) {
                     
                     <li
                     class={`nav-item  ${
-                        props.location.pathname === "/MesPublications" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/MesPublications">
-                        MesPublications
-                    </Link>
-                    </li>
-
-                    <li
-                    class={`nav-item  ${
                         props.location.pathname === "/MesDemandes" ? "active" : ""
                     }`}
                     >
