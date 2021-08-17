@@ -52,7 +52,6 @@ class Marche extends React.Component {
           },
           message: this.state.message
         }).then(this.setState({affichage: false}));
-        alert("votre message.");
       } else {
         alert("Veuillez saisir votre message.");
       }
@@ -106,17 +105,16 @@ class Marche extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="Marche">
+      <div className="container-sm">
 
-        Publications du marché :
+        Publications du marché : <br/><br/>
 
         <table>
 
           {this.state.publications.map((item) => (
 
             <tbody>
-              <tr>
-              <th><input type="submit" onClick={() => this.affichage(item)} value="Négocier"></input></th>
+              <tr onClick={() => this.affichage(item)}> 
                 <th>Id : {item.id_publication} |</th>
                 <th>Nom : {item.nom_publication} |</th>
                 <th>Prix : {item.prix} |</th>

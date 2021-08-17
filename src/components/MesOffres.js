@@ -61,14 +61,20 @@ class MesOffres extends React.Component {
         id_negociation: this.state.negociationConsultee.id_negocier.id_negociation
       },
       message: this.state.message
-    }).then(this.setState({affichage: false}));
-
-    this.setState({ affichage: false, affichage2: false });
+    }).then(() => this.affichageMessage(this.state.negociationConsultee));
   };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
+
+  retour = () => {
+    this.setState({affichage: false})
+  }
+
+  retour2 = () => {
+    this.setState({affichage2: false, affichage: true})
+  }
 
   render() {
     /*Verif session*/
@@ -95,6 +101,7 @@ class MesOffres extends React.Component {
       return (
         
         <table>
+          <input type="submit" value="Retour" onClick={this.retour2}></input><input type="submit" value="Actualiser" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input><br/><br/>
         <div>Messages : </div>
         {this.state.listeMessage.map((item) => (
          
@@ -117,7 +124,8 @@ class MesOffres extends React.Component {
       return (
 
         <table>
-          <div>Vos interlocuteurs sur cette offre </div>
+           <input type="submit" value="Retour" onClick={this.retour}></input><br/><br/>
+          <div>Vos interlocuteurs sur cette offre :</div><br/>
           {this.state.listeNegociations.map((item) => (
             <tbody>
               <tr>

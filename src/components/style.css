@@ -9,3 +9,12 @@
     font-weight: bold;
     text-align: right;
 }
+
+.message {
+    text-align: left;
+}
+
+
+.gras {
+    font-weight: bold;
+}
