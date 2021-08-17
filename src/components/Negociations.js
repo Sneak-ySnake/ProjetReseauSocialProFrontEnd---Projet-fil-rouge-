@@ -85,7 +85,7 @@ class Negociations extends React.Component {
     if (this.state.affichage == true) {
       return (
         <div class="container">
-          <div class="anyClass">
+          <div class="fenetreDiscussion">
             <table>
               <br />
               <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input>

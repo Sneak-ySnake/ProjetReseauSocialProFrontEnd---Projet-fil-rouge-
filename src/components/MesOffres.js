@@ -103,10 +103,9 @@ class MesOffres extends React.Component {
 
 
         <div class="container">
-          <div class="anyClass">
+          <div class="message"><input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input></div>
+          <div class="fenetreDiscussion">
           <table >
-            <br />
-            <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input>
             <br />
             <div class="message">Messages : </div>
             <br />
@@ -123,7 +122,7 @@ class MesOffres extends React.Component {
             )}
           </table><br /></div>
           <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-          <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
+          <div class="message"><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
         </div>)
     }
 
