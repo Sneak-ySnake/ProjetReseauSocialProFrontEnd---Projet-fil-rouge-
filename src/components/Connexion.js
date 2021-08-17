@@ -87,6 +87,7 @@ class Connexion extends React.Component {
                     <br />
                     <input type="password" name="mdp" onChange={this.handleChange}></input>
                     <br />
+                    <a href="/inscription">s'inscrire</a>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
             </div>
