@@ -112,12 +112,15 @@ class Negociations extends React.Component {
         <table class="test">
           {this.state.listeNegociations.map((item) => (
             <tbody>
-              <tr onClick={() => this.affichageMessage(item)}>
-                {/*<th><input type="submit" onClick={() => this.affichageMessage(item)} value="Messages"></input></th>*/}
-                <th>Publication numéro : {item.id_negocier.publication.id_publication} |</th>
-                <th>Publication : {item.id_negocier.publication.nom_publication} |</th>
-                <th>Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()} </th>
+              <tr class="card" onClick={() => this.affichageMessage(item)}> 
+                <div class="card-body">
+                  <div class="card-subtitle, message, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br/>
+                  <div class="card-text, message"> 
+                    Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br/> 
+                  </div>
+                </div>
               </tr>
+              <br /><br />
               <br /><br />
             </tbody>
           )

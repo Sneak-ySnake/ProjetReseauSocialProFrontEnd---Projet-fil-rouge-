@@ -142,22 +142,24 @@ class MesOffres extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="MesOffres">
+      <div class="container-sm">
 
         Mes offres :
 
         <table>
           {this.state.listeOffres.map((item) => (
             <tbody>
-              <tr>
-                <th><input type="submit" onClick={() => this.affichageNego(item)} value="Interlocuteurs"></input></th>
-                <th>Id : {item.id_publication} |</th>
-                <th>Nom : {item.nom_publication} |</th>
-                <th>Prix : {item.prix} |</th>
-                <th>Produit : {item.type_produit} |</th>
-                <th>Date : {new Date(item.date_publication).toLocaleDateString()} |</th>
-                <th>Quantite : {item.quantite} |</th>
+             <tr class="card" onClick={() => this.affichage(item)}> 
+                <div class="card-body">
+                  <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br/>
+                  <div class="card-text, message">
+                    Prix : {item.prix} | Quantite : {item.quantite}<br/> 
+                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br/> 
+                    Date : {new Date(item.date_publication).toLocaleDateString()} <br/> 
+                  </div>
+                </div>
               </tr>
+              <br /><br />
               <br /><br />
             </tbody>
           )

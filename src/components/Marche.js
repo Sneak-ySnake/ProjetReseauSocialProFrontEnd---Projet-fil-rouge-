@@ -105,7 +105,7 @@ class Marche extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="container-sm">
+      <div className="container">
 
         Publications du marché : <br/><br/>
 
@@ -114,16 +114,18 @@ class Marche extends React.Component {
           {this.state.publications.map((item) => (
 
             <tbody>
-              <tr onClick={() => this.affichage(item)}> 
-                <th>Id : {item.id_publication} |</th>
-                <th>Nom : {item.nom_publication} |</th>
-                <th>Prix : {item.prix} |</th>
-                <th>Produit : {item.type_produit} |</th>
-                <th>Date : {new Date(item.date_publication).toLocaleDateString()} |</th>
-                <th>Quantite : {item.quantite} |</th>
-                <th>Type : {item.type_publication.nom_type_publication} |</th>
+              <tr class="card" onClick={() => this.affichage(item)}> 
+                <div class="card-body">
+                  <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br/>
+                  <div class="card-text, message">
+                    Prix : {item.prix} | Quantite : {item.quantite}<br/> 
+                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br/> 
+                    Date : {new Date(item.date_publication).toLocaleDateString()} <br/> 
+                  </div>
+                </div>
               </tr>
               <br /><br />
+              
             </tbody>
           )
           )}
