@@ -103,6 +103,7 @@ class MesOffres extends React.Component {
 
 
         <div class="container">
+          <div class="anyClass">
           <table >
             <br />
             <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input>
@@ -120,9 +121,9 @@ class MesOffres extends React.Component {
               </tbody>
             )
             )}
-            <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-            <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
-          </table><br />
+          </table><br /></div>
+          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
+          <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
         </div>)
     }
 
@@ -131,7 +132,7 @@ class MesOffres extends React.Component {
       return (
         <div class="container">
         <table>
-          <input type="submit" value="Retour" onClick={this.retour}></input><br /><br />
+          <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input><br /><br />
           <div>Vos interlocuteurs sur cette offre :</div><br />
           {this.state.listeNegociations.map((item) => (
             <tbody>
