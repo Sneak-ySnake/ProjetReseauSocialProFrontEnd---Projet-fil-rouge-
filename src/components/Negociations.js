@@ -12,7 +12,7 @@ class Negociations extends React.Component {
       listeNegociations: [],
       listeMessages: [],
       message: "",
-      negociation: {}
+      negocier: {}
     };
   }
 
@@ -46,12 +46,16 @@ class Negociations extends React.Component {
         id_negociation: this.state.negocier.id_negocier.id_negociation
       },
       message: this.state.message
-    }).then(this.setState({affichage: false}));
+    }).then(() => this.affichageMessage(this.state.negocier));
 
   };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
+  };
+
+  retour = () => {
+    this.setState({affichage: false});
   };
 
   render() {
@@ -80,6 +84,7 @@ class Negociations extends React.Component {
       return (
         
         <table>
+          <input type="submit" value="retour" onClick={this.retour}></input><input type="submit" value="actualiser" onClick={() => this.affichageMessage(this.state.negocier)}></input>
         <div>Messages : </div>
         {this.state.listeMessages.map((item) => (
          
