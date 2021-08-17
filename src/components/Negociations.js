@@ -107,10 +107,9 @@ class Negociations extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="Negociations">
-
-        <table>
+      <div className="container-sm">
         <span class="message">Mes négociations :</span><br/><br/>
+        <table class="test">
           {this.state.listeNegociations.map((item) => (
             <tbody>
               <tr onClick={() => this.affichageMessage(item)}>

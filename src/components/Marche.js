@@ -105,9 +105,9 @@ class Marche extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="Marche">
+      <div className="container-sm">
 
-        Publications du marché :
+        Publications du marché : <br/><br/>
 
         <table>
 
