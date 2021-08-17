@@ -83,9 +83,10 @@ class Negociations extends React.Component {
     /*Affichage message*/
     if (this.state.affichage == true) {
       return (
-        
+        <div class="container">
         <table >
-          <input type="submit" value="retour" class="btn btn-primary" onClick={this.retour}></input> 
+          <br/>
+          <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input> 
           <br/>
         <div class="message">Messages : </div>
         <br/>
@@ -101,8 +102,9 @@ class Negociations extends React.Component {
         )
         )}
         <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-        <div><input type="submit"  class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
-      </table>)
+        <div><input type="submit"  class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
+      </table><br/>
+      </div>)
     }
 
     /*Premier affichage*/
