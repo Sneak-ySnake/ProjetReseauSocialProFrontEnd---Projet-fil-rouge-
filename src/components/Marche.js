@@ -114,8 +114,7 @@ class Marche extends React.Component {
           {this.state.publications.map((item) => (
 
             <tbody>
-              <tr>
-              <th><input type="submit" onClick={() => this.affichage(item)} value="Négocier"></input></th>
+              <tr onClick={() => this.affichage(item)}> 
                 <th>Id : {item.id_publication} |</th>
                 <th>Nom : {item.nom_publication} |</th>
                 <th>Prix : {item.prix} |</th>
