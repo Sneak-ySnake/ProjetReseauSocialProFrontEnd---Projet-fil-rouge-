@@ -103,16 +103,16 @@ class MesOffres extends React.Component {
 
 
         <div class="container">
-          <div class="message"><input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input></div>
+          <div class="alignementGauche"><input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input></div>
           <div class="fenetreDiscussion">
           <table >
             <br />
-            <div class="message">Messages : </div>
+            <div class="alignementGauche">Messages : </div>
             <br />
             {this.state.listeMessage.map((item) => (
 
               <tbody>
-                <tr class="message">
+                <tr class="alignementGauche">
                   <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
                   <br />{item.message}
                 </tr>
@@ -121,8 +121,8 @@ class MesOffres extends React.Component {
             )
             )}
           </table><br /></div>
-          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-          <div class="message"><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
+          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
+          <div class="alignementGauche"><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
         </div>)
     }
 
@@ -137,7 +137,7 @@ class MesOffres extends React.Component {
             <tbody>
               <tr class="card" onClick={() => this.affichageMessage(item)}> 
                 <div class="card-body">
-                  <div class="card-subtitle, message, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+                  <div class="card-subtitle, alignementGauche, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
                 </div>
                 {item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}
               </tr>
@@ -160,8 +160,8 @@ class MesOffres extends React.Component {
             <tbody>
               <tr class="card" onClick={() => this.affichageNego(item)}>
                 <div class="card-body">
-                  <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br />
-                  <div class="card-text, message">
+                  <div class="card-subtitle, alignementGauche, gras">{item.id_publication} | {item.nom_publication}</div><br />
+                  <div class="card-text, alignementGauche">
                     Prix : {item.prix} | Quantite : {item.quantite}<br />
                     Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br />
                     Date : {new Date(item.date_publication).toLocaleDateString()} <br />

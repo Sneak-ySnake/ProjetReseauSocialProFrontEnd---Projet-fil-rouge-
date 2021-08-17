@@ -90,11 +90,11 @@ class Negociations extends React.Component {
               <br />
               <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input>
               <br />
-              <div class="message">Messages : </div>
+              <div class="alignementGauche">Messages : </div>
               <br />
               {this.state.listeMessages.map((item) => (
                 <tbody>
-                  <tr class="message">
+                  <tr class="alignementGauche">
                     <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
                     <br />{item.message}
                   </tr>
@@ -104,7 +104,7 @@ class Negociations extends React.Component {
               )}
             </table><br />
           </div>
-          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
+          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
               <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
         </div>)
     }
@@ -112,14 +112,14 @@ class Negociations extends React.Component {
     /*Premier affichage*/
     return (
       <div className="container-sm">
-        <span class="message">Mes négociations :</span><br /><br />
-        <table class="test">
+        <span class="alignementGauche">Mes négociations :</span><br /><br />
+        <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>
               <tr class="card" onClick={() => this.affichageMessage(item)}>
                 <div class="card-body">
-                  <div class="card-subtitle, message, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br />
-                  <div class="card-text, message">
+                  <div class="card-subtitle, alignementGauche, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br />
+                  <div class="card-text, alignementGauche">
                     Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br />
                   </div>
                 </div>
