@@ -48,6 +48,7 @@ class Negociations extends React.Component {
       },
       message: this.state.message
     }).then(() => this.affichageMessage(this.state.negocier));
+    this.setState({message: ""});
 
   };
 

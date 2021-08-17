@@ -62,6 +62,7 @@ class MesDemandes extends React.Component {
       },
       message: this.state.message
     }).then(() => this.affichageMessage(this.state.negociationConsultee));
+    this.setState({message: ""});
   };
 
   handleChange = (e) => {
@@ -105,13 +106,13 @@ class MesDemandes extends React.Component {
         <div>Messages : </div>
         {this.state.listeMessage.map((item) => (
          
-          <tbody>
-            <tr>
-              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</th>
-              <br/>{item.message}
-            </tr>
-            <br /><br />
-          </tbody>
+         <tbody>
+                <tr class="message">
+                  <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
+                  <br />{item.message}
+                </tr>
+                <br /><br />
+              </tbody>
         )
         )}
         <input type="text" value={this.state.message} name="message" onChange={this.handleChange}></input>
@@ -127,14 +128,15 @@ class MesDemandes extends React.Component {
           <input type="submit" value="Retour" onClick={this.retour}></input><br/><br/>
           <div>Vos interlocuteurs sur cette demande </div>
           {this.state.listeNegociations.map((item) => (
-            <tbody>
-              <tr>
-                <input type="submit" onClick={() => this.affichageMessage(item)} value="Messages"></input>
-                <th>Id utilisateur : {item.id_negocier.utilisateur.id_utilisateur} |</th>
-                <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} |</th>
-              </tr>
-              <br /><br />
-            </tbody>
+             <tbody>
+             <tr class="card" onClick={() => this.affichageMessage(item)}> 
+               <div class="card-body">
+                 <div class="card-subtitle, message, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+               </div>
+               {item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}
+             </tr>
+             <br /><br />
+           </tbody>
           )
           )}
         </table>)
@@ -142,26 +144,26 @@ class MesDemandes extends React.Component {
 
     /*Premier affichage*/
     return (
-      <div className="MesDemandes">
+      <div class="container">
 
         Mes demandes :
 
         <table>
           {this.state.listeDemandes.map((item) => (
             <tbody>
-              <tr class="card" onClick={() => this.affichage(item)}> 
-                <div class="card-body">
-                  <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br/>
-                  <div class="card-text, message">
-                    Prix : {item.prix} | Quantite : {item.quantite}<br/> 
-                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br/> 
-                    Date : {new Date(item.date_publication).toLocaleDateString()} <br/> 
-                  </div>
+            <tr class="card" onClick={() => this.affichageNego(item)}>
+              <div class="card-body">
+                <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br />
+                <div class="card-text, message">
+                  Prix : {item.prix} | Quantite : {item.quantite}<br />
+                  Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br />
+                  Date : {new Date(item.date_publication).toLocaleDateString()} <br />
                 </div>
-              </tr>
-              <br /><br />
-              <br /><br />
-            </tbody>
+              </div>
+            </tr>
+            <br /><br />
+            <br /><br />
+          </tbody>
           )
           )}
         </table>
