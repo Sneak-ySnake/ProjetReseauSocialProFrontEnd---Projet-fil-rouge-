@@ -11,7 +11,7 @@ class ConnexionAdmin extends React.Component {
         this.state = {
             mail_admin: "",
             mot_de_passe_admin: "",
-            administrateur: {},
+            admin: {},
             redirection: false
         };
     }
@@ -22,8 +22,8 @@ class ConnexionAdmin extends React.Component {
             mail_admin: this.state.mail_admin,
             mot_de_passe_admin: sha256(this.state.mot_de_passe_admin) 
         }).then((result) => {
-            if (result.data.email_administrateur != null) {
-                this.setState({ administrateur: result.data })
+            if (result.data.mail_admin != null) {
+                this.setState({ admin: result.data })
                 this.creerSession();
                 this.tempsSession();
                 this.setState({ redirection: true });
@@ -40,19 +40,19 @@ class ConnexionAdmin extends React.Component {
 
     creerSession = () => {
         var u = {
-            id_admin: this.state.administrateur.id_admin,
-            mail_admin : this.state.administrateur.mail_admin,
-            mot_de_passe_admin: this.state.administrateur.mot_de_passe_admin,
-            telephone : this.state.administrateur.telephone,
-            num_voie_admin : this.state.administrateur.num_voie_admin,
-            adresse_admin : this.state.administrateur.adresse_admin,
-            complement_adresse_admin: this.state.administrateur.complement_adresse_admin,
-            id_ville : this.state.administrateur.id_ville
+            id_admin: this.state.admin.id_admin,
+            mail_admin : this.state.admin.mail_admin,
+            mot_de_passe_admin: this.state.admin.mot_de_passe_admin,
+            telephone : this.state.admin.telephone,
+            num_voie_admin : this.state.admin.num_voie_admin,
+            adresse_admin : this.state.admin.adresse_admin,
+            complement_adresse_admin: this.state.admin.complement_adresse_admin,
+            ville : this.state.admin.ville
 
             
         }
 
-        localStorage.setItem("administrateur", JSON.stringify(u));
+        localStorage.setItem("admin", JSON.stringify(u));
     };
 
     tempsSession = () => {
@@ -62,7 +62,7 @@ class ConnexionAdmin extends React.Component {
 
     render() {
         {
-            var u = JSON.parse(localStorage.getItem("administrateur"));
+            var u = JSON.parse(localStorage.getItem("admin"));
         }
         if (u != null) {
             return <Redirect to="/AdministrerUtilisateur" />;
@@ -73,16 +73,18 @@ class ConnexionAdmin extends React.Component {
         return (
             <div className="ConnexionAdmin">
                 <form onSubmit={this.connexionAdmin}>
-                    <br />
-                    Email :
-                    <br />
-                    <input type="text" name="mail_admin" onChange={this.handleChange}></input>
-                    <br />
-                    Mot de passe :
-                    <br />
-                    <input type="password" name="mot_de_passe_admin" onChange={this.handleChange}></input>
-                    <br />
-                    <input class="btn btn-primary" type="submit"></input>
+                    <div id="connexionForm" class="form-group">
+                        <br />
+                        <label>Email : </label>
+                        <br />
+                        <input type="text" class= "form-control" name="mail_admin" onChange={this.handleChange} required></input>
+                        <br />
+                        <label>Mot de passe : </label>
+                        <br />
+                        <input type="password" class="form-control" name="mot_de_passe_admin" onChange={this.handleChange}></input>
+                        <br />
+
+                    <input class="btn btn-success" type="submit"></input>
                 </form>
             </div>
         );
