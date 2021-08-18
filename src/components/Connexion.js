@@ -47,10 +47,12 @@ class Connexion extends React.Component {
             telephone: this.state.utilisateur.telephone,
             poste_occupe: this.state.utilisateur.poste_occupe,
             email_utilisateur: this.state.utilisateur.email_utilisateur,
+            mot_de_passe_utilisateur: this.state.utilisateur.mot_de_passe_utilisateur,
             siret: this.state.utilisateur.siret,
             nom_entreprise: this.state.utilisateur.nom_entreprise,
             num_voie: this.state.utilisateur.num_voie,
             adresse: this.state.utilisateur.adresse,
+            complement_adresse: this.state.utilisateur.complement_adresse,
             domaine: this.state.utilisateur.domaine,
             ville: this.state.utilisateur.ville
         }
@@ -85,6 +87,7 @@ class Connexion extends React.Component {
                     <br />
                     <input type="password" name="mdp" onChange={this.handleChange}></input>
                     <br />
+                    <a href="/inscription">s'inscrire</a>
                     <input class="btn btn-primary" type="submit"></input>
                 </form>
             </div>

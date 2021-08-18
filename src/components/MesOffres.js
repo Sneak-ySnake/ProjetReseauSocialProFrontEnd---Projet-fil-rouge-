@@ -28,7 +28,7 @@ class MesOffres extends React.Component {
 
 
   affichageNego = (publication) => {
-    this.setState({affichage: true, publicationConsultee: publication });
+    this.setState({ affichage: true, publicationConsultee: publication });
     axios.post("/tender_du_poulet/findAllNegocierPublication", {
       id_publication: publication.id_publication,
       utilisateur: {
@@ -44,7 +44,7 @@ class MesOffres extends React.Component {
       id_negocier: {
         publication: this.state.publicationConsultee,
         id_negociation: negocier.id_negocier.id_negociation
-       }
+      }
     }).then((result) => { this.setState({ listeMessage: result.data }) });
 
 
@@ -52,7 +52,7 @@ class MesOffres extends React.Component {
 
   envoyerMessage = (e) => {
     e.preventDefault();
-    
+
     axios.post("/tender_du_poulet/addNegocier", {
       id_negocier: {
         utilisateur: JSON.parse(localStorage.getItem("utilisateur")),
@@ -61,14 +61,21 @@ class MesOffres extends React.Component {
         id_negociation: this.state.negociationConsultee.id_negocier.id_negociation
       },
       message: this.state.message
-    }).then(this.setState({affichage: false}));
-
-    this.setState({ affichage: false, affichage2: false });
+    }).then(() => this.affichageMessage(this.state.negociationConsultee));
+    this.setState({message: ""});
   };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
+
+  retour = () => {
+    this.setState({ affichage: false })
+  }
+
+  retour2 = () => {
+    this.setState({ affichage2: false, affichage: true })
+  }
 
   render() {
     /*Verif session*/
@@ -78,13 +85,13 @@ class MesOffres extends React.Component {
     }
     if (u == null) {
       alert("Pas de session en cours, veuillez vous connecter")
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
     else if (Date.now() > tempsSession) {
       this.setState({ sessionTemps: false });
       alert("session expirée");
       localStorage.clear();
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
     if (this.state.sessionTemps == true) {
       var temps = Date.now() + 1800 * 1000;
@@ -93,63 +100,75 @@ class MesOffres extends React.Component {
     /*Affichage message*/
     if (this.state.affichage2 == true) {
       return (
-        
-        <table>
-        <div>Messages : </div>
-        {this.state.listeMessage.map((item) => (
-         
-          <tbody>
-            <tr>
-              <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {item.id_negocier.date}</th>
-              <br/>{item.message}
-            </tr>
-            <br /><br />
-          </tbody>
-        )
-        )}
-        <input type="text" value={this.state.message} name="message" onChange={this.handleChange}></input>
-        <input type="submit" onClick={this.envoyerMessage}></input>
-      </table>)
+
+
+        <div class="container">
+          <div class="alignementGauche"><input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input></div>
+          <div class="fenetreDiscussion">
+          <table >
+            <br />
+            <div class="alignementGauche">Messages : </div>
+            <br />
+            {this.state.listeMessage.map((item) => (
+
+              <tbody>
+                <tr class="alignementGauche">
+                  <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
+                  <br />{item.message}
+                </tr>
+                <br /><br />
+              </tbody>
+            )
+            )}
+          </table><br /></div>
+          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
+          <div class="alignementGauche"><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
+        </div>)
     }
 
     /*Affichage négociation*/
     if (this.state.affichage == true) {
       return (
-
+        <div class="container">
         <table>
-          <div>Vos interlocuteurs sur cette offre </div>
+          <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input><br /><br />
+          <div>Vos interlocuteurs sur cette offre :</div><br />
           {this.state.listeNegociations.map((item) => (
             <tbody>
-              <tr>
-                <input type="submit" onClick={() => this.affichageMessage(item)} value="Messages"></input>
-                <th>Id utilisateur : {item.id_negocier.utilisateur.id_utilisateur} |</th>
-                <th>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} |</th>
+              <tr class="card" onClick={() => this.affichageMessage(item)}> 
+                <div class="card-body">
+                  <div class="card-subtitle, alignementGauche, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+                </div>
+                {item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}
               </tr>
               <br /><br />
             </tbody>
           )
           )}
-        </table>)
+        </table>
+        </div>)
     }
 
     /*Premier affichage*/
     return (
-      <div className="MesOffres">
+      <div class="container-sm">
 
         Mes offres :
 
         <table>
           {this.state.listeOffres.map((item) => (
             <tbody>
-              <tr>
-                <th><input type="submit" onClick={() => this.affichageNego(item)} value="Interlocuteurs"></input></th>
-                <th>Id : {item.id_publication} |</th>
-                <th>Nom : {item.nom_publication} |</th>
-                <th>Prix : {item.prix} |</th>
-                <th>Produit : {item.type_produit} |</th>
-                <th>Date : {item.date_publication} |</th>
-                <th>Quantite : {item.quantite} |</th>
+              <tr class="card" onClick={() => this.affichageNego(item)}>
+                <div class="card-body">
+                  <div class="card-subtitle, alignementGauche, gras">{item.id_publication} | {item.nom_publication}</div><br />
+                  <div class="card-text, alignementGauche">
+                    Prix : {item.prix} | Quantite : {item.quantite}<br />
+                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br />
+                    Date : {new Date(item.date_publication).toLocaleDateString()} <br />
+                  </div>
+                </div>
               </tr>
+              <br /><br />
               <br /><br />
             </tbody>
           )

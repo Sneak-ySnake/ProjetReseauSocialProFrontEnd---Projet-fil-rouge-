@@ -58,19 +58,15 @@ class Inscription extends React.Component {
                 ville: this.state.ville
             }).then(reponse => {
                 let res = reponse.data;
-                alert("2 1");
                 if(res){
                     ////// VERIFICATIONS de l'EMAIL /////////
-                    alert("2 2");
                     axios.post("/tender_du_poulet/findUtilisateurByEmail_utilisateur", {
                         email_utilisateur: this.state.email_utilisateur,
-                        mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur)
+                        mot_de_passe_utilisateur: sha256(this.state.mot_de_passe_utilisateur),
                     }).then((result) => {
-                        alert("3 0");
                         if(result.data.email_utilisateur != null){
-                            alert("3 Adresse e-mail déja existant. Veuillez le changer.");
+                            alert("Adresse e-mail déja existant. Veuillez le changer.");
                         } else {
-                            alert("3 2");
                             ////// AJOUT de UTILISATEUR /////////
                             axios.post("/tender_du_poulet/addUtilisateur", {
                                 nom_utilisateur: this.state.nom_utilisateur,
@@ -87,52 +83,52 @@ class Inscription extends React.Component {
                                 complement_adresse: this.state.complement_adresse,
                                 domaine: this.state.domaine,
                                 ville: this.state.ville
-                            });
-                            ////// AJOUT de l'ETAT COMPTE de l'UTILISATEUR /////////
-                            var laDate = new Date();
-                            var mois = laDate.getMonth() + 1;
-                            if (mois < 10) {
-                                mois = "0" + mois
-                            }
-                            alert({email_utilisateur: this.state.email_utilisateur});
-                            axios.post("/tender_du_poulet/findUtilisateurByEmail_utilisateur" , {
-                                email_utilisateur: this.state.email_utilisateur
-                            }).then(reponse2 => {
-                                this.setState({id_rechercher: reponse2.data.id_utilisateur})
-                                axios.post("/tender_du_poulet/addUtilisateur_EtatCompte", {
-                                    utilisateur_EtatCompteId: {
-                                        utilisateur : { id_utilisateur : this.state.id_rechercher},
-                                        etat_compte : { id_etat_compte : 1},
-                                        date_debut: laDate.getFullYear() + "-" + mois + "-" + laDate.getDate()
+                            }).then(() => {
+                                ////// AJOUT de l'ETAT COMPTE de l'UTILISATEUR /////////
+                                var laDate = new Date();
+                                var mois = laDate.getMonth() + 1;
+                                if (mois < 10) {
+                                    mois = "0" + mois
+                                }
+                                axios.post("/tender_du_poulet/findUtilisateurByEmail_utilisateur" , {
+                                    email_utilisateur: this.state.email_utilisateur
+                                }).then(reponse2 => {
+                                    this.setState({id_rechercher: reponse2.data.id_utilisateur})
+                                    axios.post("/tender_du_poulet/addUtilisateur_EtatCompte", {
+                                        utilisateur_EtatCompteId: {
+                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                            etat_compte : { id_etat_compte : 1},
+                                            date_debut: laDate.getFullYear() + "-" + mois + "-" + laDate.getDate()
+                                        }
+                                    });
+            
+                                    ////// AJOUT des PROFILS de l'UTILISATEUR /////////
+                                    if(this.state.profil1){
+                                        axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                            utilisateur_ProfilId: {
+                                                utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                                profil : { id_profil : 1}
+                                            }
+                                        });
                                     }
+                                    if(this.state.profil2){
+                                        axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                            utilisateur_ProfilId: {
+                                                utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                                profil : { id_profil : 2}
+                                            }
+                                        });
+                                    }
+                                    if(this.state.profil3){
+                                        axios.post("/tender_du_poulet/addUtilisateur_Profil", {
+                                            utilisateur_ProfilId: {
+                                                utilisateur : { id_utilisateur : this.state.id_rechercher},
+                                                profil : { id_profil : 3}
+                                            }
+                                        });
+                                    }
+                                    return <Redirect to="/connexion" />;
                                 });
-        
-                                ////// AJOUT des PROFILS de l'UTILISATEUR /////////
-                                if(this.state.profil1){
-                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
-                                        utilisateur_ProfilId: {
-                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
-                                            profil : { id_profil : 1}
-                                        }
-                                    });
-                                }
-                                if(this.state.profil2){
-                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
-                                        utilisateur_ProfilId: {
-                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
-                                            profil : { id_profil : 2}
-                                        }
-                                    });
-                                }
-                                if(this.state.profil3){
-                                    axios.post("/tender_du_poulet/addUtilisateur_Profil", {
-                                        utilisateur_ProfilId: {
-                                            utilisateur : { id_utilisateur : this.state.id_rechercher},
-                                            profil : { id_profil : 3}
-                                        }
-                                    });
-                                }
-                                return <Redirect to="/connexion" />;
                             });
                         }
                     });

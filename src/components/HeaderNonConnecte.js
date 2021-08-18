@@ -17,7 +17,7 @@ function HeaderNonConnecte(props) {
                             alt=""
                         />
                     </div>
-                    <Link class="navbar-brand, headerText" to="/home">
+                    <Link class="navbar-brand, headerText" to="/">
                         Tender
                     </Link>
                     <div>

@@ -14,7 +14,7 @@ class Deconnexion extends React.Component {
       var u = JSON.parse(localStorage.getItem("utilisateur"));
     }
     if (u == null) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
 
     {this.deconnexion();}

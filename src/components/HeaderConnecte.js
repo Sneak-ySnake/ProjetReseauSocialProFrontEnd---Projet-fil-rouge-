@@ -15,7 +15,7 @@ function HeaderConnecte(props) {
                 alt=""
                 />
             </div>
-            <Link class="navbar-brand" to="/Publier">
+            <Link class="navbar-brand" to="/Marche">
                 Tender
             </Link>
             <div>
@@ -56,16 +56,6 @@ function HeaderConnecte(props) {
                     </Link>
                     </li>
                     
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/MesPublications" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/MesPublications">
-                        MesPublications
-                    </Link>
-                    </li>
-
                     <li
                     class={`nav-item  ${
                         props.location.pathname === "/MesDemandes" ? "active" : ""

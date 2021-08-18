@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-function Footer(props) {
+function FooterConnect(props) {
     return (
         <div className="footer">
             <footer class="py-5 bg-dark">
@@ -10,57 +10,57 @@ function Footer(props) {
                         <div>
                             <ul class="navbar-nav ml-auto">
                                 <li>
-                                <Link class="nav-link" to="/MentionLegal">
-                                    MentionLegal
+                                <Link class="nav-link" to="/MentionLegalConnect">
+                                    Mention Légal
                                 </Link>
                                 </li>
                                 
                                 <li
                                     class={`nav-item  ${
-                                    props.location.pathname === "/CDU" ? "active" : ""
+                                    props.location.pathname === "/CDUConnect" ? "active" : ""
                                 }`}
                                 >
-                                <Link class="nav-link" to="/CDU">
-                                CDU
+                                <Link class="nav-link" to="/CDUConnect">
+                                Condition Géréral d'Utilisation
                                 </Link>
                                 </li>
 
                                 <li
                                 class={`nav-item  ${
-                                    props.location.pathname === "/PolitiqueCookies" ? "active" : ""
+                                    props.location.pathname === "/PolitiqueCookiesConnect" ? "active" : ""
                                 }`}
                                 >
-                                <Link class="nav-link" to="/PolitiqueCookies">
-                                    PolitiqueCookies
+                                <Link class="nav-link" to="/PolitiqueCookiesConnect">
+                                    Politique Cookies
                                 </Link>
                                 </li>
                                 
                                 <li
                                 class={`nav-item  ${
-                                    props.location.pathname === "/FAQ" ? "active" : ""
+                                    props.location.pathname === "/FAQConnect" ? "active" : ""
                                 }`}
                                 >
-                                <Link class="nav-link" to="/FAQ">
+                                <Link class="nav-link" to="/FAQConnect">
                                     FAQ
                                 </Link>
                                 </li>
                                 
                                 <li
                                 class={`nav-item  ${
-                                    props.location.pathname === "/NousContacter" ? "active" : ""
+                                    props.location.pathname === "/NousContacterConnect" ? "active" : ""
                                 }`}
                                 >
-                                <Link class="nav-link" to="/NousContacter">
-                                    NousContacter
+                                <Link class="nav-link" to="/NousContacterConnect">
+                                    Nous Contacter
                                 </Link>
                                 </li>
 
                                 <li
                                 class={`nav-item  ${
-                                    props.location.pathname === "/Support" ? "active" : ""
+                                    props.location.pathname === "/SupportConnect" ? "active" : ""
                                 }`}
                                 >
-                                <Link class="nav-link" to="/Support">
+                                <Link class="nav-link" to="/SupportConnect">
                                     Support
                                 </Link>
                                 </li>
@@ -78,4 +78,4 @@ function Footer(props) {
     );
 }
 
-export default withRouter(Footer);
+export default withRouter(FooterConnect);

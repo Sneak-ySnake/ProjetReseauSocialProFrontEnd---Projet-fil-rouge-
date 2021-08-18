@@ -9,3 +9,17 @@
     font-weight: bold;
     text-align: right;
 }
+
+.alignementGauche {
+    text-align: left;
+}
+
+
+.gras {
+    font-weight: bold;
+}
+
+.fenetreDiscussion {
+    height:550px;
+    overflow-y: scroll;
+  }
