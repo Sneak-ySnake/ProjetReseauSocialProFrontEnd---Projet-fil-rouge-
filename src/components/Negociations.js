@@ -88,7 +88,7 @@ class Negociations extends React.Component {
             <h1>Messages</h1>
 
             <button type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}>Retour</button>
-          <div class="fenetreDiscussion p-5">
+          <div class="fenetreDiscussion p-5 my-5">
  
              
            {/*  <table>
@@ -116,8 +116,7 @@ class Negociations extends React.Component {
                
                   <div class="card">
 
-                <div class="row align-items-start">
-                    <div class="col">
+               
 
 
                     <div class="d-flex justify-content-start ">
@@ -139,12 +138,11 @@ class Negociations extends React.Component {
                       </div> 
               
 
-                </div>
-
+               
                     
                       
                     </div>
-                    <div class="col">
+                     
                     <div class="card-body">
                       
                     
@@ -152,9 +150,9 @@ class Negociations extends React.Component {
                       <p> {item.message}</p>
                   
                   </div>
-                    </div>
+                   
                      
-                  </div>
+                  
                      
                      
                       
@@ -170,12 +168,12 @@ class Negociations extends React.Component {
         
 
           </div>
-          <form>
-          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-             
+          <form class="my-5 text-end">
+          <textarea type="text" row="7" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></textarea>
+          <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input> 
+           
                 <input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> 
-              <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input> 
-           </form>
+             </form>
         </div>)
     }
 
