@@ -113,8 +113,7 @@ class Profil extends React.Component {
             ville: this.state.ville
           }
           localStorage.setItem("utilisateur", JSON.stringify(u));
-          document.getElementById("Profil").style.display = "none";
-          document.getElementsByClassName("ModificationValidation")[0].style.display = "block";
+          document.getElementsByClassName("modificationValidation")[0].style.display = "block";
         });
       }
     });
@@ -145,7 +144,7 @@ class Profil extends React.Component {
         <h1 class="titrePage">Profil</h1>
 
 
-        <form onSubmit={this.modifProfil}>
+        <form onSubmit={this.modifProfil} id="formulaire_profil">
           <fieldset class="form-group border p-3">
             <legend class="w-auto px-2">Informations</legend>
             <hr/>
@@ -171,7 +170,7 @@ class Profil extends React.Component {
             </div>
             <div class="mb-3">
                 <label>Adresse e-mail</label>
-                <input class="form-control" type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
+                <input class="form-control" type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange} disabled="disabled"></input>
             </div>
           </fieldset>
 
@@ -205,7 +204,8 @@ class Profil extends React.Component {
             </div>
             <div class="mb-3">
               <label>Ville</label>
-              <label>{this.state.ville.nom_ville}</label>
+                <input class="form-control" type="text" value={this.state.ville.nom_ville} disabled="disabled"></input>
+              <label></label>
             </div>
           </fieldset>
 
@@ -214,7 +214,7 @@ class Profil extends React.Component {
               <hr/>
               <div class="mb-3">
                 <label>Domaine</label>
-                <label>{this.state.domaine.nom_domaine}</label>
+                <input class="form-control" type="text" value={this.state.domaine.nom_domaine} disabled="disabled"></input>
               </div>
           </fieldset>
 
@@ -222,7 +222,7 @@ class Profil extends React.Component {
           <br class="clear" />
         </form>
 
-        <div class="alert alert-success ModificationValidation" role="alert">
+        <div class="alert alert-success modificationValidation" role="alert">
             Votre Profil a été modifier avec succée.
         </div>
 
