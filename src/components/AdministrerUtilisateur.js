@@ -57,9 +57,9 @@ class AdministrerUtilisateur extends React.Component {
        this.setState({ [e.target.name] : (e.target.value) });
    }
 
-   /*handleChangeSelect = (e) => {
+   handleChangeSelect = (e) => {
        this.setState({ [e.target.name]: JSON.parse(e.target.value) });
-   }*/
+   }
 
 
 
@@ -74,7 +74,7 @@ class AdministrerUtilisateur extends React.Component {
 
    render() {
        /*Verif session*/
-    {
+    /*{
         var u = JSON.parse(localStorage.getItem("administrateur"));
         var tempsSession = localStorage.getItem("tempsSession");
       }
@@ -92,6 +92,7 @@ class AdministrerUtilisateur extends React.Component {
         var temps = Date.now() + 1800 * 1000;
         localStorage.setItem("tempsSession", temps);
       }
+      */
        return (
            <div classname="AdministrerUtilisateur">
                    <h3> Administrer Utilisateur</h3>

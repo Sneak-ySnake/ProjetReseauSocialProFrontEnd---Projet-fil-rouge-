@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
+import { sha256 } from "js-sha256";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class CreerAdmin extends React.Component {
     constructor() {
@@ -12,21 +14,22 @@ class CreerAdmin extends React.Component {
             num_voie_admin: "",
             adresse_admin: "",
             complement_adresse_admin: "",
-            id_ville: "",
+            ville: {},
+            villes: [],
             redirection : false
         }
     }
 
-   creerAdmin = (e) => {
+   addAdmin = (e) => {
         e.preventDefault();
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/CreerAdmin", {
+        axios.post("/tender_du_poulet/addAdmin", {
             mail_admin: this.state.mail_admin,
             mot_de_passe_admin: this.state.mot_de_passe_admin,
             telephone: this.state.telephone,
             num_voie_admin: this.state.num_voie_admin,
             adresse_admin: this.state.adresse_admin,
             complement_adresse_admin: this.state.complement_adresse_admin,
-            id_ville: this.state.id_ville
+            ville: this.state.ville
         }).then((result)=> {
             if (result.data === true) {
                 this.creerSession();
@@ -38,10 +41,14 @@ class CreerAdmin extends React.Component {
         });
     };
 
-    /// voir avec Theo  a quoi sert exactement le handlechange////
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     };
+
+    handleChangeSelect = (e) => {
+        this.setState({ [e.target.name]: JSON.parse(e.target.value) });
+        
+    }
 
     creerSession = () => {
         var s = {
@@ -51,89 +58,71 @@ class CreerAdmin extends React.Component {
         localStorage.setItem("administrateur", JSON.stringify(s));
     };
 
-
-    render() {
-        /*if (this.state.redirection ===true) {
-            return<Redirect to = "/test"/>;
-        }*/
-        return (
-            <div className = "CreerAdmin">
-            <form onSubmit={this.CreerAdmin()}>
-                <h3> Creer administrateur</h3>
-                <div class="container"></div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></input>
-                        </div>
-                        <div class="col-4">Value</div>
-                    </div>
-                    <br></br>
-                    <div class="row">
-                        <div class="col-8">Mot de passe</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">Mot de passe 2</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">Téléphone</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">numéro de voie</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">numéro de voie</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">adresse</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">complément adresse</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">Ville</div>
-                        <div class="col-4">
-                            <input></input>
-                        </div>
-                        <br></br>
-                    </div>
-                    <button type="submit" color="blue">Créer Administrateur</button>
-                </div>
-            </form>    
-            </div>
-            
-        );
+    componentDidMount() {
+        axios.get("/tender_du_poulet/findAllVille").then((result) => {
+            this.setState({ villes: result.data });
+        });
     }
 
+
+    render() {
+        
+        return (
+            <div className="CreerAdmin">
+                <ul>
+                    <h3>Creer administrateur</h3>
+                    <form
+                        onSubmit={this.addAdmin}
+                    >
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Mail admin</th>
+                                    <th>Mot de Passe</th>
+                                    <th>Téléphone</th>
+                                    <th>N° Voie</th>
+                                    <th>Adresse</th>
+                                    <th>Complement Adresse</th>
+                                    <th>Ville</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>                                    
+                                    <td>
+                                        <input type="text" name="mail_admin" value={this.state.mail_admin} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="password" name="mot_de_passe_admin" value={this.state.mot_de_passe_admin} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="num_voie_admin" value={this.state.num_voie_admin} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="adresse_admin" value={this.state.adresse_admin} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="complement_adresse_admin" value={this.state.complement_adresse_admin} onChange={this.handleChange}></input>
+                                    </td>
+                                    <td>
+                                        <select name="ville" onChange={this.handleChangeSelect}>
+                                            <option value={JSON.stringify({ ville: null })}>Choisir une ville</option>
+                                            {this.state.villes.map(item =>
+                                                <option value={JSON.stringify(item)}>{item.nom_ville}</option>
+                                            )}
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit"></input>
+                    </form>
+                </ul>
+            </div>
+        )
+    }
 }
 
 export default CreerAdmin;
