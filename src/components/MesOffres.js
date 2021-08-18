@@ -153,7 +153,7 @@ class MesOffres extends React.Component {
     return (
       <div class="container-sm">
 
-        Mes offres :
+        <h1>Mes offres</h1>
 
         <table>
           {this.state.listeOffres.map((item) => (

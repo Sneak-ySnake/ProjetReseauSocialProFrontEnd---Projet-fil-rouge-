@@ -11,7 +11,7 @@ function HeaderNonConnecte(props) {
                 <div class="container">
                     
                     <Link class="navbar-brand, headerText" to="/">
-                    <img
+                       <img
                             class="logo "
                             src={logo} 
                             height={40} width={40}
