@@ -3,7 +3,7 @@ import axios from "axios";
 import { Redirect, Link } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FormFiltrer from "../forms/FormFiltrer";
-import logo from "./img/profil.svg";
+import profil from "./img/profil.svg";
 
 class Marche extends React.Component {
   constructor() {
@@ -150,26 +150,30 @@ class Marche extends React.Component {
                   </div>
                   <div class="col">
                     <h4>Prix :</h4>
-                    <p>{item.prix} € / {item.quantite}</p>
-                   
+                    <p>{item.prix} €</p>
+                  {/* 
+                    <h4>Quantité :</h4>
+                    <p>{item.quantite}</p>
+                   */}
                   
                   </div>
                   </div>
                  
                  
 
-                  <div class="d-flex justify-content-start">
-                  <div >
+                  <div class="d-flex justify-content-start ">
+                  <div>
                        
                         <img
                           class="profil"
-                          src={logo} 
+                          src={profil} 
                           height={40} width={40}
                           alt=""
                           />  
                          
                   </div>
                   <div >
+                    
                     <p>Auteur<br/> Statut</p>
                      
                   

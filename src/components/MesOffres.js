@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import profil from "./img/profil.svg";
 class MesOffres extends React.Component {
   constructor() {
     super();
@@ -155,25 +155,59 @@ class MesOffres extends React.Component {
 
         <h1>Mes offres</h1>
 
-        <table>
+         
           {this.state.listeOffres.map((item) => (
-            <tbody>
-              <tr class="card offres" onClick={() => this.affichageNego(item)}>
+             
+              <div class="card offres" onClick={() => this.affichageNego(item)}>
                 <div class="card-body">
-                  <div class="card-subtitle, alignementGauche, gras">{item.id_publication} | {item.nom_publication}</div><br />
-                  <div class="card-text, alignementGauche">
-                    Prix : {item.prix} | Quantite : {item.quantite}<br />
-                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br />
-                    Date : {new Date(item.date_publication).toLocaleDateString()} <br />
-                  </div>
+               <h3 class="mb-4">{item.nom_publication}</h3> 
+
+              
+              <div class="d-flex justify-content-start my-2">
+                <div class="col">
+                  <h4>Description</h4>
+                  <p>{item.description_publication}</p>
                 </div>
-              </tr>
-              <br /><br />
-              <br /><br />
-            </tbody>
+                <div class="col">
+                  <h4>Prix :</h4>
+                  <p>{item.prix} €</p>
+                {/* 
+                  <h4>Quantité :</h4>
+                  <p>{item.quantite}</p>
+                */}
+                
+                </div>
+                </div>
+                
+                <div class="d-flex justify-content-start ">
+                <div>
+                    
+                      <img
+                        class="profil"
+                        src={profil} 
+                        height={40} width={40}
+                        alt=""
+                        />  
+                      
+                </div>
+                <div >
+                  
+                  <p>Auteur<br/> Statut</p>
+                  
+                
+                </div> 
+              
+
+                </div>
+
+
+               </div>
+              </div>
+            
+            
           )
           )}
-        </table>
+         
 
 
       </div>

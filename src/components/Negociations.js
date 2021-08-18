@@ -113,23 +113,23 @@ class Negociations extends React.Component {
     return (
       <div className="container-sm">
        <h1>Mes négociations</h1>
-        <table>
+        
           {this.state.listeNegociations.map((item) => (
-            <tbody>
-              <tr class="card negociations" onClick={() => this.affichageMessage(item)}>
+            
+              <div class="card negociations" onClick={() => this.affichageMessage(item)}>
                 <div class="card-body">
-                  <div class="card-subtitle, alignementGauche, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br />
+                  <p>#{item.id_negocier.publication.id_publication}</p>
+                  <h3>Publication numéro :  | {item.id_negocier.publication.nom_publication}</h3> 
                   <div class="card-text, alignementGauche">
                     Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br />
                   </div>
                 </div>
-              </tr>
-              <br /><br />
-              <br /><br />
-            </tbody>
+              </div>
+             
+            
           )
           )}
-        </table>
+        
 
 
       </div>
