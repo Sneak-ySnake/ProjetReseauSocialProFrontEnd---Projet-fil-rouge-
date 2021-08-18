@@ -18,9 +18,10 @@ class ConnexionAdmin extends React.Component {
 
     connexionAdmin = (e) => {
         e.preventDefault();
-        axios.post("/tender_du_poulet/login", {
+        axios.post("/tender_du_poulet/loginAdmin", {
             mail_admin: this.state.mail_admin,
-            mot_de_passe_admin: sha256(this.state.mot_de_passe_admin)
+            // remplacer sur ligne suivante par sha256(this.state.mot_de_passe_admin) si on veut hacher mdp
+            mot_de_passe_admin: this.state.mot_de_passe_admin 
         }).then((result) => {
             if (result.data.email_administrateur != null) {
                 this.setState({ administrateur: result.data })
@@ -38,7 +39,7 @@ class ConnexionAdmin extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     };
 
-    creerSession = () => {c
+    creerSession = () => {
         var u = {
             id_admin: this.state.administrateur.id_admin,
             mail_admin : this.state.administrateur.mail_admin,
@@ -52,7 +53,7 @@ class ConnexionAdmin extends React.Component {
             
         }
 
-        localStorage.setItem("utilisateur", JSON.stringify(u));
+        localStorage.setItem("administrateur", JSON.stringify(u));
     };
 
     tempsSession = () => {
@@ -65,14 +66,14 @@ class ConnexionAdmin extends React.Component {
             var u = JSON.parse(localStorage.getItem("administrateur"));
         }
         if (u != null) {
-            return <Redirect to="/profil" />;
+            return <Redirect to="/AdministrerUtilisateur" />;
         }
-        if (this.state.redirection == true) {
-            return <Redirect to="/profil" />;
+        if (this.state.redirection === true) {
+            return <Redirect to="/AdministrerUtilisateur" />;
         }
         return (
-            <div className="Connexion">
-                <form onSubmit={this.connexion}>
+            <div className="ConnexionAdmin">
+                <form onSubmit={this.connexionAdmin}>
                     <br />
                     Email :
                     <br />

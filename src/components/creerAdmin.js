@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 
-class creerAdmin extends React.Component {
+class CreerAdmin extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -17,9 +17,9 @@ class creerAdmin extends React.Component {
         }
     }
 
-    creerAdmin = (e) => {
+   creerAdmin = (e) => {
         e.preventDefault();
-        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/creerAdmin", {
+        axios.post("/PROJET_FIL_ROUGE_tender_du_poulet/CreerAdmin", {
             mail_admin: this.state.mail_admin,
             mot_de_passe_admin: this.state.mot_de_passe_admin,
             telephone: this.state.telephone,
@@ -53,13 +53,13 @@ class creerAdmin extends React.Component {
 
 
     render() {
-        if (this.state.redirection ===true) {
+        /*if (this.state.redirection ===true) {
             return<Redirect to = "/test"/>;
-        }
+        }*/
         return (
-            <div className = "creerAdmin">
-            <form onSubmit={this.creerAdmin()}>
-                <h3> Creer admin</h3>
+            <div className = "CreerAdmin">
+            <form onSubmit={this.CreerAdmin()}>
+                <h3> Creer administrateur</h3>
                 <div class="container"></div>
                 <div class="row">
                     <div class="col-8">
@@ -130,9 +130,10 @@ class creerAdmin extends React.Component {
                 </div>
             </form>    
             </div>
+            
         );
     }
 
 }
 
-export default creerAdmin;
+export default CreerAdmin;
