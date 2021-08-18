@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 
 function HeaderNonConnecte(props) {
     return (
-        <div className="HeaderNonConnecte">
+        <div className="HeaderNonConnecte" id="headerNonConnecter">
             <nav class="navbar navbar-expand">
                 <div class="container">
                     <div>
@@ -18,9 +18,9 @@ function HeaderNonConnecte(props) {
                         />
                     </div>
                     <Link class="navbar-brand, headerText" to="/">
-                        Tender
+                        <span>Tender du Poulet</span>
                     </Link>
-                    <div>
+                    {/*<div>
                         <ul class="navbar-nav ml-auto">
                             <li>
                                 <Link class="nav-link" to="/connexion">
@@ -37,7 +37,7 @@ function HeaderNonConnecte(props) {
                                 </Link>
                             </li>              
                         </ul>
-                    </div>
+                    </div>*/}
                 </div>
             </nav>
         </div>

@@ -3,72 +3,36 @@ import { Link, withRouter } from "react-router-dom";
 
 function Footer(props) {
     return (
-        <div className="footer">
-            <footer class="py-5 bg-dark">
-                <nav class="navbar navbar-expand navbar-dark bg-dark">
-                    <div class="container">
-                        <div>
-                            <ul class="navbar-nav ml-auto">
-                                <li>
-                                <Link class="nav-link" to="/MentionLegal">
-                                    MentionLegal
-                                </Link>
-                                </li>
-                                
-                                <li
-                                    class={`nav-item  ${
-                                    props.location.pathname === "/CDU" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/CDU">
-                                CDU
-                                </Link>
-                                </li>
+        <div className="footer" id="footer">
+            <footer class="bg-dark text-center text-white">
+                <div class="container p-4 pb-0">
+                    <section class="mb-4">
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/MentionLegal">
+                            MentionLegal
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/CDU">
+                        CDU
+                        </Link>
 
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/PolitiqueCookies" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/PolitiqueCookies">
-                                    PolitiqueCookies
-                                </Link>
-                                </li>
-                                
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/FAQ" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/FAQ">
-                                    FAQ
-                                </Link>
-                                </li>
-                                
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/NousContacter" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/NousContacter">
-                                    NousContacter
-                                </Link>
-                                </li>
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/PolitiqueCookies">
+                            PolitiqueCookies
+                        </Link>
 
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/Support" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/Support">
-                                    Support
-                                </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div class="container">
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/FAQ">
+                            FAQ
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/NousContacter">
+                            NousContacter
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/Support">
+                            Support
+                        </Link>
+                    </section>
+                </div>
+                <div class="container copyright">
                     <p class="m-0 text-center text-white">
                         Copyright &copy; CDA 2021
                     </p>
