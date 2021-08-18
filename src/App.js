@@ -134,7 +134,7 @@ function App() {
 
           {/*************************************** ADMINISTRATEUR **************************************/}
           <Route path="/connexionAdmin">
-            <HeaderAdminConnecte/> 
+            <HeaderNonConnecte/>
             <ConnexionAdmin/>
           </Route>
           

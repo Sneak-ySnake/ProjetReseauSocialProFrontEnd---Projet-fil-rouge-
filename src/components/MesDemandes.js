@@ -154,7 +154,7 @@ class MesDemandes extends React.Component {
     return (
       <div class="container">
 
-        <h1>Mes demandes :</h1>
+        <h1>Mes demandes</h1>
 
         <table>
           {this.state.listeDemandes.map((item) => (

@@ -112,7 +112,7 @@ class Negociations extends React.Component {
     /*Premier affichage*/
     return (
       <div className="container-sm">
-       <h1>Mes négociations :</h1>
+       <h1>Mes négociations</h1>
         <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>

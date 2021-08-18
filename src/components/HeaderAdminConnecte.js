@@ -13,7 +13,7 @@ function HeaderAdminConnecte(props) {
                 class="logo"
                 src={logo}  
                 height={40} width={40}
-                alt="" />  Tender
+                alt="" /> Tender
             </Link>
             <div>
                 <ul class="navbar-nav ml-auto">

@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: "Roboto";
+    src: local("./fonts/Roboto-Regular.tiff") format("tiff")
+   }
+
 .HeaderNonConnecte {
     background-color: #46A55D;
     padding-top: 10px;
@@ -23,3 +29,7 @@
     height:550px;
     overflow-y: scroll;
   }
+
+  .logo{max-width: 40px; margin-right: 1rem}
+
+  body{ font-family: "Roboto"; }
