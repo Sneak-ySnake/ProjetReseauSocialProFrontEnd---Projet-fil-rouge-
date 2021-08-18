@@ -177,7 +177,7 @@ class Marche extends React.Component {
                   </div>
                   <div class="col">
                    
-                <p>-></p>
+               
 
                   </div>
                  
