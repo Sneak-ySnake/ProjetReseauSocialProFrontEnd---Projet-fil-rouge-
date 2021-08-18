@@ -159,7 +159,7 @@ class Marche extends React.Component {
                  
 
                   <div class="d-flex justify-content-start">
-                  <div class="col">
+                  <div >
                        
                         <img
                           class="profil"
@@ -169,18 +169,11 @@ class Marche extends React.Component {
                           />  
                          
                   </div>
-                  <div class="col">
+                  <div >
                     <p>Auteur<br/> Statut</p>
-                    
-                   
+                     
                   
-                  </div>
-                  <div class="col">
-                   
-               
-
-                  </div>
-                 
+                  </div> 
                  
 
                   </div>
