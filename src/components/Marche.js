@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { Redirect, Link } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import FormFiltrer from "../forms/FormFiltrer";
+import logo from "./img/profil.svg";
 
 class Marche extends React.Component {
   constructor() {
@@ -106,10 +108,14 @@ class Marche extends React.Component {
                     </div>
                   </div>
 
-            <form>
-              Votre message pour débuter la négociation : <br/><br/>
-              <input type="textarea" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
-              <input type="submit" onClick={this.creerNego} value="Envoyer"></input>
+            <form>  <div class="form-group">
+     
+          <p>Votre message pour débuter la négociation :</p>     
+
+              <input type="textarea" rows="3" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
+              <input type="submit" class="btn btn-primary" onClick={this.creerNego} value="Envoyer"></input>
+          </div>
+
             </form>
           </div>
         </div>
@@ -120,30 +126,84 @@ class Marche extends React.Component {
     return (
       <div className="container">
 
-        <h1>Publications du marché  </h1>
+        <h1>Marché  </h1> 
 
-        <table>
+        <p>Offres / Demandes</p>
+
+        <button class="btn btn-primary">
+          Filtrer
+        </button>
+      <FormFiltrer></FormFiltrer>
+ 
 
           {this.state.publications.map((item) => (
 
-            <tbody>
-              <tr class="card" onClick={() => this.affichage(item)}> 
+             
+              <div class="card publications" onClick={() => this.affichage(item)}> 
                 <div class="card-body">
-                  <div class="card-subtitle, message, gras">{item.id_publication} | {item.nom_publication}</div><br/>
-                  <div class="card-text, message">
-                    Prix : {item.prix} | Quantite : {item.quantite}<br/> 
-                    Produit : {item.type_produit} | Type : {item.type_publication.nom_type_publication}<br/> 
-                    Date : {new Date(item.date_publication).toLocaleDateString()} <br/> 
+                  <h3 class="mb-4">{item.nom_publication}</h3>
+                  
+                  <div class="d-flex justify-content-start my-2">
+                  <div class="col">
+                    <h4>Description</h4>
+                    <p>{item.description_publication}</p>
                   </div>
+                  <div class="col">
+                    <h4>Prix :</h4>
+                    <p>{item.prix} € / {item.quantite}</p>
+                   
+                  
+                  </div>
+                  </div>
+                 
+                 
+
+                  <div class="d-flex justify-content-start">
+                  <div class="col">
+                       
+                        <img
+                          class="profil"
+                          src={logo} 
+                          height={40} width={40}
+                          alt=""
+                          />  
+                         
+                  </div>
+                  <div class="col">
+                    <p>Auteur<br/> Statut</p>
+                    
+                   
+                  
+                  </div>
+                  <div class="col">
+                   
+                <p>-></p>
+
+                  </div>
+                 
+                 
+
+                  </div>
+                 { /*<div class="card-text, message">
+                  
+                   <h4>Détails</h4>
+                  
+                   <ul>
+                   <li>Produit : {item.type_produit}</li>
+                   <li>Type : {item.type_publication.nom_type_publication}</li>
+                   <li>Date : {new Date(item.date_publication).toLocaleDateString()}</li>
+                   </ul>
+                 
+          </div> */ }
                 </div>
-              </tr>
-              <br /><br />
-              
-            </tbody>
+              </div>
+                
           )
           )}
-        </table>
 
+
+          
+       
       </div>
     );
   }

@@ -90,10 +90,10 @@ class Connexion extends React.Component {
                         <br />
                         <div class="row">
                             <div class="col">
-                                <a href="/inscription">s'inscrire</a>
+                                <a href="/inscription">S'inscrire</a>
                             </div>
                             <div class="col">
-                                <input class="btn btn-success" type="submit"></input>
+                                <input class="btn btn-success w-100" type="submit"></input>
                             </div>
                         </div>
                     </div>

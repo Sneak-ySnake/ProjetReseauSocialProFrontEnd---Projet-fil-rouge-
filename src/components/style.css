@@ -1,6 +1,7 @@
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto"; 
+    
     src: local("./fonts/Roboto-Regular.tiff") format("tiff")
    }
 
@@ -32,4 +33,18 @@
 
   .logo{max-width: 40px; margin-right: 1rem}
 
-  body{ font-family: "Roboto"; }
+  body{ font-family: "Roboto"; font-weight: 300;}
+  h1{margin-top: 3rem!important; text-align:center;
+    margin-bottom: 3rem!important; text-transform: uppercase;}
+ h2{}
+ h3{font-size:1.3rem}
+ h4{font-size:1rem}
+
+ .color-green{ color: #46A55D}
+.bg-green{background-color: #46A55D}
+
+.publications{max-width: auto;}
+
+.formFiltrer{    left: -330px;}
+
+.card{font-size:0.8em}

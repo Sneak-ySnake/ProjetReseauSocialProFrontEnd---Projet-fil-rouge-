@@ -61,7 +61,7 @@ fieldset{ border-radius: 5px;
 }
 #inscription form .btn, #Publier form .btn, #Profil form .btn {
     float: right;
-    margin-right: 30px;
+    margin-right: 0px;
     margin-bottom: 20px;
 }
 #inscription form .clear, #Publier form .clear, #Profil form .clear {

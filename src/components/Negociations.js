@@ -116,7 +116,7 @@ class Negociations extends React.Component {
         <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>
-              <tr class="card" onClick={() => this.affichageMessage(item)}>
+              <tr class="card negociations" onClick={() => this.affichageMessage(item)}>
                 <div class="card-body">
                   <div class="card-subtitle, alignementGauche, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br />
                   <div class="card-text, alignementGauche">

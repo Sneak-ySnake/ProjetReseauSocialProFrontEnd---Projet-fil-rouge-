@@ -17,7 +17,7 @@ function HeaderNonConnecte(props) {
                             height={40} width={40}
                             alt=""
                         />
-                        <span>Tender du Poulet</span>
+                        <span>Tender</span>
                     </Link>
                     {/*<div>
                         <ul class="navbar-nav ml-auto">

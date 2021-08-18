@@ -33,11 +33,14 @@ class FormFiltrer extends React.Component {
               </label>
             </div>
        <h3>Mots clés</h3>
+       <fieldset>
         <div class="form-group">
           <label for="motcles">Mots clés</label>
           <input type="text" class="form-control" id="motcles" aria-describedby="motsclesHelp" placeholder="recherche de mots clés"/>
          
         </div>
+        </fieldset>
+      
       <h3>Tags</h3>
 
       <fieldset>

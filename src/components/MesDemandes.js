@@ -159,7 +159,7 @@ class MesDemandes extends React.Component {
         <table>
           {this.state.listeDemandes.map((item) => (
             <tbody>
-            <tr class="card" onClick={() => this.affichageNego(item)}>
+            <tr class="card demandes" onClick={() => this.affichageNego(item)}>
               <div class="card-body">
                 <div class="card-subtitle, alignementGauche, gras">{item.id_publication} | {item.nom_publication}</div><br />
                 <div class="card-text, alignementGauche">

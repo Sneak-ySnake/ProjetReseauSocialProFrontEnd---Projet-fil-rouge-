@@ -77,14 +77,14 @@ class ConnexionAdmin extends React.Component {
                         <br />
                         <label>Email : </label>
                         <br />
-                        <input type="text" class= "form-control" name="mail_admin" onChange={this.handleChange} required></input>
+                        <input type="text" class= "form-control" name="mail_admin" onChange={this.handleChange} required/>
                         <br />
                         <label>Mot de passe : </label>
                         <br />
-                        <input type="password" class="form-control" name="mot_de_passe_admin" onChange={this.handleChange}></input>
+                        <input type="password" class="form-control" name="mot_de_passe_admin" onChange={this.handleChange}/>
                         <br />
-
-                    <input class="btn btn-success" type="submit"></input>
+                    </div>
+                    <input class="btn btn-success" type="submit"/>
                 </form>
             </div>
         );
