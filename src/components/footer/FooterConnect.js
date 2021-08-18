@@ -3,72 +3,36 @@ import { Link, withRouter } from "react-router-dom";
 
 function FooterConnect(props) {
     return (
-        <div className="footer">
-            <footer class="py-5 bg-dark">
-                <nav class="navbar navbar-expand navbar-dark bg-dark">
-                    <div class="container">
-                        <div>
-                            <ul class="navbar-nav ml-auto">
-                                <li>
-                                <Link class="nav-link" to="/MentionLegalConnect">
-                                    Mention Légal
-                                </Link>
-                                </li>
-                                
-                                <li
-                                    class={`nav-item  ${
-                                    props.location.pathname === "/CDUConnect" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/CDUConnect">
-                                Condition Géréral d'Utilisation
-                                </Link>
-                                </li>
-
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/PolitiqueCookiesConnect" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/PolitiqueCookiesConnect">
-                                    Politique Cookies
-                                </Link>
-                                </li>
-                                
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/FAQConnect" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/FAQConnect">
-                                    FAQ
-                                </Link>
-                                </li>
-                                
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/NousContacterConnect" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/NousContacterConnect">
-                                    Nous Contacter
-                                </Link>
-                                </li>
-
-                                <li
-                                class={`nav-item  ${
-                                    props.location.pathname === "/SupportConnect" ? "active" : ""
-                                }`}
-                                >
-                                <Link class="nav-link" to="/SupportConnect">
-                                    Support
-                                </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div class="container">
+        <div className="footer" id="footerConnecter">
+            <footer class="bg-dark text-center text-white">
+                <div class="container p-4 pb-0">
+                    <section class="mb-4">
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/MentionLegalConnect">
+                            Mention Légal
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/CDUConnect">
+                        Condition Géréral d'Utilisation
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/PolitiqueCookiesConnect">
+                            Politique Cookies
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/FAQConnect">
+                            FAQ
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/NousContacterConnect">
+                            Nous Contacter
+                        </Link>
+                        
+                        <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/SupportConnect">
+                            Support
+                        </Link>
+                    </section>
+                </div>
+                <div class="container copyright">
                     <p class="m-0 text-center text-white">
                         Copyright &copy; CDA 2021
                     </p>

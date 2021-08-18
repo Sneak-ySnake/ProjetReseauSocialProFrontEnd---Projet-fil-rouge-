@@ -78,17 +78,25 @@ class Connexion extends React.Component {
         return (
             <div className="Connexion">
                 <form onSubmit={this.connexion}>
-                    <br />
-                    Email :
-                    <br />
-                    <input type="text" name="email" onChange={this.handleChange}></input>
-                    <br />
-                    Mot de passe :
-                    <br />
-                    <input type="password" name="mdp" onChange={this.handleChange}></input>
-                    <br />
-                    <a href="/inscription">s'inscrire</a>
-                    <input class="btn btn-primary" type="submit"></input>
+                    <div id="connexionForm" class="form-group">
+                        <br />
+                        <label>Email :</label>
+                        <br />
+                        <input type="text" class="form-control" name="email" onChange={this.handleChange} required></input>
+                        <br />
+                        <label>Mot de passe :</label>
+                        <br />
+                        <input type="password" class="form-control" name="mdp" onChange={this.handleChange} required></input>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <a href="/inscription">s'inscrire</a>
+                            </div>
+                            <div class="col">
+                                <input class="btn btn-success" type="submit"></input>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         );

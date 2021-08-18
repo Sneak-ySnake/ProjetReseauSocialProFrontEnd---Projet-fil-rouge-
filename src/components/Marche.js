@@ -93,12 +93,25 @@ class Marche extends React.Component {
     /*Affichage création négociation*/
     if (this.state.affichage == true) {
       return (
-        <div>
-          <form>
-            Votre message pour débuter la négociation : <br/><br/>
-            <input type="textarea" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
-            <input type="submit" onClick={this.creerNego} value="Envoyer"></input>
-          </form>
+        <div class="container">
+          <div class="card">
+            
+                  <div class="card-body">
+                    <div class="card-subtitle, message, gras">{this.state.publicationSelectionee.id_publication} | {this.state.publicationSelectionee.nom_publication}</div><br/>
+                    <div class="card-text, message">
+                      Prix : {this.state.publicationSelectionee.prix} | Quantite : {this.state.publicationSelectionee.quantite}<br/> 
+                      Produit : {this.state.publicationSelectionee.type_produit} | Type : {this.state.publicationSelectionee.type_publication.nom_type_publication}<br/> 
+                      Date : {new Date(this.state.publicationSelectionee.date_publication).toLocaleDateString()} <br/> 
+                      Description : {this.state.publicationSelectionee.description_publication} <br/> 
+                    </div>
+                  </div>
+
+            <form>
+              Votre message pour débuter la négociation : <br/><br/>
+              <input type="textarea" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
+              <input type="submit" onClick={this.creerNego} value="Envoyer"></input>
+            </form>
+          </div>
         </div>
       );
     }

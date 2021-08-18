@@ -32,7 +32,9 @@ class Inscription extends React.Component {
             id_rechercher : "",
             profil1: false,
             profil2: false,
-            profil3: false
+            profil3: false,
+
+            redirection: false
         }
     }
 
@@ -127,7 +129,7 @@ class Inscription extends React.Component {
                                             }
                                         });
                                     }
-                                    return <Redirect to="/connexion" />;
+                                    this.setState({redirection: true});
                                 });
                             });
                         }
@@ -180,6 +182,9 @@ class Inscription extends React.Component {
     }
 
     render() {
+        if (this.state.redirection == true) {
+            return <Redirect to="/" />;
+        }
         return (
             <div className="Inscription">
                 <ul>

@@ -1,4 +1,5 @@
 import './App.css';
+import "./css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -42,77 +43,99 @@ function App() {
           
           <Route exact path="/">
             <HeaderNonConnecte />
-            <Accueil />
-            <Connexion />
+            <div class="mainAccueil">
+              <Accueil />
+              <Connexion />
+            </div>
             <Footer />
           </Route>
 
           {/************************************** HEADER NON-CONNECTE ************************************************/}
           <Route path="/connexion">
             <HeaderNonConnecte />
-            <Connexion />
+            <div class="main">
+              <Connexion />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/inscription">
             <HeaderNonConnecte />
-            <Inscription />
+            <div class="main">
+              <Inscription />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/Deconnexion">
             <HeaderNonConnecte />
-            <Deconnexion />
-            <Footer />
+            <div class="main">
+              <Deconnexion />
+            </div>
+              <Footer />
           </Route>
 
           {/************************************** HEADER CONNECTE ************************************************/}
           <Route path="/Publier"> 
             <HeaderConnecte /> 
-            <Publier /> 
+            <div class="main">
+              <Publier /> 
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/Negociations"> 
             <HeaderConnecte />
-            <Negociations />
+            <div class="main">
+              <Negociations />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/Profil">
             <HeaderConnecte /> 
-            <Profil />
+            <div class="main">
+              <Profil />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/Marche">
             <HeaderConnecte />
-            <Marche />
+            <div class="main">
+              <Marche />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/MesPublications">
             <HeaderConnecte />
-            <MesPublications />
+            <div class="main">
+              <MesPublications />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/MesDemandes">
             <HeaderConnecte />
-            <MesDemandes />
+            <div class="main">
+              <MesDemandes />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/MesOffres">
             <HeaderConnecte />
-            <MesOffres />
+            <div class="main">
+              <MesOffres />
+            </div>
             <FooterConnect />
           </Route>
 
           {/*************************************** ADMINISTRATEUR **************************************/}
           <Route path="/connexionAdmin">
-              <HeaderAdminConnecte/> 
-              <ConnexionAdmin/>
+            <HeaderAdminConnecte/> 
+            <ConnexionAdmin/>
           </Route>
           
           <Route path = "/CreerAdmin">
@@ -133,74 +156,98 @@ function App() {
           {/************************************** FOOTER NON-CONNECTER ************************************************/}
           <Route path="/MentionLegal">
             <HeaderNonConnecte />
-            <MentionLegal />
+            <div class="main">
+              <MentionLegal />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/CDU">
             <HeaderNonConnecte />
-            <CDU />
+            <div class="main">
+              <CDU />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/PolitiqueCookies">
             <HeaderNonConnecte />
-            <PolitiqueCookies />
+            <div class="main">
+              <PolitiqueCookies />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/FAQ">
             <HeaderNonConnecte />
-            <FAQ />
+            <div class="main">
+              <FAQ />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/NousContacter">
             <HeaderNonConnecte />
-            <NousContacter />
+            <div class="main">
+              <NousContacter />
+            </div>
             <Footer />
           </Route>
 
           <Route path="/Support">
             <HeaderNonConnecte />
-            <Support />
+            <div class="main">
+              <Support />
+            </div>
             <Footer />
           </Route>
 
           {/************************************** FOOTER CONNECTER ************************************************/}
           <Route path="/MentionLegalConnect">
             <HeaderConnecte />
-            <MentionLegal />
+            <div class="main">
+              <MentionLegal />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/CDUConnect">
             <HeaderConnecte />
-            <CDU />
+            <div class="main">
+              <CDU />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/PolitiqueCookiesConnect">
             <HeaderConnecte />
-            <PolitiqueCookies />
+            <div class="main">
+              <PolitiqueCookies />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/FAQConnect">
             <HeaderConnecte />
-            <FAQ />
+            <div class="main">
+              <FAQ />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/NousContacterConnect">
             <HeaderConnecte />
-            <NousContacter />
+            <div class="main">
+              <NousContacter />
+            </div>
             <FooterConnect />
           </Route>
 
           <Route path="/SupportConnect">
             <HeaderConnecte />
-            <Support />
+            <div class="main">
+              <Support />
+            </div>
             <FooterConnect />
           </Route>
 
