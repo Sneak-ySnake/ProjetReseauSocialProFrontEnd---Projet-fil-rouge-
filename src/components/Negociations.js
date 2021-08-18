@@ -112,7 +112,7 @@ class Negociations extends React.Component {
     /*Premier affichage*/
     return (
       <div className="container-sm">
-        <span class="alignementGauche">Mes négociations :</span><br /><br />
+       <h1>Mes négociations :</h1>
         <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>
