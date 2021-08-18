@@ -23,9 +23,10 @@ import Support from './components/footer/Support'
 
 /**************************************** ADMIN ******************************************************/
 import ConnexionAdmin from './components/ConnexionAdmin';
-import Admin from './components/creerAdmin';
+import CreerAdmin from './components/CreerAdmin';
 import AdministrerUtilisateur from './components/AdministrerUtilisateur';
 import HeaderAdminConnecte from './components/HeaderAdminConnecte';
+import AdministrerPublication from './components/AdministrerPublication';
 
 function App() {
   return (
@@ -99,8 +100,19 @@ function App() {
               <ConnexionAdmin/>
           </Route>
           
-          <Route path = "/creerAdmin">
-              <creerAdmin/>
+          <Route path = "/CreerAdmin">
+              <HeaderAdminConnecte/> 
+              <CreerAdmin/>
+          </Route>
+
+          <Route path = "/administrerUtilisateur">
+              <HeaderAdminConnecte/>
+              <AdministrerUtilisateur/>
+          </Route>
+
+          <Route path = "/administrerPublication">
+            <HeaderAdminConnecte/>
+            <AdministrerPublication/>
           </Route>
 
           {/************************************** FOOTER ************************************************/}
