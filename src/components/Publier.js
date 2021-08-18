@@ -123,62 +123,59 @@ class Publier extends React.Component {
           localStorage.setItem("tempsSession", temps);
         }
         return (
-            <div className="Publier">
-                <ul>
-                    <h3>Publication</h3>
+            <div className="Publier" id="Publier">
+                    <h1 class="titrePage">Publication</h1>
                     <form onSubmit={this.addPublication} id="formulaire_publier">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nom publication</th>
-                                    <th>Description publication</th>
-                                    <th>Prix</th>
-                                    <th>Type produit</th>
-                                    <th>Quantite</th>
-                                    <th>Type publication</th>
-                                    <th>Statue publication</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        <input type="text" name="nom_publication" value={this.state.nom_publication} onChange={this.handleChange}></input>
-                                    </th>
-                                    <td>
-                                        <input type="text" name="description_publication" value={this.state.description_publication} onChange={this.handleChange}></input>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="prix" value={this.state.prix} onChange={this.handleChange}></input>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="type_produit" value={this.state.type_produit} onChange={this.handleChange}></input>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="quantite" value={this.state.quantite} onChange={this.handleChange}></input>
-                                    </td>
-                                    <td>
-                                        <select name="type_publication" onChange={this.handleChangeSelect}>
-                                            <option value={JSON.stringify({ type_publication: null })}>Choisir une type publication</option>
-                                            {this.state.type_publications.map(item =>
-                                                <option value={JSON.stringify(item)}>{item.nom_type_publication}</option>
-                                            )}
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="statut_publication" onChange={this.handleChangeSelect}>
-                                            <option value={JSON.stringify({ statut_publication: null })}>Choisir un statut publication</option>
-                                            {this.state.statut_publications.map(item =>
-                                                <option value={JSON.stringify(item)}>{item.nom_statut_publication}</option>
-                                            )}
-                                        </select>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="submit"></input>
+
+                        <fieldset class="form-group border p-3">
+                            <legend class="w-auto px-2">Informations</legend>
+                            <hr/>
+                            <div class="mb-3">
+                                <label>Nom publication</label>
+                                <input class="form-control" type="text" name="nom_publication" value={this.state.nom_publication} onChange={this.handleChange}></input>
+                            </div>
+                            <div class="mb-3">
+                                <label>Description publication</label>
+                                <input class="form-control" type="text" name="description_publication" value={this.state.description_publication} onChange={this.handleChange}></input>
+                            </div>
+                            <div class="mb-3">
+                                <label>Prix</label>
+                                <input class="form-control" type="number" name="prix" value={this.state.prix} onChange={this.handleChange}></input>
+                            </div>
+                            <div class="mb-3">
+                                <label>Type produit</label>
+                                <input class="form-control" type="text" name="type_produit" value={this.state.type_produit} onChange={this.handleChange}></input>
+                            </div>
+                            <div class="mb-3">
+                                <label>Quantite</label>
+                                <input class="form-control" type="number" name="quantite" value={this.state.quantite} onChange={this.handleChange}></input>
+                            </div>
+                            <div class="mb-3">
+                                <label>Type publication</label>
+                                <select class="form-control" name="type_publication" onChange={this.handleChangeSelect}>
+                                    <option value={JSON.stringify({ type_publication: null })}>Choisir une type publication</option>
+                                    {this.state.type_publications.map(item =>
+                                        <option value={JSON.stringify(item)}>{item.nom_type_publication}</option>
+                                    )}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label>Statue publication</label>
+                                <select class="form-control" name="statut_publication" onChange={this.handleChangeSelect}>
+                                    <option value={JSON.stringify({ statut_publication: null })}>Choisir un statut publication</option>
+                                    {this.state.statut_publications.map(item =>
+                                        <option value={JSON.stringify(item)}>{item.nom_statut_publication}</option>
+                                    )}
+                                </select>
+                            </div>
+                        </fieldset>
+                        <input type="submit" class="btn btn-success"></input>
+                        <br class="clear" />
+
                     </form>
-                    <p class="creationValidation">Votre Publication à bien été créé.</p>
-                </ul>
+                    <div class="alert alert-success creationValidation" role="alert">
+                        Votre Publication à bien été créé.
+                    </div>
             </div>
         )
     }

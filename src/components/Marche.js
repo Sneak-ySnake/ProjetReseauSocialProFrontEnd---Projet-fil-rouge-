@@ -120,7 +120,7 @@ class Marche extends React.Component {
     return (
       <div className="container">
 
-        Publications du marché : <br/><br/>
+        <h1>Publications du marché  </h1>
 
         <table>
 
