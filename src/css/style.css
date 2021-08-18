@@ -52,6 +52,43 @@ fieldset{ border-radius: 5px;
 #accueil {
     color: #63a74e;
 }
+
+#inscription fieldset, #Publier fieldset {
+    margin-bottom: 20px;
+}
+#inscription fieldset hr, #Publier fieldset hr {
+    margin-bottom: 20px;
+}
+#inscription form .btn, #Publier form .btn {
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+#inscription form .clear, #Publier form .clear {
+    clear: both;
+}
+
+@media only screen and (min-width: 600px) {
+    #inscription form, #Publier form {
+        width: 500px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+}
+
+.titrePage {
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.creationValidation {
+    font-size: 22px;
+    text-align: center;
+    display: none;
+}
+
 #headerNonConnecter a {
     font-size: 32px;
     text-decoration:none;
