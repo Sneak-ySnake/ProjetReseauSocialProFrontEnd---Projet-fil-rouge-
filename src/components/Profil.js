@@ -113,6 +113,8 @@ class Profil extends React.Component {
             ville: this.state.ville
           }
           localStorage.setItem("utilisateur", JSON.stringify(u));
+          document.getElementById("Profil").style.display = "none";
+          document.getElementsByClassName("ModificationValidation")[0].style.display = "block";
         });
       }
     });
@@ -139,46 +141,94 @@ class Profil extends React.Component {
     }
 
     return (
-      <div className="Profil">
-       
-        <form onSubmit={this.modifProfil}>
-          <br />
-          Modif : <br /><br />
-          <input type="submit"></input> <br/>
+      <div className="Profil" id="Profil">
+        <h1 class="titrePage">Profil</h1>
 
-          Nom : <br />
-          <input type="text" value={this.state.nom_utilisateur} name="nom_utilisateur" onChange={this.handleChange}></input> <br /><br />
-          Prenom : <br />
-          <input type="text" value={this.state.prenom_utilisateur} name="prenom_utilisateur" onChange={this.handleChange}></input> <br /><br />
-          Site Web : <br />
-          <input type="text" value={this.state.site_web} name="site_web" onChange={this.handleChange}></input> <br /><br />
-          Téléphone : <br />
-          <input type="text" value={this.state.telephone} name="telephone" onChange={this.handleChange}></input> <br /><br />
-          Poste occupé : <br />
-          <input type="text" value={this.state.poste_occupe} name="poste_occupe" onChange={this.handleChange}></input> <br /><br />
-          Email : <br />
-          <input type="text" value={this.state.email_utilisateur} name="email_utilisateur" onChange={this.handleChange}></input> <br /><br />
-          Siret : <br />
-          <input type="text" value={this.state.siret} name="siret" onChange={this.handleChange}></input> <br /><br />
-          Entreprise : <br />
-          <input type="text" value={this.state.nom_entreprise} name="nom_entreprise" onChange={this.handleChange}></input> <br /><br />
-          N° de voie : <br />
-          <input type="text" value={this.state.num_voie} name="num_voie" onChange={this.handleChange}></input> <br /><br />
-          Adresse : <br />
-          <input type="text" value={this.state.adresse} name="adresse" onChange={this.handleChange}></input> <br /><br />
-          Complément Adresse : <br />
-          <input type="text" value={this.state.complement_adresse} name="complement_adresse" onChange={this.handleChange}></input> <br /><br />
-          Ville : <br />
-          {this.state.ville.nom_ville} <br /><br />
-          Domaine : <br />
-          {this.state.domaine.nom_domaine}<br /><br />
-          
+
+        <form onSubmit={this.modifProfil}>
+          <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Informations</legend>
+            <hr/>
+            <div class="mb-3">
+                <label>Nom</label>
+                <input class="form-control" type="text" name="nom_utilisateur" value={this.state.nom_utilisateur} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Prenom</label>
+                <input class="form-control" type="text" name="prenom_utilisateur" value={this.state.prenom_utilisateur} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Site Web</label>
+                <input class="form-control" type="text" name="site_web" value={this.state.site_web} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Téléphone</label>
+                <input class="form-control" type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Poste Occupé</label>
+                <input class="form-control" type="text" name="poste_occupe" value={this.state.poste_occupe} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Adresse e-mail</label>
+                <input class="form-control" type="text" name="email_utilisateur" value={this.state.email_utilisateur} onChange={this.handleChange}></input>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Entreprise</legend>
+            <hr/>
+            <div class="mb-3">
+                <label>Siret</label>
+                <input class="form-control" type="text" name="siret" value={this.state.siret} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Nom de l'entreprise</label>
+                <input class="form-control" type="text" name="nom_entreprise" value={this.state.nom_entreprise} onChange={this.handleChange}></input>
+            </div>
+          </fieldset>
+                          
+          <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Adresse</legend>
+            <hr/>
+            <div class="mb-3">
+                <label>N° Voie</label>
+                <input class="form-control" type="text" name="num_voie" value={this.state.num_voie} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+                <label>Adresse</label>
+                <input class="form-control" type="text" name="adresse" value={this.state.adresse} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+              <label>Complement Adresse</label>
+              <input class="form-control" type="text" name="complement_adresse" value={this.state.complement_adresse} onChange={this.handleChange}></input>
+            </div>
+            <div class="mb-3">
+              <label>Ville</label>
+              <label>{this.state.ville.nom_ville}</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group border p-3">
+              <legend class="w-auto px-2">Domaine</legend>
+              <hr/>
+              <div class="mb-3">
+                <label>Domaine</label>
+                <label>{this.state.domaine.nom_domaine}</label>
+              </div>
+          </fieldset>
+
+          <input type="submit" class="btn btn-success" value="Modifier"></input>
+          <br class="clear" />
         </form>
+
+        <div class="alert alert-success ModificationValidation" role="alert">
+            Votre Profil a été modifier avec succée.
+        </div>
 
       </div>
     );
   }
-
 }
 
 export default Profil;

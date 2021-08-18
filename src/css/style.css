@@ -53,23 +53,23 @@ fieldset{ border-radius: 5px;
     color: #63a74e;
 }
 
-#inscription fieldset, #Publier fieldset {
+#inscription fieldset, #Publier fieldset, #Profil fieldset {
     margin-bottom: 20px;
 }
-#inscription fieldset hr, #Publier fieldset hr {
+#inscription fieldset hr, #Publier fieldset hr, #Profil fieldset hr {
     margin-bottom: 20px;
 }
-#inscription form .btn, #Publier form .btn {
+#inscription form .btn, #Publier form .btn, #Profil form .btn {
     float: right;
     margin-right: 30px;
     margin-bottom: 20px;
 }
-#inscription form .clear, #Publier form .clear {
+#inscription form .clear, #Publier form .clear, #Profil form .clear {
     clear: both;
 }
 
 @media only screen and (min-width: 600px) {
-    #inscription form, #Publier form {
+    #inscription form, #Publier form, #Profil form {
         width: 500px;
         margin: auto;
         margin-bottom: 30px;
@@ -83,7 +83,7 @@ fieldset{ border-radius: 5px;
     margin-bottom: 20px;
 }
 
-.creationValidation {
+.creationValidation, .ModificationValidation {
     font-size: 22px;
     text-align: center;
     display: none;
