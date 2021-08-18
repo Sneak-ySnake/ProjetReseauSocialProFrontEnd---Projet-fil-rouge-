@@ -20,8 +20,7 @@ class ConnexionAdmin extends React.Component {
         e.preventDefault();
         axios.post("/tender_du_poulet/loginAdmin", {
             mail_admin: this.state.mail_admin,
-            // remplacer sur ligne suivante par sha256(this.state.mot_de_passe_admin) si on veut hacher mdp
-            mot_de_passe_admin: this.state.mot_de_passe_admin 
+            mot_de_passe_admin: sha256(this.state.mot_de_passe_admin) 
         }).then((result) => {
             if (result.data.email_administrateur != null) {
                 this.setState({ administrateur: result.data })

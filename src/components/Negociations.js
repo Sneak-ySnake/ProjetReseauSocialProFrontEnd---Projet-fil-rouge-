@@ -104,7 +104,7 @@ class Negociations extends React.Component {
               )}
             </table><br />
           </div>
-          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
+          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
               <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
         </div>)
     }
@@ -112,7 +112,7 @@ class Negociations extends React.Component {
     /*Premier affichage*/
     return (
       <div className="container-sm">
-        <span class="alignementGauche">Mes négociations :</span><br /><br />
+       <h1>Mes négociations :</h1>
         <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>

@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-import logo from "./img/logo.png";
+import logo from "./img/logo.svg";
 import { Link, withRouter } from "react-router-dom";
 
 function HeaderNonConnecte(props) {
@@ -9,15 +9,14 @@ function HeaderNonConnecte(props) {
         <div className="HeaderNonConnecte" id="headerNonConnecter">
             <nav class="navbar navbar-expand">
                 <div class="container">
-                    <div>
-                        <img
-                            class="img-fluid "
-                            src={logo} width="50" height="50"
-                            height={100} width={90}
+                    
+                    <Link class="navbar-brand, headerText" to="/">
+                    <img
+                            class="logo "
+                            src={logo} 
+                            height={40} width={40}
                             alt=""
                         />
-                    </div>
-                    <Link class="navbar-brand, headerText" to="/">
                         <span>Tender du Poulet</span>
                     </Link>
                     {/*<div>

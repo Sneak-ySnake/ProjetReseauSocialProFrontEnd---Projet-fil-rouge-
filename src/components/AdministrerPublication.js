@@ -48,7 +48,7 @@ class AdministrerPublication extends React.Component {
 
     render() {
          /*Verif session*/
-    {
+    /*{
         var u = JSON.parse(localStorage.getItem("administrateur"));
         var tempsSession = localStorage.getItem("tempsSession");
       }
@@ -61,11 +61,11 @@ class AdministrerPublication extends React.Component {
         alert("session expirée");
         localStorage.clear();
         return <Redirect to="/connexionAdmin" />;
-      }
+      }P
       if (this.state.sessionTemps == true) {
         var temps = Date.now() + 1800 * 1000;
         localStorage.setItem("tempsSession", temps);
-      }
+      }*/
         return (
             <div classname = "AdministrerPublication">
                 <h3> Administrer Publication</h3>
