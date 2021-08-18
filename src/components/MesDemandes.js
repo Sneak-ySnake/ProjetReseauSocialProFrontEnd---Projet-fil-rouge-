@@ -121,7 +121,7 @@ class MesDemandes extends React.Component {
             )
             )}
           </table><br /></div>
-          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
+          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
           <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
         </div>)
     }
