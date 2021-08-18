@@ -1,22 +1,20 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import logo from "./img/logo.png";
+import logo from "./img/logo.svg";
 
 function HeaderConnecte(props) {
   return (
     <div className="HeaderConnecte">
       <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
-            <div>
-                <img
-                class="img-fluid "
-                src={logo} width="50" height="50"
-                height={100} width={90}
-                alt=""
-                />
-            </div>
+          
             <Link class="navbar-brand" to="/Marche">
-                Tender
+            <img
+                class="logo "
+                src={logo} 
+                height={40} width={40}
+                alt=""
+                />  Tender
             </Link>
             <div>
                 <ul class="navbar-nav ml-auto">

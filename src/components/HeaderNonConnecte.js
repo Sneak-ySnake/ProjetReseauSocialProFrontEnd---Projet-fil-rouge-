@@ -9,15 +9,14 @@ function HeaderNonConnecte(props) {
         <div className="HeaderNonConnecte" id="headerNonConnecter">
             <nav class="navbar navbar-expand">
                 <div class="container">
-                    <div>
-                        <svg
-                            class="img-fluid logo "
+                    
+                    <Link class="navbar-brand, headerText" to="/">
+                    <img
+                            class="logo "
                             src={logo} 
                             height={40} width={40}
                             alt=""
                         />
-                    </div>
-                    <Link class="navbar-brand, headerText" to="/">
                         <span>Tender du Poulet</span>
                     </Link>
                     {/*<div>
