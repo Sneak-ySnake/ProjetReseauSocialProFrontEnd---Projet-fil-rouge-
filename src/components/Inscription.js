@@ -183,7 +183,7 @@ class Inscription extends React.Component {
 
     render() {
         if (this.state.redirection == true) {
-            return <Redirect to="/connexion" />;
+            return <Redirect to="/" />;
         }
         return (
             <div className="Inscription">
