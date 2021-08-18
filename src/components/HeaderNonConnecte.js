@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-import logo from "./img/logo.png";
+import logo from "./img/logo.svg";
 import { Link, withRouter } from "react-router-dom";
 
 function HeaderNonConnecte(props) {
@@ -10,10 +10,10 @@ function HeaderNonConnecte(props) {
             <nav class="navbar navbar-expand">
                 <div class="container">
                     <div>
-                        <img
-                            class="img-fluid "
-                            src={logo} width="50" height="50"
-                            height={100} width={90}
+                        <svg
+                            class="img-fluid logo "
+                            src={logo} 
+                            height={40} width={40}
                             alt=""
                         />
                     </div>
