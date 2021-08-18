@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 class Negociations extends React.Component {
- constructor() {
+  constructor() {
     super();
 
     this.state = {
@@ -32,13 +32,13 @@ class Negociations extends React.Component {
       id_negocier: {
         publication: negocier.id_negocier.publication,
         id_negociation: negocier.id_negocier.id_negociation
-       }
+      }
     }).then((result) => { this.setState({ listeMessages: result.data }) });
   };
-   
+
   envoyerMessage = (e) => {
     e.preventDefault();
-    
+
     axios.post("/tender_du_poulet/addNegocier", {
       id_negocier: {
         utilisateur: JSON.parse(localStorage.getItem("utilisateur")),
@@ -48,6 +48,7 @@ class Negociations extends React.Component {
       },
       message: this.state.message
     }).then(() => this.affichageMessage(this.state.negocier));
+    this.setState({ message: "" });
 
   };
 
@@ -56,7 +57,7 @@ class Negociations extends React.Component {
   };
 
   retour = () => {
-    this.setState({affichage: false});
+    this.setState({ affichage: false });
   };
 
   render() {
@@ -79,46 +80,47 @@ class Negociations extends React.Component {
       var temps = Date.now() + 1800 * 1000;
       localStorage.setItem("tempsSession", temps);
     }
-   
+
     /*Affichage message*/
     if (this.state.affichage == true) {
       return (
         <div class="container">
-        <table >
-          <br/>
-          <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input> 
-          <br/>
-        <div class="message">Messages : </div>
-        <br/>
-        {this.state.listeMessages.map((item) => (
-         
-          <tbody>
-            <tr class="message">
-              <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
-              <br/>{item.message}
-            </tr>
-            <br /><br />
-          </tbody>
-        )
-        )}
-        <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-        <div><input type="submit"  class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
-      </table><br/>
-      </div>)
+          <div class="fenetreDiscussion">
+            <table>
+              <br />
+              <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input>
+              <br />
+              <div class="alignementGauche">Messages : </div>
+              <br />
+              {this.state.listeMessages.map((item) => (
+                <tbody>
+                  <tr class="alignementGauche">
+                    <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
+                    <br />{item.message}
+                  </tr>
+                  <br /><br />
+                </tbody>
+              )
+              )}
+            </table><br />
+          </div>
+          <input type="text" class="form-control" value={this.state.message} name="alignementGauche" onChange={this.handleChange}></input>
+              <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
+        </div>)
     }
 
     /*Premier affichage*/
     return (
       <div className="container-sm">
-        <span class="message">Mes négociations :</span><br/><br/>
-        <table class="test">
+        <span class="alignementGauche">Mes négociations :</span><br /><br />
+        <table>
           {this.state.listeNegociations.map((item) => (
             <tbody>
-              <tr class="card" onClick={() => this.affichageMessage(item)}> 
+              <tr class="card" onClick={() => this.affichageMessage(item)}>
                 <div class="card-body">
-                  <div class="card-subtitle, message, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br/>
-                  <div class="card-text, message"> 
-                    Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br/> 
+                  <div class="card-subtitle, alignementGauche, gras">Publication numéro : {item.id_negocier.publication.id_publication} | {item.id_negocier.publication.nom_publication}</div><br />
+                  <div class="card-text, alignementGauche">
+                    Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br />
                   </div>
                 </div>
               </tr>

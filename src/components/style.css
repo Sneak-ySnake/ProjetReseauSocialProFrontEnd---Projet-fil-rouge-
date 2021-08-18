@@ -10,7 +10,7 @@
     text-align: right;
 }
 
-.message {
+.alignementGauche {
     text-align: left;
 }
 
@@ -18,3 +18,8 @@
 .gras {
     font-weight: bold;
 }
+
+.fenetreDiscussion {
+    height:550px;
+    overflow-y: scroll;
+  }

@@ -34,73 +34,18 @@ function HeaderAdminConnecte(props) {
                     
                     <li
                     class={`nav-item  ${
-                        props.location.pathname === "/Negociations" ? "active" : ""
+                        props.location.pathname === "/creerAdmin" ? "active" : ""
                     }`}
                     >
-                    <Link class="nav-link" to="/Negociations">
-                        Negociations
+                    <Link class="nav-link" to="/creerAdmin">
+                        Creer Administrateur
                     </Link>
                     </li>
 
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/Profil" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/Profil">
-                        Profil
-                    </Link>
-                    </li>
                     
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/Marche" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/Marche">
-                        Marche
-                    </Link>
-                    </li>
-                    
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/MesPublications" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/MesPublications">
-                        MesPublications
-                    </Link>
-                    </li>
-
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/MesDemandes" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/MesDemandes">
-                        MesDemandes
-                    </Link>
-                    </li>
-
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/MesOffres" ? "active" : ""
-                    }`}
-                    >
-                    <Link class="nav-link" to="/MesOffres">
-                        MesOffres
-                    </Link>
-                    </li>
-
-                    <li
-                    class={`nav-item  ${
-                        props.location.pathname === "/Deconnexion" ? "active" : ""
-                    }`}
-                    >
                     <Link class="nav-link" to="/Deconnexion">
                         Deconnexion
                     </Link>
-                    </li>
                 </ul>
             </div>
         </div>
