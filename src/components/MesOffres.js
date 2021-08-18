@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profil from "./img/profil.svg";
+import FormFiltrer from "../forms/FormFiltrer";
 class MesOffres extends React.Component {
   constructor() {
     super();
@@ -155,6 +156,12 @@ class MesOffres extends React.Component {
 
         <h1>Mes offres</h1>
 
+        <p>Offres / <span class="color-green">Demandes</span></p>
+
+        <button class="btn btn-primary">
+          Filtrer
+        </button>
+        <FormFiltrer></FormFiltrer>
          
           {this.state.listeOffres.map((item) => (
              

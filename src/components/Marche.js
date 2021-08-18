@@ -96,28 +96,91 @@ class Marche extends React.Component {
     if (this.state.affichage == true) {
       return (
         <div class="container">
-          <div class="card">
-            
-                  <div class="card-body">
-                    <div class="card-subtitle, message, gras">{this.state.publicationSelectionee.id_publication} | {this.state.publicationSelectionee.nom_publication}</div><br/>
-                    <div class="card-text, message">
-                      Prix : {this.state.publicationSelectionee.prix} | Quantite : {this.state.publicationSelectionee.quantite}<br/> 
-                      Produit : {this.state.publicationSelectionee.type_produit} | Type : {this.state.publicationSelectionee.type_publication.nom_type_publication}<br/> 
-                      Date : {new Date(this.state.publicationSelectionee.date_publication).toLocaleDateString()} <br/> 
-                      Description : {this.state.publicationSelectionee.description_publication} <br/> 
-                    </div>
+
+<h1>Negocier</h1>
+
+<button class="btn btn-primary">
+          Retour
+        </button>
+     
+
+<div class="row align-items-start">
+    <div class="col">
+     <div class="card  publication">
+
+                <div class="card-body">
+
+                      <h3 class="mb-4"> {this.state.publicationSelectionee.nom_publication}</h3> 
+
+
+                  <div class="d-flex justify-content-start my-2">
+                        <div class="col">
+                          <h4>Description </h4>
+                          <p>{this.state.publicationSelectionee.description_publication}</p>
+                        </div>
+                        <div class="col">
+                          <h4>Prix :</h4>
+                          <p>{this.state.publicationSelectionee.prix} €</p>
+                        {/* 
+                          <h4>Quantité :</h4>
+                          <p>{item.quantite}</p>
+                        */}
+                        
+                        </div>
                   </div>
 
-            <form>  <div class="form-group">
+                  {/*
+                    <div class="card-text, message">
+                      Prix :  | Quantite : {this.state.publicationSelectionee.quantite}<br/> 
+                      Produit : {this.state.publicationSelectionee.type_produit} | Type : {this.state.publicationSelectionee.type_publication.nom_type_publication}<br/> 
+                      Date : {new Date(this.state.publicationSelectionee.date_publication).toLocaleDateString()} <br/> 
+                        <br/> 
+                    </div> */}
+
+
+                  <div class="d-flex justify-content-start ">
+                    <div>
+                       
+                        <img
+                          class="profil"
+                          src={profil} 
+                          height={40} width={40}
+                          alt=""
+                          />  
+                         
+                    </div>
+                    <div>                    
+                    <p>Auteur<br/> Statut</p>
+                    </div> 
+                 
+
+                  </div>
+                </div>
+
+           
+
+
+          </div>
+    </div>
+    <div class="col">
+    <form>  <div class="form-group">
      
-          <p>Votre message pour débuter la négociation :</p>     
+     <p>Votre message pour débuter la négociation :</p>     
 
-              <input type="textarea" rows="3" name="message" value={this.state.message} onChange={this.handleChange}></input> <br /><br />
-              <input type="submit" class="btn btn-primary" onClick={this.creerNego} value="Envoyer"></input>
-          </div>
+         <textarea class="w-100" type="textarea" rows="5" name="message" value={this.state.message} onChange={this.handleChange}></textarea> 
+         <input type="submit" class="btn btn-primary" onClick={this.creerNego} value="Envoyer"/>
+     </div>
 
-            </form>
-          </div>
+    </form>
+    </div>
+    
+  </div>
+
+
+          
+
+         
+
         </div>
       );
     }
@@ -128,8 +191,7 @@ class Marche extends React.Component {
 
         <h1>Marché  </h1> 
 
-        <p>Offres / Demandes</p>
-
+        
         <button class="btn btn-primary">
           Filtrer
         </button>

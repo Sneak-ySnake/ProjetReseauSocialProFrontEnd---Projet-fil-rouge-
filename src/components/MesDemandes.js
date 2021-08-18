@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profil from "./img/profil.svg";
+import FormFiltrer from "../forms/FormFiltrer";
 class MesDemandes extends React.Component {
   constructor() {
     super();
@@ -156,7 +157,14 @@ class MesDemandes extends React.Component {
 
         <h1>Mes demandes</h1>
 
-        
+        <p><span class="color-green">Offres</span> / Demandes </p>
+
+        <button class="btn btn-primary">
+          Filtrer
+        </button>
+        <FormFiltrer></FormFiltrer>
+
+
           {this.state.listeDemandes.map((item) => (
              
             <div class="card publications" onClick={() => this.affichageNego(item)}>

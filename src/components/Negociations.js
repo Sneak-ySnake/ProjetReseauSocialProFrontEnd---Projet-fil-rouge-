@@ -3,7 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-
+import profil from "./img/profil.svg";
 class Negociations extends React.Component {
   constructor() {
     super();
@@ -85,12 +85,15 @@ class Negociations extends React.Component {
     if (this.state.affichage == true) {
       return (
         <div class="container">
-          <div class="fenetreDiscussion">
-            <table>
-              <br />
-              <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input>
-              <br />
-              <div class="alignementGauche">Messages : </div>
+            <h1>Messages</h1>
+
+            <button type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}>Retour</button>
+          <div class="fenetreDiscussion p-5">
+ 
+             
+           {/*  <table>
+              
+              
               <br />
               {this.state.listeMessages.map((item) => (
                 <tbody>
@@ -102,27 +105,116 @@ class Negociations extends React.Component {
                 </tbody>
               )
               )}
-            </table><br />
+            </table> */}
+
+
+           
+              
+              
+              
+              {this.state.listeMessages.map((item) => (
+               
+                  <div class="card">
+
+                <div class="row align-items-start">
+                    <div class="col">
+
+
+                    <div class="d-flex justify-content-start ">
+                      <div>
+                          
+                            <img
+                              class="profil"
+                              src={profil} 
+                              height={40} width={40}
+                              alt=""
+                              />  
+                            
+                      </div>
+                      <div >
+                        
+                        <p>{item.id_negocier.utilisateur.prenom_utilisateur}<br/> {item.id_negocier.utilisateur.nom_utilisateur}</p>
+                        
+                      
+                      </div> 
+              
+
+                </div>
+
+                    
+                      
+                    </div>
+                    <div class="col">
+                    <div class="card-body">
+                      
+                    
+                                         
+                      <p> {item.message}</p>
+                  
+                  </div>
+                    </div>
+                     
+                  </div>
+                     
+                     
+                      
+                      
+
+                   <p class="text-end">  {(new Date(item.id_negocier.date)).toLocaleString()} </p>
+                  </div>
+                 
+                 
+              )
+              )}
+           
+        
+
           </div>
+          <form>
           <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-              <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input></div>
+             
+                <input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> 
+              <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input> 
+           </form>
         </div>)
     }
 
     /*Premier affichage*/
     return (
       <div className="container-sm">
-       <h1>Mes négociations</h1>
+       <h1>Négociations</h1>
         
           {this.state.listeNegociations.map((item) => (
             
               <div class="card negociations" onClick={() => this.affichageMessage(item)}>
                 <div class="card-body">
                   <p>#{item.id_negocier.publication.id_publication}</p>
-                  <h3>Publication numéro :  | {item.id_negocier.publication.nom_publication}</h3> 
+                  <h3>{item.id_negocier.publication.nom_publication}</h3> 
+
+                  <div class="d-flex justify-content-start ">
+                <div>
+                    
+                      <img
+                        class="profil"
+                        src={profil} 
+                        height={40} width={40}
+                        alt=""
+                        />  
+                      
+                </div>
+                <div >
+                  
+                  <p>Auteur<br/> Statut</p>
+                  
+                
+                </div> 
+              
+
+                </div>
+                {/*
                   <div class="card-text, alignementGauche">
                     Date : {new Date(item.id_negocier.publication.date_publication).toLocaleDateString()}<br />
-                  </div>
+                  </div>  */}
                 </div>
               </div>
              
