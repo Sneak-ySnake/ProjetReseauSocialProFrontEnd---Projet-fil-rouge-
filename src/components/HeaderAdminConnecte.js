@@ -43,7 +43,7 @@ function HeaderAdminConnecte(props) {
                     </li>
 
                     
-                    <Link class="nav-link" to="/Deconnexion">
+                    <Link class="nav-link" to="/connexionAdmin">
                         Deconnexion
                     </Link>
                 </ul>
