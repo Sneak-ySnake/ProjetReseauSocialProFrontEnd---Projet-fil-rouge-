@@ -5,7 +5,7 @@ import logo from "./img/logo.svg";
 function HeaderConnecte(props) {
   return (
     <div className="HeaderConnecte">
-      <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <nav class="navbar navbar-expand navbar-dark bg-green">
         <div class="container">
           
             <Link class="navbar-brand" to="/Marche">
