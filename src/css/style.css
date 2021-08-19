@@ -31,10 +31,10 @@ fieldset{ border-radius: 5px;
 
 /*************************************************** LOIC ************************************************************/
 .mainAccueil {
-    min-height: 615px;
+    min-height: 705px;
 }
 .main {
-    min-height: 646px;
+    min-height: 657px;
 }
 #connexionForm {
     width: 300px;
