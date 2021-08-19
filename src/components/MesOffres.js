@@ -104,26 +104,79 @@ class MesOffres extends React.Component {
 
 
         <div class="container">
-          <div class="alignementGauche"><input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input></div>
-          <div class="fenetreDiscussion">
-          <table >
-            <br />
-            <div class="alignementGauche">Messages : </div>
-            <br />
-            {this.state.listeMessage.map((item) => (
+             <h1>Messages </h1>
 
-              <tbody>
-                <tr class="alignementGauche">
-                  <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
-                  <br />{item.message}
-                </tr>
-                <br /><br />
-              </tbody>
+             <button type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}>Retour</button>
+
+          <div class="fenetreDiscussion  p-5 my-5"> 
+
+          
+          {this.state.listeMessage.map((item) => (
+
+          <div class="card">
+                
+                  
+                
+
+               
+
+
+                    <div class="d-flex justify-content-start ">
+                      <div>
+                          
+                            <img
+                              class="profil"
+                              src={profil} 
+                              height={40} width={40}
+                              alt=""
+                              />  
+                            
+                      </div>
+                      <div >
+                        
+                        <p>{item.id_negocier.utilisateur.prenom_utilisateur}<br/> {item.id_negocier.utilisateur.nom_utilisateur}</p>
+                        
+                      
+                      </div> 
+              
+
+               
+                    
+                      
+                    </div>
+                     
+                    <div class="card-body">
+                      
+                    
+                                         
+                      <p> {item.message}</p>
+                  
+                  </div>
+                   
+                     
+                  
+                     
+                     
+                      
+                      
+
+                   <p class="text-end">  {(new Date(item.id_negocier.date)).toLocaleString()} </p>
+                  </div>
+                 
+          
+               
             )
             )}
-          </table><br /></div>
-          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-          <div class="alignementGauche"><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
+          </div>
+         
+
+          <form class="my-5 text-end">
+          <textarea type="text" row="7" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></textarea>
+          <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input> 
+           
+                <input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> 
+             </form>
+         
         </div>)
     }
 
@@ -131,22 +184,53 @@ class MesOffres extends React.Component {
     if (this.state.affichage == true) {
       return (
         <div class="container">
-        <table>
-          <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input><br /><br />
-          <div>Vos interlocuteurs sur cette offre :</div><br />
+       
+          <h1>Interlocuteurs</h1>
+
+          <button type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}>Retour </button>
+         
           {this.state.listeNegociations.map((item) => (
-            <tbody>
-              <tr class="card" onClick={() => this.affichageMessage(item)}> 
+             
+              <div class="card" onClick={() => this.affichageMessage(item)}> 
                 <div class="card-body">
-                  <div class="card-subtitle, alignementGauche, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+                  <div class="card-subtitle, alignementGauche, gras">#{item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+               
+               
+                  <div class="d-flex justify-content-start ">
+                <div>
+                    
+                      <img
+                        class="profil"
+                        src={profil} 
+                        height={40} width={40}
+                        alt=""
+                        />  
+                      
                 </div>
-                {item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}
-              </tr>
-              <br /><br />
-            </tbody>
+                <div >
+                  
+                  <p>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}<br/> Statut</p>
+                  
+                
+                </div> 
+              
+
+                </div>
+
+               
+               
+               
+                </div>
+
+
+               
+
+                 
+              </div>
+             
           )
           )}
-        </table>
+        
         </div>)
     }
 

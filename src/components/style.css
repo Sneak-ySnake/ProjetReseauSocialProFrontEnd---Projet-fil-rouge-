@@ -48,3 +48,10 @@
 .formFiltrer{    left: -330px;}
 
 .card{font-size:0.85em}
+
+
+
+
+@media (max-width: 600px) {
+    .col {width: 100%; flex:auto}
+  }

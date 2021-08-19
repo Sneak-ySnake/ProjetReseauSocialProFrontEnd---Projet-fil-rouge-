@@ -103,27 +103,78 @@ class MesDemandes extends React.Component {
       return (
         
         <div class="container">
-          <div class="fenetreDiscussion">
-          <table >
-            <br />
-            <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input>
-            <br />
-            <div class="alignementGauche">Messages : </div>
-            <br />
+
+<h1>Messages </h1>
+
+<input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour2}></input>
+          <div class="fenetreDiscussion  p-5 my-5">
+           
+            
+           
+           
             {this.state.listeMessage.map((item) => (
 
-              <tbody>
-                <tr class="alignementGauche">
-                  <span class="gras">{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur} | {(new Date(item.id_negocier.date)).toLocaleString()}</span>
-                  <br />{item.message}
-                </tr>
-                <br /><br />
-              </tbody>
+<div class="card">
+                
+                  
+                
+
+               
+
+
+<div class="d-flex justify-content-start ">
+  <div>
+      
+        <img
+          class="profil"
+          src={profil} 
+          height={40} width={40}
+          alt=""
+          />  
+        
+  </div>
+  <div >
+    
+    <p>{item.id_negocier.utilisateur.prenom_utilisateur}<br/> {item.id_negocier.utilisateur.nom_utilisateur}</p>
+    
+  
+  </div> 
+
+
+
+
+  
+</div>
+ 
+<div class="card-body">
+  
+
+                     
+  <p> {item.message}</p>
+
+</div>
+
+ 
+
+ 
+ 
+  
+  
+
+<p class="text-end">  {(new Date(item.id_negocier.date)).toLocaleString()} </p>
+</div>
+
+
             )
             )}
-          </table><br /></div>
-          <input type="text" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></input>
-          <div><input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negociationConsultee)}></input></div>
+          </div>
+          
+          <form class="my-5 text-end">
+          <textarea type="text" row="7" class="form-control" value={this.state.message} name="message" onChange={this.handleChange}></textarea>
+          <input type="submit" value="Actualiser" class="btn btn-primary" onClick={() => this.affichageMessage(this.state.negocier)}></input> 
+           
+                <input type="submit" class="btn btn-primary" onClick={this.envoyerMessage}></input> 
+             </form>
         </div>)
     }
 
@@ -132,22 +183,51 @@ class MesDemandes extends React.Component {
       return (
 
         <div class="container">
-        <table>
+           <h1>Interlocuteurs</h1>
+           
+      
           <input type="submit" value="Retour" class="btn btn-primary" onClick={this.retour}></input><br /><br />
-          <div>Vos interlocuteurs sur cette offre :</div><br />
+          
           {this.state.listeNegociations.map((item) => (
-            <tbody>
-              <tr class="card" onClick={() => this.affichageMessage(item)}> 
-                <div class="card-body">
-                  <div class="card-subtitle, alignementGauche, gras">Utilisateur : {item.id_negocier.utilisateur.id_utilisateur} <br/></div>
-                </div>
-                {item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}
-              </tr>
-              <br /><br />
-            </tbody>
+          <div class="card" onClick={() => this.affichageMessage(item)}> 
+          <div class="card-body">
+            <div class="card-subtitle, alignementGauche, gras">#{item.id_negocier.utilisateur.id_utilisateur} <br/></div>
+         
+         
+            <div class="d-flex justify-content-start ">
+          <div>
+              
+                <img
+                  class="profil"
+                  src={profil} 
+                  height={40} width={40}
+                  alt=""
+                  />  
+                
+          </div>
+          <div >
+            
+            <p>{item.id_negocier.utilisateur.prenom_utilisateur} {item.id_negocier.utilisateur.nom_utilisateur}<br/> Statut</p>
+            
+          
+          </div> 
+        
+
+          </div>
+
+         
+         
+         
+          </div>
+
+
+         
+
+           
+        </div>
           )
           )}
-        </table>
+         
         </div>)
     }
 

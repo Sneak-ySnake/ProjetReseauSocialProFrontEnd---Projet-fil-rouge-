@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 function FooterConnect(props) {
     return (
         <div className="footer" id="footerConnecter">
-            <footer class="bg-dark text-center text-white">
+            <footer class="  bg-green text-center text-white">
                 <div class="container p-4 pb-0">
                     <section class="mb-4">
                         <Link class="btn btn-outline-light btn-floating m-1" href="#!" to="/MentionLegalConnect">

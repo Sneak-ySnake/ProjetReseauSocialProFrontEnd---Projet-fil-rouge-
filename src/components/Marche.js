@@ -203,7 +203,9 @@ class Marche extends React.Component {
              
               <div class="card publications" onClick={() => this.affichage(item)}> 
                 <div class="card-body">
+                
                   <h3 class="mb-4">{item.nom_publication}</h3>
+                  
                   
                   <div class="d-flex justify-content-start my-2">
                   <div class="col">
@@ -241,8 +243,10 @@ class Marche extends React.Component {
                   
                   </div> 
                  
-
+               
                   </div>
+                  <p> Type : {item.type_publication.nom_type_publication}</p> 
+                 
                  { /*<div class="card-text, message">
                   
                    <h4>Détails</h4>
