@@ -1,8 +1,8 @@
 
 @font-face {
-    font-family: "Roboto"; 
-    
-    src: local("./fonts/Roboto-Regular.tiff") format("tiff")
+    font-family: "Roboto";  
+    src: url("../fonts/roboto-regular-webfont.woff2") format("woff2");
+    src: url("../fonts/roboto-regular-webfont.woff") format("woff");
    }
 
 .HeaderNonConnecte {
